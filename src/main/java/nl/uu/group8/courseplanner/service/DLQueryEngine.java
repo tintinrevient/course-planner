@@ -6,20 +6,19 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.reasoner.Node;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.util.ShortFormProvider;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.Set;
 
+@Service
 public class DLQueryEngine {
 
-    private final OWLReasoner reasoner;
-    private final DLQueryParser parser;
+    @Autowired
+    private OWLReasoner reasoner;
 
-    public DLQueryEngine(OWLReasoner reasoner, ShortFormProvider shortFormProvider) {
-        this.reasoner = reasoner;
-        parser = new DLQueryParser(reasoner.getRootOntology(), shortFormProvider);
-    }
+    @Autowired
+    private DLQueryParser parser;
 
     public Set<OWLClass> getSuperClasses(String classExpressionString, boolean direct) {
         if (classExpressionString.trim().length() == 0) {
@@ -69,4 +68,5 @@ public class DLQueryEngine {
                 direct);
         return individuals.getFlattened();
     }
+
 }

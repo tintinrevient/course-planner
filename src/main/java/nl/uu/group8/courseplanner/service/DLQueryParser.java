@@ -5,36 +5,25 @@ import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
-import org.semanticweb.owlapi.util.ShortFormProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
+@Service
 public class DLQueryParser {
 
-    private final OWLOntology rootOntology;
-    private final BidirectionalShortFormProvider bidiShortFormProvider;
+    @Autowired
+    private OWLReasoner reasoner;
 
-    public DLQueryParser(OWLOntology rootOntology, ShortFormProvider shortFormProvider) {
-        this.rootOntology = rootOntology;
-        OWLOntologyManager manager = rootOntology.getOWLOntologyManager();
-        Set<OWLOntology> importsClosure = rootOntology.getImportsClosure();
-        // Create a bidirectional short form provider to do the actual mapping.
-        // It will generate names using the input
-        // short form provider.
-        bidiShortFormProvider = new BidirectionalShortFormProviderAdapter(manager,
-                importsClosure, shortFormProvider);
-    }
+    @Autowired
+    private BidirectionalShortFormProviderAdapter bidiShortFormProvider;
 
     public OWLClassExpression parseClassExpression(String classExpressionString) {
-        OWLDataFactory dataFactory = rootOntology.getOWLOntologyManager()
-                .getOWLDataFactory();
+        OWLDataFactory dataFactory = reasoner.getRootOntology().getOWLOntologyManager().getOWLDataFactory();
         ManchesterOWLSyntaxEditorParser parser = new ManchesterOWLSyntaxEditorParser(
                 dataFactory, classExpressionString);
-        parser.setDefaultOntology(rootOntology);
+        parser.setDefaultOntology(reasoner.getRootOntology());
         OWLEntityChecker entityChecker = new ShortFormEntityChecker(bidiShortFormProvider);
         parser.setOWLEntityChecker(entityChecker);
         return parser.parseClassExpression();

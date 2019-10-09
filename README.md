@@ -6,7 +6,13 @@
 
 ### How to run the project
 
-in the root directory of the project 'course-planner', execute below command:
+Clone this repository in your local and open to the project's root directory:
+```
+git clone https://github.com/tintinrevient/course-planner.git
+cd course-planner
+```
+
+In the root directory of the project: 'course-planner', execute below command:
 ```
 mvn clean spring-boot:run
 ```

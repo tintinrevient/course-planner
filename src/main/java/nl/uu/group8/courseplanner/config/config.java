@@ -7,10 +7,8 @@ import org.semanticweb.owlapi.io.StringDocumentSource;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.io.File;
@@ -38,18 +36,6 @@ public class config {
     @Bean
     public ShortFormProvider shortFormProvider() {
         return new SimpleShortFormProvider();
-    }
-
-    @Autowired
-    public OWLReasoner reasoner;
-
-    @Autowired
-    public ShortFormProvider shortFormProvider;
-
-    @Bean
-    public BidirectionalShortFormProviderAdapter bidiShortFormProvider() {
-        return new BidirectionalShortFormProviderAdapter(reasoner.getRootOntology().getOWLOntologyManager(),
-                reasoner.getRootOntology().getImportsClosure(), shortFormProvider);
     }
 
 }

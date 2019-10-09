@@ -1,6 +1,7 @@
 package nl.uu.group8.courseplanner.controller;
 
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
+import nl.uu.group8.courseplanner.service.DLQueryParser;
 import nl.uu.group8.courseplanner.service.DLQueryPrinter;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.StringDocumentSource;
@@ -10,6 +11,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,15 @@ import java.nio.file.Paths;
 @RestController
 @RequestMapping("/course")
 public class CourseController {
+
+    @Autowired
+    DLQueryEngine queryEngine;
+
+    @Autowired
+    DLQueryParser queryParser;
+
+    @Autowired
+    DLQueryPrinter queryPrinter;
 
     @GetMapping(value = "/test")
     public String find() throws Exception{

@@ -2,6 +2,7 @@ package nl.uu.group8.courseplanner.controller;
 
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import nl.uu.group8.courseplanner.service.DLQueryPrinter;
+import org.apache.commons.io.FileUtils;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.StringDocumentSource;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -14,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -33,7 +37,8 @@ public class CourseController {
     @GetMapping(value = "/test")
     public String find() throws Exception{
 
-        String wine = new String(Files.readAllBytes(Paths.get("/Users/zhaoshu/Documents/workspace/course-planner/src/main/resources/wine.rdf")), "UTF-8");
+        File file = new File(getClass().getClassLoader().getResource("wine.rdf").getFile());
+        String wine = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
 
         // Load an example ontology.
         final OWLOntologyManager manager = OWLManager.createOWLOntologyManager();

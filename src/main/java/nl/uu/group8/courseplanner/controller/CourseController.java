@@ -10,37 +10,21 @@ import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import nl.uu.group8.courseplanner.domain.Course;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 @RestController
 @RequestMapping("/course")
 public class CourseController {
 
-    @Autowired
-    private nl.uu.group8.courseplanner.repository.CourseRepository courseRepository;
-
-    @GetMapping
-    public List<Course> findAll() {
-        return courseRepository.findAll();
-    }
-
     @GetMapping(value = "/test")
-    public List<Course> find() throws Exception{
+    public String find() throws Exception{
 
-        String wine = new String(Files.readAllBytes(Paths.get("wine.rdf")), "UTF-8");
-        System.out.print(wine);
+        String wine = new String(Files.readAllBytes(Paths.get("/Users/zhaoshu/Documents/workspace/course-planner/src/main/resources/wine.rdf")), "UTF-8");
+
         // Load an example ontology.
         final OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         final OWLOntology ontology = manager
@@ -62,7 +46,7 @@ public class CourseController {
 
         //Method for writing down the queries and printing the quiz
         dlQueryPrinter.printExample();
-        return courseRepository.findAll();
+        return "success";
     }
 
 }

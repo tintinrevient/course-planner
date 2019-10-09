@@ -17,29 +17,34 @@ public class DLQueryPrinter {
         dlQueryEngine = engine;
     }
 
-    public void printExample() throws IOException  {
+    public String printExample() throws IOException  {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
         String example = "Wines that have medium body";
-        System.out.println(example);
+        stringBuilder.append(example);
 
         String query = "Wine and hasBody value Medium";
 
-        System.out.println("\nInstances:");
+        stringBuilder.append("\nInstances:");
         Set<OWLNamedIndividual> individuals = dlQueryEngine.getInstances(query, false);
         for (OWLEntity entity : individuals) {
-            System.out.println(shortFormProvider.getShortForm(entity));
+            stringBuilder.append(shortFormProvider.getShortForm(entity));
         }
 
-        System.out.println("\nSuperClasses:");
+        stringBuilder.append("\nSuperClasses:");
         Set<OWLClass> superClasses = dlQueryEngine.getSuperClasses(query, false);
         for (OWLClass class_ : superClasses) {
-            System.out.println(shortFormProvider.getShortForm(class_));
+            stringBuilder.append(shortFormProvider.getShortForm(class_));
         }
 
-        System.out.println("\nSubClasses:");
+        stringBuilder.append("\nSubClasses:");
         Set<OWLClass> subClasses = dlQueryEngine.getSubClasses(query, false);
         for (OWLClass class_ : subClasses) {
-            System.out.println(shortFormProvider.getShortForm(class_));
+            stringBuilder.append(shortFormProvider.getShortForm(class_));
         }
+
+        return stringBuilder.toString();
 
     }
 

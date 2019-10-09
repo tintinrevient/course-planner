@@ -1,7 +1,6 @@
 package nl.uu.group8.courseplanner.controller;
 
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
-import nl.uu.group8.courseplanner.service.DLQueryParser;
 import nl.uu.group8.courseplanner.service.DLQueryPrinter;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.StringDocumentSource;
@@ -22,14 +21,14 @@ import java.nio.file.Paths;
 @RequestMapping("/course")
 public class CourseController {
 
-    @Autowired
-    DLQueryEngine queryEngine;
-
-    @Autowired
-    DLQueryParser queryParser;
-
-    @Autowired
-    DLQueryPrinter queryPrinter;
+//    @Autowired
+//    DLQueryEngine queryEngine;
+//
+//    @Autowired
+//    DLQueryParser queryParser;
+//
+//    @Autowired
+//    DLQueryPrinter queryPrinter;
 
     @GetMapping(value = "/test")
     public String find() throws Exception{
@@ -38,8 +37,7 @@ public class CourseController {
 
         // Load an example ontology.
         final OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-        final OWLOntology ontology = manager
-                .loadOntologyFromOntologyDocument(new StringDocumentSource(wine));
+        final OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new StringDocumentSource(wine));
 
         // We need a reasoner to do our query answering
         // This example uses HermiT: http://hermit-reasoner.com/
@@ -56,8 +54,8 @@ public class CourseController {
         //dlQueryPrinter.printExample();
 
         //Method for writing down the queries and printing the quiz
-        dlQueryPrinter.printExample();
-        return "success";
+
+        return dlQueryPrinter.printExample();
     }
 
 }

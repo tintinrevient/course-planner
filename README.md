@@ -19,4 +19,4 @@ mvn clean spring-boot:run
 
 ### How to check the result
 
-in the browser, go to this link: http://localhost:8080/course/test
+In the browser, go to this link: http://localhost:8080/course/test

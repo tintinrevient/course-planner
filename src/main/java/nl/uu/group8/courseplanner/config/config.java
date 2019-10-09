@@ -7,10 +7,14 @@ import org.semanticweb.owlapi.io.StringDocumentSource;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.semanticweb.owlapi.util.SimpleShortFormProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.ResourceUtils;
+
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 
@@ -19,7 +23,7 @@ public class config {
 
     @Bean
     public OWLReasoner reasoner() throws Exception {
-        File file = new File(getClass().getClassLoader().getResource("wine.rdf").getFile());
+        File file = ResourceUtils.getFile("classpath:wine.rdf");
         String wine = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
 
         // Load an example ontology.
@@ -36,6 +40,18 @@ public class config {
     @Bean
     public ShortFormProvider shortFormProvider() {
         return new SimpleShortFormProvider();
+    }
+
+    @Autowired
+    public OWLReasoner reasoner;
+
+    @Autowired
+    public ShortFormProvider shortFormProvider;
+
+    @Bean
+    public BidirectionalShortFormProviderAdapter bidiShortFormProvider() {
+        return new BidirectionalShortFormProviderAdapter(reasoner.getRootOntology().getOWLOntologyManager(),
+                reasoner.getRootOntology().getImportsClosure(), shortFormProvider);
     }
 
 }

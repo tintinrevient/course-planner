@@ -19,4 +19,18 @@ mvn clean spring-boot:run
 
 ### How to check the result
 
-In the browser, go to this link: http://localhost:8080/course/test
+In the browser, go to this link: http://localhost:8080
+
+In the query input, type below query:
+```
+Wine and hasBody value Medium
+```
+
+The result will display as below:
+```
+Instances:SelaksIceWineMariettaOldVinesRedCorbansDryWhiteRieslingMountadamRieslingSaucelitoCanyonZinfandelGaryFarrellMerlotPageMillWineryCabernetSauvignonPeterMccoyChardonnayClosDeLaPoussieSancerreBancroftChardonnayVentanaCheninBlancFormanCabernetSauvignonChiantiClassicoStonleighSauvignonBlancMountadamPinotNoirChateauDYchemSauterneMountEdenVineyardEdnaValleyChardonnaySaucelitoCanyonZinfandel1998CorbansSauvignonBlancKathrynKennedyLateralMariettaCabernetSauvignonWhitehallLaneCabernetFrancMariettaPetiteSyrahSelaksSauvignonBlancCongressSpringsSemillonMariettaZinfandelPulignyMontrachetWhiteBurgundy
+
+SuperClasses:ThingPotableLiquidWineWineConsumableThing
+
+SubClasses:NothingSancerreCabernetFrancSauternes
+```

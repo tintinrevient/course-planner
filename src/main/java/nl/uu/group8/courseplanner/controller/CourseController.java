@@ -6,9 +6,9 @@ import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Set;
 
 @RestController
@@ -21,15 +21,10 @@ public class CourseController {
     @Autowired
     private ShortFormProvider shortFormProvider;
 
-    @GetMapping(value = "/test")
-    public String find() throws Exception{
+    @PostMapping("/search")
+    public ResponseEntity<?> search(@RequestBody String query) throws Exception {
 
         StringBuilder stringBuilder = new StringBuilder();
-
-        String example = "Wines that have medium body";
-        stringBuilder.append(example);
-
-        String query = "Wine and hasBody value Medium";
 
         stringBuilder.append("\nInstances:");
         Set<OWLNamedIndividual> individuals = dlQueryEngine.getInstances(query, false);
@@ -49,7 +44,7 @@ public class CourseController {
             stringBuilder.append(shortFormProvider.getShortForm(class_));
         }
 
-        return stringBuilder.toString();
+        return ResponseEntity.ok(stringBuilder.toString());
     }
 
 }

@@ -15,5 +15,6 @@ mvn clean spring-boot:run
 
 ## How to check the result
 
-**Step 1**: open and browser and go to this link: http://localhost:8080/course/test
+**Test 1**: open and browser and go to this link: http://localhost:8080/wine
 
+**Test 2**: open and browser and go to this link: http://localhost:8080/course

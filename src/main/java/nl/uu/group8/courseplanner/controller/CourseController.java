@@ -1,50 +1,28 @@
 package nl.uu.group8.courseplanner.controller;
 
-import nl.uu.group8.courseplanner.service.DLQueryEngine;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.util.ShortFormProvider;
+import nl.uu.group8.courseplanner.repository.SesameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/course")
 public class CourseController {
 
     @Autowired
-    private DLQueryEngine dlQueryEngine;
+    SesameRepository repository;
 
-    @Autowired
-    private ShortFormProvider shortFormProvider;
-
-    @PostMapping("/search")
-    public ResponseEntity<?> search(@RequestBody String query) throws Exception {
+    @GetMapping("/test")
+    public ResponseEntity<?> test() {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("\nInstances:");
-        Set<OWLNamedIndividual> individuals = dlQueryEngine.getInstances(query, false);
-        for (OWLEntity entity : individuals) {
-            stringBuilder.append(shortFormProvider.getShortForm(entity));
-        }
+        List list = repository.runSPARQL("PREFIX wine:<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#> SELECT ?wine WHERE {?wine wine:hasBody wine:Medium . }");
 
-        stringBuilder.append("\nSuperClasses:");
-        Set<OWLClass> superClasses = dlQueryEngine.getSuperClasses(query, false);
-        for (OWLClass class_ : superClasses) {
-            stringBuilder.append(shortFormProvider.getShortForm(class_));
-        }
-
-        stringBuilder.append("\nSubClasses:");
-        Set<OWLClass> subClasses = dlQueryEngine.getSubClasses(query, false);
-        for (OWLClass class_ : subClasses) {
-            stringBuilder.append(shortFormProvider.getShortForm(class_));
-        }
-
-        return ResponseEntity.ok(stringBuilder.toString());
+        return ResponseEntity.ok().body(list);
     }
 
 }

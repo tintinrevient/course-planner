@@ -16,6 +16,7 @@ import org.openrdf.sail.memory.MemoryStore;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.*;
@@ -68,9 +69,9 @@ public class SesameRepositoryImpl implements SesameRepository, InitializingBean,
         }
     }
 
-    public void addFile(String filepath, RDFFormat format) {
+    public void addFile(File file, RDFFormat format) {
         try {
-            conn.add(new File(filepath), "", format);
+            conn.add(file, "", format);
         } catch (IOException e) {
             log.error("IO exception: ", e);
         }
@@ -137,7 +138,8 @@ public class SesameRepositoryImpl implements SesameRepository, InitializingBean,
         conn = repository.getConnection();
         valueFactory = conn.getValueFactory();
 
-        addFile("/Users/zhaoshu/Documents/workspace/course-planner/src/main/resources/wine.rdf", RDFFormat.RDFXML);
+        File file = ResourceUtils.getFile("classpath:wine.rdf");
+        addFile(file, RDFFormat.RDFXML);
     }
 
     @Override

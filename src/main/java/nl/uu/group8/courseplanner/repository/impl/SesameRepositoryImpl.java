@@ -138,8 +138,11 @@ public class SesameRepositoryImpl implements SesameRepository, InitializingBean,
         conn = repository.getConnection();
         valueFactory = conn.getValueFactory();
 
-        File file = ResourceUtils.getFile("classpath:wine.rdf");
-        addFile(file, RDFFormat.RDFXML);
+        File winefile = ResourceUtils.getFile("classpath:wine.rdf");
+        addFile(winefile, RDFFormat.RDFXML);
+
+        File coursefile = ResourceUtils.getFile("classpath:course.rdf");
+        addFile(coursefile, RDFFormat.RDFXML);
     }
 
     @Override

@@ -1,0 +1,1124 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#"
+     xml:base="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:obda="https://w3id.org/obda/vocabulary#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#containsCourses -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#containsCourses">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isTaughtInPeriod"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#coversTopic -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#coversTopic">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#hasFriend -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#hasFriend">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isPartOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isTaughtBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isTaughtBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teaches"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isTaughtInPeriod -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isTaughtInPeriod">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isTaughtOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#isTaughtOn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#prefers -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#prefers">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#prerequisiteFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#prerequisiteFor">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:comment>Can&apos;t be Transative and irreflexive at the same time</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#takenBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#takenBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#takes"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+        <rdfs:comment>Can (possibly) be used for maximum enrolled students</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#takes -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#takes">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teaches -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teaches">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_1 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_1">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teaches"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_2 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_2">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teaches"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_3 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_3">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teaches"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_4 -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teachesInPeriod_4">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#teaches"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#useMethodology -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#useMethodology">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#useMethodology"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Type"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Artificial_Intelligence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Artificial_Intelligence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Business -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Business">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Business_intelligence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Business_intelligence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Artificial_Intelligence"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Business"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Computer_science -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Computer_science">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Science"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Data_mining -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Data_mining">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Artificial_Intelligence"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Computer_science"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Week"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Linguistics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Linguistics">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Week"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Natural_language_processing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Natural_language_processing">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Artificial_Intelligence"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Linguistics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Person"/>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Philosophy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Philosophy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Philosophy_of_AI -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Philosophy_of_AI">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Artificial_Intelligence"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Philosophy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Science -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Science">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Social_computing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Social_computing">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Artificial_Intelligence"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Computer_science"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Week"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Topic"/>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Week"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Week"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Week -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Week"/>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#testsub -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#testsub"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#A._Volk -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#A._Volk">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Adam_Smith -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Adam_Smith">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Advanced_machine_learning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Advanced_machine_learning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Samira_Shirzadeh"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thijs_van_Ommen"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Morning"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Afternoon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Albert_Salah -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Albert_Salah">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Anna-Lena_Lamprecht -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Anna-Lena_Lamprecht">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Antoine_Dumont -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Antoine_Dumont">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#B.M._Harvey -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#B.M._Harvey">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Case_studies -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Case_studies">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Computational_argumentation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Computational_argumentation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Henry_Prakken"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_3"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Afternoon"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Morning"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Afternoon"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Evening"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Delphi_method -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Delphi_method">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Dilemmas_of_the_scientist -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Dilemmas_of_the_scientist">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#H.M._Huistra"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Dong_Nguyen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Dong_Nguyen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Experimentation_in_psychology_and_linguistics -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Experimentation_in_psychology_and_linguistics">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#R.W.F._Nouwen"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_3"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Afternoon"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Evening"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Morning"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Experiments -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Experiments">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Floris_Bex -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Floris_Bex">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Afternoon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Afternoon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Evening -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Evening">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Morning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Morning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#G._Greco -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#G._Greco">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Gerard_Vreeswijk -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Gerard_Vreeswijk">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#H.M._Huistra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#H.M._Huistra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Henry_Prakken -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Henry_Prakken">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Intelligent_agents -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Intelligent_agents">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Pinar_Yolum"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_1"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Afternoon"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Morning"/>
+        <Type>Primary_Course</Type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Interviews -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Interviews">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Jan_Jansen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Jan_Jansen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Josè_Carrillo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Josè_Carrillo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Linda_Arden -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Linda_Arden">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Logic_and_Computation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Logic_and_Computation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#R._Iemhoff"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Morning"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Morning"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Logic_and_language -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Logic_and_language">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#G._Greco"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#M.J._Moortgat"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Afternoon"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Evening"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Morning"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Luca_Rossi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Luca_Rossi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#M.J._Moortgat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#M.J._Moortgat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Machine_learning_for_human_vision_and_language -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Machine_learning_for_human_vision_and_language">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#B.M._Harvey"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Friday_Afternoon"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Afternoon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Marijn_Schraagen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Marijn_Schraagen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Mehdi_Dastani -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Mehdi_Dastani">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Methods_in_AI_research -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Methods_in_AI_research">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Dong_Nguyen"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Floris_Bex"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Marijn_Schraagen"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Onuralp_Ulusoy"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Davide_Dell&apos;Anna"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_1"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Morning"/>
+        <isTaughtOn rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Afternoon"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Mlmila_Akdag -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Mlmila_Akdag">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Afternoon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Afternoon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Evening -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Evening">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Morning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday_Morning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Monday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Multi-agent_learning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Multi-agent_learning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Gerard_Vreeswijk"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Multi-agent_systems -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Multi-agent_systems">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Mehdi_Dastani"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tim_Baarslag"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Nathalie_de_Boer -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Nathalie_de_Boer">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Natural_language_processing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Natural_language_processing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#T._Deoskar"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Observation -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Observation">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Onuralp_Ulusoy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Onuralp_Ulusoy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Philosophy_of_AI -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Philosophy_of_AI">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Mehdi_Dastani"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Richard_Starmans"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Pinar_Yolum -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Pinar_Yolum">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Program_semantics_and_verification -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Program_semantics_and_verification">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Anna-Lena_Lamprecht"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wishnu_Prasetya"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Qi_Zhou -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Qi_Zhou">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#R.W.F._Nouwen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#R.W.F._Nouwen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#R._Iemhoff -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#R._Iemhoff">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Richard_Starmans -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Richard_Starmans">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Samira_Shirzadeh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Samira_Shirzadeh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Social_computing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Social_computing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Albert_Salah"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Dong_Nguyen"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Mlmila_Akdag"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Sound_and_music_technology -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Sound_and_music_technology">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Course"/>
+        <isTaughtBy rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#A._Volk"/>
+        <isTaughtInPeriod rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#T._Deoskar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#T._Deoskar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Theoretical_analysis -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Theoretical_analysis">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Research_Methodology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thijs_van_Ommen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thijs_van_Ommen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Afternoon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Afternoon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Evening -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Evening">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Morning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday_Morning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Thursday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tim_Baarslag -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tim_Baarslag">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Afternoon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Afternoon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Evening -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Evening">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Morning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday_Morning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Tuesday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Afternoon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Afternoon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Evening -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Evening">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Morning -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday_Morning">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wednesday"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wendy_Jansen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wendy_Jansen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Student"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wishnu_Prasetya -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Wishnu_Prasetya">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Davide_Dell&apos;Anna -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Davide_Dell&apos;Anna">
+        <rdf:type rdf:resource="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Lecturer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_1"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_2"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_3"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/thomas/ontologies/2019/9/course-planner#Period_4"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

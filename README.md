@@ -1,4 +1,4 @@
-# Course Planner
+# Course Planner (OWL API & Hermit Reasoner)
 
 ## Prerequisite to run the project
 ```

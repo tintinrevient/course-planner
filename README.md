@@ -1,4 +1,4 @@
-# Course Planner based on Sesame & SPARQL
+# Course Planner (Sesame & SPARQL)
 
 ## Prerequisite to run the project
 ```

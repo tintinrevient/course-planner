@@ -1,4 +1,4 @@
-# Course Planner
+# Course Planner based on Sesame & SPARQL
 
 ## Prerequisite to run the project
 ```
@@ -15,9 +15,5 @@ mvn clean spring-boot:run
 
 ## How to check the result
 
-**Step 1**: open and browser and go to this link: http://localhost:8080
+**Step 1**: open and browser and go to this link: http://localhost:8080/course/test
 
-**Step 2**: type below query in the query input:
-```
-Wine and hasBody value Medium
-```

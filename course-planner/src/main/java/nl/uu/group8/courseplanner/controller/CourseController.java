@@ -8,8 +8,8 @@ import org.semanticweb.owlapi.util.ShortFormProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.*;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/course")
@@ -20,6 +20,20 @@ public class CourseController {
 
     @Autowired
     private ShortFormProvider shortFormProvider;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping("/ask-eval")
+    public int ask(@RequestParam String course) throws Exception {
+        ResponseEntity<Integer> responseEntity = restTemplate.getForEntity("http://localhost:8081/course/answer-eval?course="+course, Integer.class);
+        return responseEntity.getBody();
+    }
+
+    @GetMapping("/answer-eval")
+    public int answer(@RequestParam String course) throws Exception {
+        return 1;
+    }
 
     @PostMapping("/search")
     public ResponseEntity<?> search(@RequestBody String query) throws Exception {

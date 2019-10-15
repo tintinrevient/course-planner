@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping("/course")
 public class CourseController {
 
     @Autowired
-    private DLQueryEngine dlQueryEngine;
+    private DLQueryEngine engine;
 
     @Autowired
     private ShortFormProvider shortFormProvider;
@@ -24,27 +24,30 @@ public class CourseController {
     @PostMapping("/search")
     public ResponseEntity<?> search(@RequestBody String query) throws Exception {
 
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("\nInstances:");
-        Set<OWLNamedIndividual> individuals = dlQueryEngine.getInstances(query, false);
+        List instanceList = new ArrayList<String>();
+        Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
         for (OWLEntity entity : individuals) {
-            stringBuilder.append(shortFormProvider.getShortForm(entity));
+            instanceList.add(shortFormProvider.getShortForm(entity));
         }
 
-        stringBuilder.append("\nSuperClasses:");
-        Set<OWLClass> superClasses = dlQueryEngine.getSuperClasses(query, false);
+        List superClassList = new ArrayList<String>();
+        Set<OWLClass> superClasses = engine.getSuperClasses(query, false);
         for (OWLClass class_ : superClasses) {
-            stringBuilder.append(shortFormProvider.getShortForm(class_));
+            superClassList.add(shortFormProvider.getShortForm(class_));
         }
 
-        stringBuilder.append("\nSubClasses:");
-        Set<OWLClass> subClasses = dlQueryEngine.getSubClasses(query, false);
+        List subClassList = new ArrayList<String>();
+        Set<OWLClass> subClasses = engine.getSubClasses(query, false);
         for (OWLClass class_ : subClasses) {
-            stringBuilder.append(shortFormProvider.getShortForm(class_));
+            subClassList.add(shortFormProvider.getShortForm(class_));
         }
 
-        return ResponseEntity.ok(stringBuilder.toString());
+        Map map = new HashMap<>();
+        map.put("Instances"+"["+instanceList.size()+"]", instanceList);
+        map.put("SuperClasses"+"["+superClassList.size()+"]", superClassList);
+        map.put("SubClasses"+"["+subClassList.size()+"]", subClassList);
+
+        return ResponseEntity.ok().body(map);
     }
 
 }

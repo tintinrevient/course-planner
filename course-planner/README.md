@@ -20,5 +20,10 @@ mvn clean spring-boot:run
 
 **Step 2**: type below query in the query input:
 ```
-Wine and hasBody value Medium
+Course and isTaughtInPeriod value Period_4
+```
+Or 
+
+```
+Course and not (isTaughtInPeriod value Period_4)
 ```

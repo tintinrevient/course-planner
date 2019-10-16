@@ -61,7 +61,11 @@ Combining opinion: X's opinion about Y = (bxy, dxy, uxy), Y's opinion about Z = 
 * uxz = dxy + uxy + bxy * uyz
 
 Forgetting factor based on timestamp i is as below:
+<<<<<<< HEAD
 * r = 􏰅r1 + ... + rn, s = s1 + ... + sn
+=======
+* r = r1 + ... + rn, s = s1 + ... + sn
+>>>>>>> 352f59f054d889bc496e08aab49edd33d24fbe37
 * r = (r1 + ... + rn) ∗ λ<sup>(n−i)</sup>, s = (s1 + ... + sn) ∗ λ<sup>(n−i)</sup>, where 1 ≤ i ≤ n, 0 ≤ λ ≤ 1
 
 Rating-based approaches:

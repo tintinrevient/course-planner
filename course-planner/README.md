@@ -22,3 +22,8 @@ mvn clean spring-boot:run
 ```
 Course and isTaughtInPeriod value Period_4
 ```
+Or 
+
+```
+Course and not (isTaughtInPeriod value Period_4)
+```

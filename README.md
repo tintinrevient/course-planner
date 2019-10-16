@@ -16,11 +16,11 @@ Rational agents come into the following five types:
 The course planner is built upon the architecture of utility-based agents.
 ![utility-based-agents](./pix/utility-based-agents.png)
 
-The states consist of world states and agent states:
-* World states:
+The state consists of world state and agent state:
+* World state:
 	* Online neighbouring agents
 	* Course evaluation from neighbouring agents
-* Agent states:
+* Agent state:
 	* Total taken courses
 	* Courses registered
 	* Available timeslots in the calendar
@@ -28,7 +28,7 @@ The states consist of world states and agent states:
 	* Friends
 	* Reputation rating of neighbouring agents
 
-The actions are as below:
+The action the agent is able to take is listed as below:
 * Pass a course
 * Register for a course
 * Ask for the evaluation of a course from neighbouring agents
@@ -36,8 +36,8 @@ The actions are as below:
 * Update the availability in the calendar
 * Give positive or negative feedback for evaluations of courses from neighbouring agents
 
-The utilities can be calculated as below:
-* Happiness = Count(Total taken courses) * Overlap(Courses taken by his or her friends)
+The utility is calculated as below:
+* Utility = Count(Total taken courses) * Overlap(Courses taken by his or her friends)
 
 Computational trust comes into the following three types:
 * Local trust

@@ -4,7 +4,7 @@ spring:
 
 server:
   address: localhost
-  port: 8081
+  port: 8080
 
 # reasoner type can be chosen among "hermit", "pellet" and "jfact"
 reasoner:
@@ -12,7 +12,7 @@ reasoner:
 
 # ontology filename in the directory "resources"
 ontology:
-  filename: wine.rdf
+  filename: course.rdf
 
 eureka:
   client:

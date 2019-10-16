@@ -1,5 +1,6 @@
 package nl.uu.group8.courseplanner.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLEntity;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/course")
+@Slf4j
 public class CourseController {
 
     @Autowired
@@ -26,12 +30,13 @@ public class CourseController {
 
     @GetMapping("/ask-eval")
     public int ask(@RequestParam String course) throws Exception {
-        ResponseEntity<Integer> responseEntity = restTemplate.getForEntity("http://localhost:8081/course/answer-eval?course="+course, Integer.class);
+        ResponseEntity<Integer> responseEntity = restTemplate.getForEntity("http://145.107.86.180:8081/course/answer-eval?course="+course, Integer.class);
         return responseEntity.getBody();
     }
 
     @GetMapping("/answer-eval")
-    public int answer(@RequestParam String course) throws Exception {
+    public int answer(HttpServletRequest request, @RequestParam String course) throws Exception {
+        log.info("Request coming from " + request.getRemoteAddr());
         return 1;
     }
 

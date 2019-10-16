@@ -24,4 +24,4 @@ eureka:
     waitTimeInMsWhenSyncEmpty: 0
     numberRegistrySyncRetries: 0
     response-cache-update-interval-ms: 1000
-  password: ${security.user.password}
+  password: ${SECURITY_USER_PASSWORD:password}

@@ -4,7 +4,6 @@
 
 ![course-planner](./pix/course-planner.png)
 
-
 ## Agent Architecture
 
 Rational agents come into the following five types:
@@ -19,18 +18,26 @@ The course planner is built upon the architecture of utility-based agents.
 
 The states consist of world states and agent states:
 * World states:
-	* Neighbouring agents
-	* Expertise of the querying agent
-	* Sociability of the querying agent
+	* Online neighbouring agents
+	* Course evaluation from neighbouring agents
 * Agent states:
-	* Courses already studied
-	* Available timeslots in its calendar
+	* Total taken courses
+	* Courses registered
+	* Available timeslots in the calendar
+	* Preferences for lecturers, days and topics
+	* Friends
+	* Reputation rating of neighbouring agents
 
 The actions are as below:
-* Take a course
+* Pass a course
+* Register for a course
+* Ask for the evaluation of a course from neighbouring agents
+* Answer the evaluation of a course from neighbouring agents
+* Update the availability in the calendar
+* Give positive or negative feedback for evaluations of courses from neighbouring agents
 
 The utilities can be calculated as below:
-* Happiness = Count(Taken courses) * Overlap(Courses taken by its friends) * Evaluation(Taken courses)
+* Happiness = Count(Total taken courses) * Overlap(Courses taken by his or her friends)
 
 Computational trust comes into the following three types:
 * Local trust

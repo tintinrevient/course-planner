@@ -6,10 +6,6 @@ server:
   address: localhost
   port: 8761
 
-security:
-  user:
-    password: ${eureka.password} # Don't use a default password in a real app
-
 eureka:
   client:
     registerWithEureka: false
@@ -24,4 +20,3 @@ eureka:
     waitTimeInMsWhenSyncEmpty: 0
     numberRegistrySyncRetries: 0
     response-cache-update-interval-ms: 1000
-  password: ${security.user.password}

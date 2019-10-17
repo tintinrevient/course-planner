@@ -37,11 +37,11 @@ How the world evolves (which is perceived by the sensors) and what my actions do
 
 | Sensors                        | Actuators                                                                                                                       | State                                                                  |
 |--------------------------------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
-| E1: Neighbouring agents online |                                                                                                                                 | S1: Online neighbouring agents                                         |
-|                                | A3: Ask for the evaluation of a course from neighbouring agents  A4: Answer the evaluation of a course from neighbouring agents | S2: Course evaluation from neighbouring agents                         |
-|                                | A1: Pass a course                                                                                                               | S3: Total taken courses                                                |
-|                                | A2: Register for a course                                                                                                       | S4: Total registered courses  S5: Available time slots in the calendar |
-|                                | A5: Give positive or negative feedback for evaluations of courses from neighbouring agents                                      | S6: Reputation rating of neighbouring agents                           |
+| E1:Neighbouring agents online |                                                                                                                                 | S1:Online neighbouring agents                                         |
+|                                | A3:Ask for the evaluation of a course from neighbouring agents  A4:Answer the evaluation of a course from neighbouring agents | S2:Course evaluation from neighbouring agents                         |
+|                                | A1:Pass a course                                                                                                               | S3:Total taken courses                                                |
+|                                | A2:Register for a course                                                                                                       | S4:Total registered courses  S5:Available time slots in the calendar |
+|                                | A5:Give positive or negative feedback for evaluations of courses from neighbouring agents                                      | S6:Reputation rating of neighbouring agents                           |
 
 The **utility** is calculated as below:
 * Utility = Count(Total taken courses) * Overlap(Courses taken by his or her friends)

@@ -14,18 +14,18 @@ public class BetaReputation {
             return rating;
 
         for(String url : feedback.keySet()) {
-            for(Boolean _feedback : feedback.get(url)) {
-                double r = 0;
-                double s = 0;
+            double r = 0;
+            double s = 0;
 
+            for(Boolean _feedback : feedback.get(url)) {
                 if(_feedback)
                     r++;
                 else
                     s++;
-
-                double _rating = ((r+1)/(r+s+2) - 0.5)*2;
-                rating.put(url, _rating);
             }
+
+            double _rating = ((r+1)/(r+s+2) - 0.5)*2;
+            rating.put(url, _rating);
         }
 
         return rating.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))

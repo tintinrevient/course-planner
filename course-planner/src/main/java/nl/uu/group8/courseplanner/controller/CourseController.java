@@ -75,7 +75,6 @@ public class CourseController {
                 feedback.put(url, feedbacks);
 
             } else {
-                log.info("add to list ...");
                 worldStates.get(url).add(responseEntity.getBody());
                 feedback.get(url).add(new Random().nextBoolean());
             }

@@ -21,32 +21,29 @@ The **state** consists of agent state and world state, which is able to be perce
 	* S1: Online neighbouring agents
 	* S2: Course evaluation from neighbouring agents
 * **agent state**
-	* S3: Total taken courses
-	* S4: Total registered courses
-	* S5: Available time slots in the calendar
-	* S6: Reputation rating of neighbouring agents
+	* S3: Total registered courses
+	* S4: Available time slots in the calendar
+	* S5: Reputation rating of neighbouring agents
 
 The **action** stands for the action that the agent is able to take, which will influence the internal agent states and the environment by the actuators:
-* A1: Pass a course
-* A2: Register for a course
-* A3: Ask for the evaluation of a course from neighbouring agents
-* A4: Answer the evaluation of a course from neighbouring agents
-* A5: Give positive or negative feedback for evaluations of courses from neighbouring agents
+* A1: Register for a course
+* A2: Ask for the evaluation of a course from neighbouring agents
+* A3: Answer the evaluation of a course from neighbouring agents
+* A4: Give positive or negative feedback for evaluations of courses from neighbouring agents
 
 How the world evolves (which is perceived by the sensors) and what my actions do (which is actuated by the actuators) will both have an effect on the world and agent states:
 
 | Sensors                        | Actuators                                                                                                                       | State                                                                  |
 |--------------------------------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
 | E1: Neighbouring agents online |                                                                                                                                 | S1: Online neighbouring agents                                         |
-|                                | A3: Ask for the evaluation of a course from neighbouring agents <br> A4: Answer the evaluation of a course from neighbouring agents | S2: Course evaluation from neighbouring agents                         |
-|                                | A1: Pass a course                                                                                                               | S3: Total taken courses                                                |
-|                                | A2: Register for a course                                                                                                       | S4: Total registered courses <br> S5:Available time slots in the calendar |
-|                                | A5: Give positive or negative feedback for evaluations of courses from neighbouring agents                                      | S6: Reputation rating of neighbouring agents                           |
+|                                | A2: Ask for the evaluation of a course from neighbouring agents <br> A3: Answer the evaluation of a course from neighbouring agents | S2: Course evaluation from neighbouring agents                         |
+|                                | A1: Register for a cours                                                                                                        | S3: Total registered courses <br> S4: Available time slots in the calendar |
+|                                | A4: Give positive or negative feedback for evaluations of courses from neighbouring agents                                      | S5: Reputation rating of neighbouring agents                           |
 
 The **utility** is calculated as below:
-* Utility = Count(Total taken courses) * Overlap(Courses taken by his or her friends)
+* Utility =  0.8*(number of requirements respected / total number of requirements) + 0.2*(sum(1 if there is at least a friend in course i, 0 otherwise)  / number of courses)
 
-The **knowledge base** contains the following consistent facts about a student and courses, which will be queried by the agent and inference will be drawn based on the chosen reasoner: HermiT, Pellet or Fact++:
+The **knowledge base** is imported from the ontologies, which contains the following consistent facts about a student and courses, which will be queried by the agent and inference will be drawn based on the chosen reasoner: HermiT, Pellet or Fact++:
 * Facts about a student:
 	* Preferences for a certain lecture, day and topic
 	* Friends

@@ -16,28 +16,46 @@
 The course planner is built upon the architecture of utility-based agents.
 ![utility-based-agents](./pix/utility-based-agents.png)
 
-The **state** consists of world state and agent state:
-* **World state**:
-	* Online neighbouring agents
-	* Course evaluation from neighbouring agents
-* **Agent state**:
-	* Total taken courses
-	* Courses registered
-	* Available timeslots in the calendar
-	* Preferences for lecturers, days and topics
-	* Friends
-	* Reputation rating of neighbouring agents
+The **state** consists of agent state and world state, which is able to be perceived by the sensors from the environment:
+* **world state**
+	* S1: Online neighbouring agents
+	* S2: Course evaluation from neighbouring agents
+* **agent state**
+	* S3: Total taken courses
+	* S4: Total registered courses
+	* S5: Available time slots in the calendar
+	* S6: Reputation rating of neighbouring agents
 
-The **action** the agent is able to take is listed as below:
-* Pass a course
-* Register for a course
-* Ask for the evaluation of a course from neighbouring agents
-* Answer the evaluation of a course from neighbouring agents
-* Update the availability in the calendar
-* Give positive or negative feedback for evaluations of courses from neighbouring agents
+The **action** stands for the action that the agent is able to take, which will influence the internal agent states and the environment by the actuators:
+* A1: Pass a course
+* A2: Register for a course
+* A3: Ask for the evaluation of a course from neighbouring agents
+* A4: Answer the evaluation of a course from neighbouring agents
+* A5: Give positive or negative feedback for evaluations of courses from neighbouring agents
+
+How the world evolves (which is perceived by the sensors) and what my actions do (which is actuated by the actuators) will both have an effect on the world and agent states:
+
+| Sensors                        | Actuators                                                                                                                       | State                                                                  |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| E1: Neighbouring agents online |                                                                                                                                 | S1: Online neighbouring agents                                         |
+|                                | A3: Ask for the evaluation of a course from neighbouring agents  A4: Answer the evaluation of a course from neighbouring agents | S2: Course evaluation from neighbouring agents                         |
+|                                | A1: Pass a course                                                                                                               | S3: Total taken courses                                                |
+|                                | A2: Register for a course                                                                                                       | S4: Total registered courses  S5: Available time slots in the calendar |
+|                                | A5: Give positive or negative feedback for evaluations of courses from neighbouring agents                                      | S6: Reputation rating of neighbouring agents                           |
 
 The **utility** is calculated as below:
 * Utility = Count(Total taken courses) * Overlap(Courses taken by his or her friends)
+
+The **knowledge base** contains the following consistent facts about a student and courses, which will be queried by the agent and inference will be drawn based on the chosen reasoner: HermiT, Pellet or Fact++:
+* Facts about a student:
+	* Preferences for a certain lecture, day and topic
+	* Friends
+* Facts about a course:
+	* Lecturers
+	* Faculties
+	* Research Methodologies
+	* Topics
+	* Time slots
 
 **Computational trust** comes into the following three types:
 * Local trust

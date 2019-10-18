@@ -122,24 +122,7 @@ public class CourseController {
             instanceList.add(shortFormProvider.getShortForm(entity));
         }
 
-        List<String> superClassList = new ArrayList<>();
-        Set<OWLClass> superClasses = engine.getSuperClasses(query, false);
-        for (OWLClass class_ : superClasses) {
-            superClassList.add(shortFormProvider.getShortForm(class_));
-        }
-
-        List<String> subClassList = new ArrayList<>();
-        Set<OWLClass> subClasses = engine.getSubClasses(query, false);
-        for (OWLClass class_ : subClasses) {
-            subClassList.add(shortFormProvider.getShortForm(class_));
-        }
-
-        Map map = new HashMap<>();
-        map.put("Instances"+"["+instanceList.size()+"]", instanceList);
-        map.put("SuperClasses"+"["+superClassList.size()+"]", superClassList);
-        map.put("SubClasses"+"["+subClassList.size()+"]", subClassList);
-
-        return ResponseEntity.ok().body(map);
+        return ResponseEntity.ok().body(instanceList);
     }
 
 }

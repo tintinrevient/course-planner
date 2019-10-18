@@ -19,7 +19,15 @@ function fire_ajax_submit() {
         cache: false,
         timeout: 600000,
         success: function (data) {
-            var json = "<h4>Result: </h4><pre>" + JSON.stringify(data, null, 4) + "</pre>";
+
+            data = JSON.parse(JSON.stringify(data));
+
+            var json = "<h4>Result: </h4>";
+
+            $.each(data, function(index, item) {
+                json += '<label><input type="checkbox"> [' + index + '] ' + item + '</label><br>';
+            });
+
             $('#feedback').html(json);
 
             console.log("SUCCESS : ", data);

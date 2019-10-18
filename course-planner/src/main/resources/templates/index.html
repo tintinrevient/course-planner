@@ -1,29 +1,43 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>Course Planner</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Course Planner</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
-<h1>Course Planner</h1>
-<form id="search-form">
-	<div>
-		<h4><label>Query</label></h4>
-		<div>
-			<input type="text" id="query"/>
-		</div>
-	</div>
 
-	<div>
-		<div>
-			<button type="submit" id="bth-search">Search</button>
-		</div>
-	</div>
-</form>
-<div id="feedback"></div>
-</div>
+<header>
+    <h1>Course Planner</h1>
+</header>
+
+<section>
+    <nav>
+        <ul>
+            <li><a href="#">London</a></li>
+            <li><a href="#">Paris</a></li>
+            <li><a href="#">Tokyo</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <form id="search-form">
+            <h4><label>Query</label></h4>
+            <div>
+                <input type="text" id="query"/>
+            </div>
+            <div>
+                <button type="submit" id="bth-search">Search</button>
+            </div>
+        </form>
+        <div id="feedback"></div>
+    </article>
+</section>
+
+<footer>
+    <p>© UU Group 8</p>
+</footer>
 
 <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="search.js"></script>

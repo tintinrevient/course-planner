@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +15,9 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Course {
 
-    private Long id;
-    private String coursename;
+    private String name;
+    private String period;
+    private Set<String> timeslot;
+    private String lecturer;
 
 }

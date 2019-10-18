@@ -20,7 +20,7 @@ function search() {
             json += '<div id="registered">';
 
             $.each(data, function(index, item) {
-                json += '<input name=' + item + ' type="checkbox"> [' + index + '] ' + item + '<br>';
+                json += '<input data-course=' + item + ' type="checkbox"> [' + index + '] ' + item + '<br>';
             });
 
             json += '</div>'
@@ -43,7 +43,7 @@ function register() {
 
     $("#bth-register").prop("disabled", true);
 
-    var selected = $('#registered input:checkbox:checked').map(function() {return $(this).attr("name");}).toArray();
+    var selected = $('#registered input:checkbox:checked').map(function() {return $(this).attr("data-course");}).toArray();
 
     $.ajax({
         type: "POST",
@@ -65,7 +65,7 @@ function register() {
             $('#courses').html(json);
 
             console.log("SUCCESS : ", data);
-            $("#btn-register").prop("disabled", false);
+            $("#bth-register").prop("disabled", false);
         },
         error: function (e) {
             var json = "<h4>Result</h4><pre>" + e.responseText + "</pre>";

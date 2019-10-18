@@ -1,6 +1,7 @@
 package nl.uu.group8.courseplanner.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import nl.uu.group8.courseplanner.domain.Course;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import nl.uu.group8.courseplanner.util.BetaReputation;
 import org.semanticweb.owlapi.model.OWLEntity;
@@ -44,6 +45,7 @@ public class CourseController {
     private Map<String, List<Integer>> worldStates = new HashMap<>();
     private Map<String, List<Boolean>> feedback = new HashMap<>();
     private Set<String> courses = new HashSet<>();
+    private int max = 3;
 
     @GetMapping("/ask-eval")
     public int ask(@RequestParam String course) throws Exception {
@@ -116,20 +118,64 @@ public class CourseController {
     @PostMapping("/search")
     public ResponseEntity<?> search(@RequestBody String query) throws Exception {
 
-        List<String> instanceList = new ArrayList<>();
+        List<String> courseList = new ArrayList<>();
+
         Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
         for (OWLEntity entity : individuals) {
-            instanceList.add(shortFormProvider.getShortForm(entity));
+            String name = shortFormProvider.getShortForm(entity);
+            String _query = "hasCourse value " + name;
+
+            Set<String> timeslot = new HashSet<>();
+            Set<OWLNamedIndividual> _individuals = engine.getInstances(_query, false);
+            for (OWLEntity _entity : _individuals) {
+                timeslot.add(shortFormProvider.getShortForm(_entity));
+            }
+
+            courseList.add(name + "|" + String.join("|", timeslot));
         }
 
-        return ResponseEntity.ok().body(instanceList);
+        return ResponseEntity.ok().body(courseList);
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody List<String> selected) throws Exception {
 
-        for(String course : selected)
-            courses.add(course);
+        if(courses.size() >= max) {
+            log.info("Number of registered courses is over " + max);
+            return ResponseEntity.ok().body(courses);
+        }
+
+        Set<String> availability = new HashSet<>();
+        for(String course : courses) {
+            String[] parts = course.split("[|]");
+
+            for(int i = 1; i < parts.length; i++) {
+                availability.add(parts[i]);
+            }
+        }
+
+        log.info("Availability: " + availability.toString());
+
+        for(String select : selected) {
+            String[] parts = select.split("[|]");
+
+            boolean conflict = false;
+            for(int i = 1; i < parts.length; i++) {
+                if(availability.contains(parts[i])) {
+                    log.info("Conflict: " + parts[i]);
+                    conflict = true;
+                    break;
+                }
+            }
+
+            if(!conflict)
+                courses.add(select);
+
+            if(courses.size() >= max) {
+                log.info("Number of registered courses is over " + max);
+                break;
+            }
+        }
 
         log.info("Registered courses: " + courses.toString());
 

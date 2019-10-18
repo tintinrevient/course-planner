@@ -1,7 +1,6 @@
 package nl.uu.group8.courseplanner.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.uu.group8.courseplanner.domain.Course;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import nl.uu.group8.courseplanner.util.BetaReputation;
 import org.semanticweb.owlapi.model.OWLEntity;

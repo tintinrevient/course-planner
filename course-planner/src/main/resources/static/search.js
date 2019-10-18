@@ -1,18 +1,4 @@
-$(document).ready(function () {
-    $("#search-form").submit(function (event) {
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-        search_ajax_submit();
-    });
-
-//    $("#register-form").submit(function (event) {
-//        //stop submit the form, we will post it manually.
-//        event.preventDefault();
-//        register_ajax_submit();
-//    });
-});
-
-function search_ajax_submit() {
+function search() {
 
     $("#btn-search").prop("disabled", true);
 

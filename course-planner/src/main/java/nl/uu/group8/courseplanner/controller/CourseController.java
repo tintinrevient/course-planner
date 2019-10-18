@@ -116,7 +116,7 @@ public class CourseController {
     @PostMapping("/search")
     public ResponseEntity<?> search(@RequestBody String params, @RequestBody int scenario) throws Exception {
 
-        String query = "Course and not (isTaughtInPeriod value " + params;
+        String query = params;
 
         List<String> instanceList = new ArrayList<>();
         Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);

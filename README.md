@@ -2,10 +2,10 @@
 
 ## To-Do List
 - [x] UI to query based on the current ontologies and scenarios
-2. a utility function - data
-3. reasoning process - data
-4. performance metrics - data
-5. Google calendar & Google assistant integration, etc...
+- [ ] a utility function - data
+- [ ] reasoning process - data
+- [ ] performance metrics - data
+- [ ] Google calendar & Google assistant integration, etc...
 
 ## Agent Design
 

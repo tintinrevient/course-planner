@@ -3,7 +3,6 @@ package nl.uu.group8.courseplanner.controller;
 import lombok.extern.slf4j.Slf4j;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import nl.uu.group8.courseplanner.util.BetaReputation;
-import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.util.ShortFormProvider;
@@ -44,6 +43,7 @@ public class CourseController {
 
     private Map<String, List<Integer>> worldStates = new HashMap<>();
     private Map<String, List<Boolean>> feedback = new HashMap<>();
+    private Set<String> courses = new HashSet<>();
 
     @GetMapping("/ask-eval")
     public int ask(@RequestParam String course) throws Exception {
@@ -123,6 +123,17 @@ public class CourseController {
         }
 
         return ResponseEntity.ok().body(instanceList);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody List<String> selected) throws Exception {
+
+        for(String course : selected)
+            courses.add(course);
+
+        log.info("Registered courses: " + courses.toString());
+
+        return ResponseEntity.ok().body(courses);
     }
 
 }

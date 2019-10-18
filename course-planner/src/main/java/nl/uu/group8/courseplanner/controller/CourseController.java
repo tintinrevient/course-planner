@@ -114,9 +114,7 @@ public class CourseController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<?> search(@RequestBody String params, @RequestBody int scenario) throws Exception {
-
-        String query = params;
+    public ResponseEntity<?> search(@RequestBody String query) throws Exception {
 
         List<String> instanceList = new ArrayList<>();
         Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);

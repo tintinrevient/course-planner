@@ -4,7 +4,7 @@
 - [x] UI to query based on the current ontologies and scenarios
 - [ ] a utility function - data
 - [ ] reasoning process - data
-- [ ] performance metrics - data
+- [x] performance metrics - data
 - [ ] Google calendar & Google assistant integration, etc...
 
 ## Agent Design

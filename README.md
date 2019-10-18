@@ -1,5 +1,12 @@
 # Project Description
 
+## To-Do List
+1. UI to query based on the current ontologies and scenarios
+2. a utility function - data
+3. reasoning process - data
+4. performance metrics - data
+5. Google calendar & Google assistant integration, etc...
+
 ## Agent Design
 
 ![course-planner](./pix/course-planner.png)

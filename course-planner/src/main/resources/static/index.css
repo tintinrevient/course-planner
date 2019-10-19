@@ -23,6 +23,7 @@ header {
 
 section {
     height: auto;
+    overflow-wrap: break-word;
 }
 
 /* Create two columns/boxes that floats next to each other */
@@ -31,20 +32,13 @@ nav {
     width: 40%;
     padding: 20px;
     min-height: calc(100vh - 300px);
-    overflow-wrap: break-word;
-}
-
-/* Style the list inside the menu */
-nav ul {
-    list-style-type: none;
-    padding: 0;
 }
 
 article {
     float: left;
-    padding: 20px;
     width: 60%;
     background-color: #f1f1f1;
+    padding: 20px;
     min-height: calc(100vh - 300px);
 }
 
@@ -64,8 +58,11 @@ footer {
     height: 70px;
 }
 
+.row {
+    display: flex; /* equal height of the children */
+}
+
 .split {
-    height: 50%;
     width: 100%;
     position: relative;
     left: 0;

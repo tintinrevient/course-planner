@@ -99,26 +99,26 @@ function askeval() {
             }
 
             if(data["score"]) {
-                json += '<h4>Score</h4><br>'
+                json += '<h4>Score</h4>'
                 json += data["score"] + '<br>';
             }
 
             if(data["worldStates"] && data["worldStates"].length > 0) {
-                json += '<h4>World States</h4><br>';
+                json += '<h4>World States</h4>';
             }
             $.each(data["worldStates"], function(index, item) {
                 json += item + '<br>';
             });
 
             if(data["feedback"] && data["feedback"].length > 0) {
-                json += '<h4>Feedback</h4><br>';
+                json += '<h4>Feedback</h4>';
             }
             $.each(data["feedback"], function(index, item) {
                 json += item + '<br>';
             });
 
             if(data["rating"] && data["rating"].length > 0) {
-                json += '<h4>Beta Reputation Rating</h4><br>'
+                json += '<h4>Beta Reputation Rating</h4>'
             }
             $.each(data["rating"], function(index, item) {
                 json += item + '<br>';

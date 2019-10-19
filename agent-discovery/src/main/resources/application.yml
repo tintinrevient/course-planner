@@ -3,7 +3,7 @@ spring:
     name: agent-discovery
 
 server:
-  address: 192.168.178.24
+  address: localhost
   port: 8761
 
 eureka:

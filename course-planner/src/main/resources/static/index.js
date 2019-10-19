@@ -94,11 +94,33 @@ function askeval() {
 
             json = '';
 
-            if(data["score"]) {
-                json = '<h5>' + data["score"] + '</h5><br>';
+            if(data["msg"]) {
+                json += data["msg"] + '<br>';
             }
 
-            $.each(data["msg"], function(index, item) {
+            if(data["score"]) {
+                json += '<h4>Score</h4><br>'
+                json += data["score"] + '<br>';
+            }
+
+            if(data["worldStates"] && data["worldStates"].length > 0) {
+                json += '<h4>World States</h4><br>';
+            }
+            $.each(data["worldStates"], function(index, item) {
+                json += item + '<br>';
+            });
+
+            if(data["feedback"] && data["feedback"].length > 0) {
+                json += '<h4>Feedback</h4><br>';
+            }
+            $.each(data["feedback"], function(index, item) {
+                json += item + '<br>';
+            });
+
+            if(data["rating"] && data["rating"].length > 0) {
+                json += '<h4>Beta Reputation Rating</h4><br>'
+            }
+            $.each(data["rating"], function(index, item) {
                 json += item + '<br>';
             });
 

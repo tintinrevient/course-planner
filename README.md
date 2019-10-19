@@ -7,6 +7,24 @@
 - [x] performance metrics - data
 - [ ] Google calendar & Google assistant integration, etc...
 
+## User Guide
+
+The UI is as below:
+* Query can be performed in the Manchester OWL syntax, and some examples:
+	* not (isTaughtOn some Morning)
+	* isTaughtBy value R_Iemhoff or isTaughtBy value Davide_DellAnna
+	* Course and isTaughtInPeriod value Period_4
+	* Course and not (isTaughtInPeriod value Period_4)
+* Register can be performed by clicking the "Register" button when one or multiple courses have been checked.
+* "Ask for Evaluation" can be performed only in the multi-agent environment.
+
+To run this application in the one-agent environment:
+1. Run the project [course-planner](./course-planner) per README.md inside
+2. Run the project [agent-discovery](./agent-discovery) per README.md inside
+3. Open and browser and go to this link: http://localhost:8080
+
+![ui](./pix/ui.png)
+
 ## Agent Design
 
 ![course-planner](./pix/course-planner.png)

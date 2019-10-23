@@ -1,6 +1,7 @@
 package nl.uu.group8.courseplanner.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import nl.uu.group8.courseplanner.domain.Course;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import nl.uu.group8.courseplanner.util.Formula;
 import org.semanticweb.owlapi.model.OWLEntity;
@@ -53,14 +54,15 @@ public class CourseController {
     // mapping: course -> the latest score by the most-trusted neighbouring agent
     private Map<String, Integer> evaluation = new HashMap<>();
 
-    // set: this agent's registered courses
-    private Map<String, Set<String>> courses = new HashMap<>();
+    // the course dictionary
+    private Map<String, Course> courses = new HashMap<>();
+
+    // this agent's availability calendar
+    private Map<String, Set<Course>> availability = new HashMap<>();
 
     // threshold: the maximum number of can-be registered courses per period
     private int max = 3;
 
-    // set: this agent's availability calendar
-    private Map<String, Set<String>> availability = new HashMap<>();
 
     @PostMapping("/ask-eval")
     public ResponseEntity<?> ask(@RequestBody List<String> selected) throws Exception {
@@ -156,28 +158,7 @@ public class CourseController {
 
         long start = System.currentTimeMillis();
 
-        List<String> courseList = new ArrayList<>();
-
-        Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
-        for (OWLEntity entity : individuals) {
-            String name = shortFormProvider.getShortForm(entity);
-
-            String hasCourseQuery = "hasCourse value " + name;
-            Set<String> timeslot = new HashSet<>();
-            Set<OWLNamedIndividual> timeslotIndividuals = engine.getInstances(hasCourseQuery, false);
-            for (OWLEntity timeslotEntity : timeslotIndividuals) {
-                timeslot.add(shortFormProvider.getShortForm(timeslotEntity));
-            }
-
-            String containsCoursesQuery = "containsCourses value " + name;
-            Set<String> period = new HashSet<>();
-            Set<OWLNamedIndividual> periodIndividuals = engine.getInstances(containsCoursesQuery, false);
-            for (OWLEntity periodEntity : periodIndividuals) {
-                period.add(shortFormProvider.getShortForm(periodEntity));
-            }
-
-            courseList.add(name + "|" + String.join("|", timeslot) + "|" + String.join("|", period));
-        }
+        List<Course> courseList = parseQuery(query);
 
         long end = System.currentTimeMillis();
         log.info("Search time: " + (end - start) + " ms");
@@ -191,46 +172,48 @@ public class CourseController {
         long start = System.currentTimeMillis();
 
         Map response = new HashMap();
+        StringBuilder message = new StringBuilder();
 
-        availability = updateAvailability();
+        for(String courseName : selected) {
+            Course course = courses.get(courseName);
+            String period = course.getPeriod();
+            Set<String> timeslot = course.getTimeslot();
 
-        log.info("Availability: " + availability.toString());
+            if(null == availability.get(period) || availability.get(period).size() == 0) {
+                availability.put(period, new HashSet<>(Arrays.asList(course)));
+                continue;
+            }
 
-        for(String select : selected) {
-            String[] parts = select.split("[|]");
-            String period = parts[parts.length - 1];
+            if(availability.get(period).size() >= max) {
+                message.append("Number of registered courses for " + period + " is over " + max + "\n");
+                continue;
+            }
 
-            boolean conflict = false;
-            for(int i = 1; i < parts.length - 1; i++) {
-                if(null != availability.get(period) && availability.get(period).contains(parts[i])) {
-                    response.put("msg", "Conflict in " + period + ": " + parts[i]);
-                    conflict = true;
+            //verify timeslot conflict
+            boolean flag = false;
+            for(Course registeredCourse : availability.get(period)) {
+                Set<String> intersection = new HashSet<>(registeredCourse.getTimeslot());
+                intersection.retainAll(timeslot);
+                if(intersection.size() > 0) {
+                    flag = true;
+                    for(String conflict : intersection) {
+                        message.append("Conflict in " + period + " on " + conflict);
+                    }
                     break;
                 }
             }
 
-            if(null != availability.get(period) && courses.get(period).size() >= max) {
-                response.put("msg", "Number of registered courses for " + period + " is over " + max);
-                response.put("courses", courses);
-                return ResponseEntity.ok().body(response);
-            }
+            if(!flag)
+                availability.get(period).add(course);
 
-            if(!conflict) {
-                // change of courses -> change of availability calendar
-                if(null == courses.get(period))
-                    courses.put(period, new HashSet<String>());
-
-                courses.get(period).add(select);
-                availability = updateAvailability();
-            }
-
-            if(null != availability.get(period) && courses.get(period).size() >= max) {
-                response.put("msg", "Number of registered courses for " + period + " is over " + max);
-                break;
+            if(availability.get(period).size() >= max) {
+                message.append("Number of registered courses for " + period + " is over " + max);
+                continue;
             }
         }
 
-        response.put("courses", courses);
+        response.put("courses", availability);
+        response.put("msg", message.toString());
 
         long end = System.currentTimeMillis();
         log.info("Register time: " + (end - start) + " ms");
@@ -238,15 +221,43 @@ public class CourseController {
         return ResponseEntity.ok().body(response);
     }
 
-    private Map<String, Set<String>> updateAvailability() {
-        for(String key : courses.keySet()) {
-            for(String course : courses.get(key)) {
-                String[] parts = course.split("[|]");
-                availability.put(key, new HashSet<>(Arrays.asList(Arrays.copyOfRange(parts, 1, parts.length - 1))));
+    private List<Course> parseQuery(String query) {
+
+        List<Course> courseList = new ArrayList<>();
+
+        Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
+        for (OWLEntity entity : individuals) {
+            String courseName = shortFormProvider.getShortForm(entity);
+
+            String hasCourseQuery = "hasCourse value " + courseName;
+            Set<String> timeslot = new HashSet<>();
+            Set<OWLNamedIndividual> timeslotIndividuals = engine.getInstances(hasCourseQuery, false);
+            for (OWLEntity timeslotEntity : timeslotIndividuals) {
+                timeslot.add(standarize(shortFormProvider.getShortForm(timeslotEntity)));
             }
+
+            String containsCoursesQuery = "containsCourses value " + courseName;
+            Set<String> period = new HashSet<>();
+            Set<OWLNamedIndividual> periodIndividuals = engine.getInstances(containsCoursesQuery, false);
+            for (OWLEntity periodEntity : periodIndividuals) {
+                period.add(standarize(shortFormProvider.getShortForm(periodEntity)));
+            }
+
+            Course course = new Course();
+            course.setId(courseName);
+            course.setName(standarize(courseName));
+            course.setTimeslot(timeslot);
+            course.setPeriod(period.toArray(new String[1])[0]);
+
+            courseList.add(course);
+            courses.put(courseName, course);
         }
 
-        return availability;
+        return courseList;
+    }
+
+    private String standarize(String input) {
+        return input.replaceAll("_", " ");
     }
 
     private String getMaxRatingKey(String course) {

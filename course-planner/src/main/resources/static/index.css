@@ -11,6 +11,10 @@ body {
     height: 100%;
 }
 
+ul {
+    list-style-type: none;
+}
+
 /* Style the header */
 header {
     background: #666;
@@ -29,17 +33,43 @@ section {
 /* Create two columns/boxes that floats next to each other */
 nav {
     float: left;
-    width: 40%;
-    padding: 20px;
+    width: 50%;
+    padding: 5px;
     min-height: calc(100vh - 300px);
 }
 
 article {
     float: left;
-    width: 60%;
+    width: 50%;
     background-color: #f1f1f1;
     padding: 20px;
     min-height: calc(100vh - 300px);
+}
+
+#registered {
+    display: inline-block;
+    width: 100%;
+}
+
+.course {
+    border: 1px solid #666;
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 10px 20px 10px 0px;
+    overflow: auto;
+}
+
+.tick {
+    margin-bottom: 20px;
+}
+
+.period {
+    float: left;
+}
+
+.timeslots {
+    float: right;
 }
 
 /* Clear floats after the columns */
@@ -77,10 +107,88 @@ footer {
     bottom: 0;
 }
 
+.term {
+  padding: 70px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+.term ul {
+  margin: 0;
+  padding: 0;
+}
+
+.term ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.term .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.term .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 19%;
+  color: #666;
+  text-align: center;
+}
+
+.days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 19%;
+  text-align: left;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+}
+
+.days li .active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white !important
+}
+
+
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
     nav, article {
         width: 100%;
         height: auto;
     }
+}
+
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {width: 12.5%;}
+  .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {width: 12.2%;}
 }

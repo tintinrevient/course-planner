@@ -14,6 +14,7 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Course {
 
+    private String id;
     private String name;
     private String period;
     private Set<String> timeslot;

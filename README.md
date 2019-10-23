@@ -6,6 +6,7 @@
 - [ ] reasoning process - data
 - [x] performance metrics - data
 - [ ] Google calendar & Google assistant integration, etc...
+- [ ] "Similar Courses" search function implementation
 
 ## User Guide
 

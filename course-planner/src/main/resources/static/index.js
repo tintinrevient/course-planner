@@ -48,6 +48,45 @@ function search() {
     });
 }
 
+function similar() {
+    $("#btn-similar").prop("disabled", true);
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/course/similar",
+        data: $("#query").val(),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+
+            data = JSON.parse(JSON.stringify(data));
+
+            var json = '<h4>Result: </h4>';
+
+            json += '<button type="button" id="bth-register" onclick="register()">Register</button>';
+            json += '<button type="button" id="bth-ask-eval" onclick="askeval()">Ask for Evaluation</button><br><br>';
+            json += '<div id="registered">';
+
+            $.each(data, function(index, item) {
+                json += '<input data-course=' + item + ' type="checkbox"> [' + index + '] ' + item + '<br>';
+            });
+
+            json += '</div>'
+
+            $('#feedback').html(json);
+
+            console.log("SUCCESS : ", data);
+            $("#btn-search").prop("disabled", false);
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+            $("#btn-search").prop("disabled", false);
+        }
+    });
+}
+
 function register() {
 
     $("#bth-register").prop("disabled", true);

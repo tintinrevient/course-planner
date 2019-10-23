@@ -203,7 +203,7 @@ public class CourseController {
             boolean conflict = false;
             for(int i = 1; i < parts.length - 1; i++) {
                 if(null != availability.get(period) && availability.get(period).contains(parts[i])) {
-                    response.put("msg", "Conflict: " + parts[i]);
+                    response.put("msg", "Conflict in " + period + ": " + parts[i]);
                     conflict = true;
                     break;
                 }

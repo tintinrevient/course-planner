@@ -98,7 +98,7 @@ function search() {
                     json += '<div class="timeslot">' + item["timeslot"][key] + '</div>';
                 }
 
-                json += '</div></div></div><br>';
+                json += '</div></div></div>';
 
             });
 
@@ -138,19 +138,29 @@ function similar() {
             json += '<div id="registered">';
 
             $.each(data, function(index, item) {
-                json += '<input data-course=' + item + ' type="checkbox"> [' + index + '] ' + item + '<br>';
+                json += '<div class="course"><div class="tick"><input data-course=' + item["id"] + ' type="checkbox"> ' + item["name"] + '</div>';
+
+                json += '<div class="info"><div class="period">' + item["period"] + '</div>';
+
+                json += '<div class="timeslots">'
+                for(var key in item["timeslot"]) {
+                    json += '<div class="timeslot">' + item["timeslot"][key] + '</div>';
+                }
+
+                json += '</div></div></div>';
+
             });
 
-            json += '</div>'
+            json += '</div>';
 
             $('#feedback').html(json);
 
             console.log("SUCCESS : ", data);
-            $("#btn-search").prop("disabled", false);
+            $("#btn-similar").prop("disabled", false);
         },
         error: function (e) {
             console.log("ERROR : ", e);
-            $("#btn-search").prop("disabled", false);
+            $("#btn-similar").prop("disabled", false);
         }
     });
 }

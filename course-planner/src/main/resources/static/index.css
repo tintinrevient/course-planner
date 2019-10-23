@@ -17,7 +17,7 @@ ul {
 
 /* Style the header */
 header {
-    background: #666;
+    background: #B8B8B8;
     padding: 30px;
     text-align: center;
     font-size: 35px;
@@ -34,8 +34,8 @@ section {
 nav {
     float: left;
     width: 50%;
-    padding: 5px;
     min-height: calc(100vh - 300px);
+    background-color: #E0E0E0;
 }
 
 article {
@@ -53,8 +53,8 @@ article {
 
 .course {
     border: 1px solid #666;
-    width: 100%;
-    height: auto;
+    width: 46%;
+    height: 90px;
     float: left;
     margin: 10px 20px 10px 0px;
     overflow: auto;
@@ -81,7 +81,7 @@ section:after {
 
 /* Style the footer */
 footer {
-    background: #666;
+    background: #B8B8B8;
     padding: 10px;
     text-align: center;
     color: white;
@@ -105,6 +105,10 @@ footer {
 
 .bottom {
     bottom: 0;
+}
+
+.calendar {
+    border: 5px solid #ddd;
 }
 
 .term {

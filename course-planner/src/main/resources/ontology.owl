@@ -6,7 +6,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="http://www.semanticweb.org/thomas/ontologies/2019/9/untitled-ontology-8">
-    <Prefix name="" IRI="http://www.semanticweb.org/thomas/ontologies/2019/9/untitled-ontology-8#"/>
+    <Prefix name="" IRI="http://www.semanticweb.org/thomas/ontologies/2019/9/untitled-ontology-8"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
@@ -14,13 +14,55 @@
     <Prefix name="obda" IRI="https://w3id.org/obda/vocabulary#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="#AI_For_Game_Technology"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Advanced_Cognitive_And_Social_Psychology"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Advanced_Graphics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Advanced_HCI_Qualitative_Research_Methods"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Advanced_Machine_Learning"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Afternoon"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Agents"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Algorithms"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Algorithms_And_Networks"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Algorithms_For_Decision_Suppor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Applied_Cognitive_Psychology_II"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Artificial_Intelligence"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Behavioural_Sciences"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Big_Data"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bio_Inspired_Innovation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bioinformatics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Biology"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Business"/>
@@ -29,28 +71,151 @@
         <Class IRI="#Business_Intelligence"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Business_Process_Management"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chemistry"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Climate_Physics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cognitive_And_Computational_Aspects_Of_Word_Meaning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cognitive_Modeling"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Communication_Outside_Lecture_Hours"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computation_Thinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computational_Argumentation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computational_Thinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computer_Animation"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Computer_Science"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Computer_Vision"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Course"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Crowd_Simulation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Data"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Data_Mining"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Data_Science_And_Society"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Day"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Digital_Ethics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dilemmas_Of_The_Scientist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Drug_Innovation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Engineering"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Enterprise_Architecture"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Environmental_Biology"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Evening"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Exam"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Exam_Form"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Experimental_Physics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Experimentation_In_Psychology_And_Linguisitcs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Experimentation_In_Psychology_And_Linguistics"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Faculty"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Foundations_Of_Information_Science"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Foundations_Of_Sound_Patterns"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Freedom_Whithin_Courses"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Friday"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Game"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Game_Physics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Graphics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Guidance_Whithin_Subject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Human_Computer_Interaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ICT_Entrepreneurship"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Information"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Intelligent_Agents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Interaction_Technology_Innovation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Interaction_Techology_Innovation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Introducing_Natural_Sciences"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Introduction_To_Business_Informatics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Introduction_To_HCI"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Lecturer"/>
@@ -59,7 +224,40 @@
         <Class IRI="#Linguistics"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Logic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Logic_And_Computation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Logic_And_Language"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Machine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Machine_Learning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Math"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mathematics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Method_Engineering"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Methods_Of_AI_Research"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mobile"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mobile_Interaction"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Monday"/>
@@ -68,7 +266,46 @@
         <Class IRI="#Morning"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Multi_Agent_Learning"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multi_Agent_Systems"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multimedia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multimedia_Discourse_Interaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multimedia_Retrieval"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Natural_Language_Generation"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Natural_Language_Processing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Natural_Science"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Network"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Network_Science"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Neurocognition_Of_Memory_And_Attention"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Neuroscience"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Organizing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pattern_Set_Mining"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Period"/>
@@ -83,13 +320,37 @@
         <Class IRI="#Philosophy_Of_AI"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Philosophy_Of_Neuroscience"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Philosophy_Of_Science"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Philosophy_Of_The_Mind"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Physics"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Practical_Assignment"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Presentation"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Process_Mining"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Programming"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Psychology"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Reasoning_About_Meaning_In_Linguistic_Communication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Requirements_Engineering"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Research_Methodology"/>
@@ -98,10 +359,34 @@
         <Class IRI="#Science"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Simulation"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Skills"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Social_And_Affective_Neuroscience"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Social_Computing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Social_Science"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Society"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Software"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Software_Architecture"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Software_Ecosystems"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sound_And_Music_Technology"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Speaking"/>
@@ -110,13 +395,16 @@
         <Class IRI="#Student"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Teaching"/>
+        <Class IRI="#Theoretical_Physics"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Thursday"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Topic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Topics_In_Epistemology_And_Philosophy_Of_Science"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Tuesday"/>
@@ -128,13 +416,13 @@
         <Class IRI="#Week"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Written_Exam"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#containsCourses"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#coversTopic"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasCourse"/>
@@ -143,13 +431,31 @@
         <ObjectProperty IRI="#hasExamForm"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#hasFriend"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasPrerequisite"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasSkill"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isCoveredBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isOfferedBy"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isPartOf"/>
@@ -162,6 +468,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isTaughtOn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#offersCourse"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#prefers"/>
@@ -233,10 +542,19 @@
         <NamedIndividual IRI="#B_M_Harvey"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#C_P_Janssen"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Case_Studies"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Computational_Argumentation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#David_Terburg"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Davide_DellAnna"/>
@@ -251,13 +569,28 @@
         <NamedIndividual IRI="#Dong_Nguyen"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Estrella_Montoya"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Experimentation_In_Psychology_And_Linguistics"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Experiments"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Faculty_Of_Beta_Science"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Faculty_Of_Humanities"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Faculty_Of_Medicine"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Faculty_Of_Social_Science_And_Behavioural_Sciences"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Floris_Bex"/>
@@ -284,6 +617,18 @@
         <NamedIndividual IRI="#Henry_Prakken"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#High_Communication_Outside_Lecture_Hours"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#High_Organizing"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#High_Speaking"/>
     </Declaration>
     <Declaration>
@@ -291,6 +636,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Interviews"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Jack_Van_Honk"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Jan_Jansen"/>
@@ -306,6 +654,18 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Logic_And_Language"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Low_Communication_Outside_Lecture_Hours"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Low_Freedom_Whithin_Courses"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Low_Guidance_Whithin_Subject"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Low_Organizing"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Low_Speaking"/>
@@ -330,6 +690,18 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Mlmila_Akdag"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Moderate_Communication_Outside_Lecture_Hours"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Moderate_Freedom_Whithin_Courses"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Moderate_Guidance_Whithin_Subject"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Moderate_Speaking"/>
@@ -374,6 +746,9 @@
         <NamedIndividual IRI="#Period_4"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Peter_Bos"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Philosophy_Of_AI"/>
     </Declaration>
     <Declaration>
@@ -399,6 +774,9 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Samira_Shirzadeh"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Social_Computing"/>
@@ -451,6 +829,37 @@
     <Declaration>
         <NamedIndividual IRI="#Wishnu_Prasetya"/>
     </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Written_Exam"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AI_For_Game_Technology"/>
+        <Class IRI="#Artificial_Intelligence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AI_For_Game_Technology"/>
+        <Class IRI="#Game"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Advanced_Cognitive_And_Social_Psychology"/>
+        <Class IRI="#Neuroscience"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Advanced_Cognitive_And_Social_Psychology"/>
+        <Class IRI="#Society"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Advanced_Graphics"/>
+        <Class IRI="#Graphics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Advanced_HCI_Qualitative_Research_Methods"/>
+        <Class IRI="#Human_Computer_Interaction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Advanced_Machine_Learning"/>
+        <Class IRI="#Machine_Learning"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#Afternoon"/>
         <Class IRI="#Day"/>
@@ -460,7 +869,51 @@
         <Class IRI="#Artificial_Intelligence"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Algorithms"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Algorithms_And_Networks"/>
+        <Class IRI="#Algorithms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Algorithms_And_Networks"/>
+        <Class IRI="#Network"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Algorithms_For_Decision_Suppor"/>
+        <Class IRI="#Algorithms"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Applied_Cognitive_Psychology_II"/>
+        <Class IRI="#Neuroscience"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Applied_Cognitive_Psychology_II"/>
+        <Class IRI="#Psychology"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Artificial_Intelligence"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Behavioural_Sciences"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Big_Data"/>
+        <Class IRI="#Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bio_Inspired_Innovation"/>
+        <Class IRI="#Biology"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bioinformatics"/>
+        <Class IRI="#Biology"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Biology"/>
         <Class IRI="#Topic"/>
     </SubClassOf>
     <SubClassOf>
@@ -474,6 +927,62 @@
     <SubClassOf>
         <Class IRI="#Business_Intelligence"/>
         <Class IRI="#Business"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Business_Process_Management"/>
+        <Class IRI="#Business"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chemistry"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Climate_Physics"/>
+        <Class IRI="#Physics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cognitive_And_Computational_Aspects_Of_Word_Meaning"/>
+        <Class IRI="#Computation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cognitive_And_Computational_Aspects_Of_Word_Meaning"/>
+        <Class IRI="#Linguistics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cognitive_And_Computational_Aspects_Of_Word_Meaning"/>
+        <Class IRI="#Neuroscience"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cognitive_Modeling"/>
+        <Class IRI="#Neuroscience"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Communication_Outside_Lecture_Hours"/>
+        <Class IRI="#Skills"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computation"/>
+        <Class IRI="#Computer_Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computation_Thinking"/>
+        <Class IRI="#Artificial_Intelligence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computation_Thinking"/>
+        <Class IRI="#Computation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computational_Argumentation"/>
+        <Class IRI="#Computation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computational_Thinking"/>
+        <Class IRI="#Computation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computer_Animation"/>
+        <Class IRI="#Game"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Computer_Science"/>
@@ -482,6 +991,14 @@
     <SubClassOf>
         <Class IRI="#Computer_Science"/>
         <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computer_Vision"/>
+        <Class IRI="#Game"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Computer_Vision"/>
+        <Class IRI="#Graphics"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Course"/>
@@ -508,23 +1025,144 @@
         <Class IRI="#Course"/>
         <ObjectExactCardinality cardinality="1">
             <ObjectProperty IRI="#useMethodology"/>
+            <Class IRI="#Research_Methodology"/>
         </ObjectExactCardinality>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Data_Mining"/>
-        <Class IRI="#Artificial_Intelligence"/>
+        <Class IRI="#Crowd_Simulation"/>
+        <Class IRI="#Game"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Crowd_Simulation"/>
+        <Class IRI="#Simulation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Data"/>
+        <Class IRI="#Computer_Science"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Data_Mining"/>
-        <Class IRI="#Computer_Science"/>
+        <Class IRI="#Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Data_Science_And_Society"/>
+        <Class IRI="#Data"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Data_Science_And_Society"/>
+        <Class IRI="#Society"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Digital_Ethics"/>
+        <Class IRI="#Psychology"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dilemmas_Of_The_Scientist"/>
+        <Class IRI="#Natural_Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Drug_Innovation"/>
+        <Class IRI="#Chemistry"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Engineering"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Enterprise_Architecture"/>
+        <Class IRI="#Business"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Environmental_Biology"/>
+        <Class IRI="#Biology"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Evening"/>
         <Class IRI="#Day"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Exam"/>
+        <Class IRI="#Exam_Form"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Experimental_Physics"/>
+        <Class IRI="#Physics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Experimentation_In_Psychology_And_Linguisitcs"/>
+        <Class IRI="#Psychology"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Experimentation_In_Psychology_And_Linguistics"/>
+        <Class IRI="#Linguistics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Foundations_Of_Information_Science"/>
+        <Class IRI="#Information"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Foundations_Of_Sound_Patterns"/>
+        <Class IRI="#Linguistics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Freedom_Whithin_Courses"/>
+        <Class IRI="#Skills"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Friday"/>
         <Class IRI="#Week"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Game"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Game_Physics"/>
+        <Class IRI="#Game"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Graphics"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Guidance_Whithin_Subject"/>
+        <Class IRI="#Skills"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Human_Computer_Interaction"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ICT_Entrepreneurship"/>
+        <Class IRI="#Business"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Information"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intelligent_Agents"/>
+        <Class IRI="#Agents"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Interaction_Technology_Innovation"/>
+        <Class IRI="#Human_Computer_Interaction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Interaction_Techology_Innovation"/>
+        <Class IRI="#Game"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Introducing_Natural_Sciences"/>
+        <Class IRI="#Natural_Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Introduction_To_Business_Informatics"/>
+        <Class IRI="#Business"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Introduction_To_HCI"/>
+        <Class IRI="#Human_Computer_Interaction"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Lecturer"/>
@@ -556,8 +1194,60 @@
         <Class IRI="#Topic"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Logic"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Logic_And_Computation"/>
+        <Class IRI="#Computation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Logic_And_Computation"/>
+        <Class IRI="#Logic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Logic_And_Language"/>
+        <Class IRI="#Logic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Machine"/>
+        <Class IRI="#Artificial_Intelligence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Machine_Learning"/>
+        <Class IRI="#Machine"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
+        <Class IRI="#Machine_Learning"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Math"/>
         <Class IRI="#Skills"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mathematics"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Method_Engineering"/>
+        <Class IRI="#Engineering"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Methods_Of_AI_Research"/>
+        <Class IRI="#Artificial_Intelligence"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mobile"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mobile_Interaction"/>
+        <Class IRI="#Human_Computer_Interaction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mobile_Interaction"/>
+        <Class IRI="#Mobile"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Monday"/>
@@ -568,12 +1258,76 @@
         <Class IRI="#Day"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Multi_Agent_Learning"/>
+        <Class IRI="#Agents"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multi_Agent_Systems"/>
+        <Class IRI="#Agents"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multimedia"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multimedia_Discourse_Interaction"/>
+        <Class IRI="#Human_Computer_Interaction"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multimedia_Discourse_Interaction"/>
+        <Class IRI="#Multimedia"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multimedia_Retrieval"/>
+        <Class IRI="#Multimedia"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Natural_Language_Generation"/>
+        <Class IRI="#Linguistics"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Natural_Language_Processing"/>
         <Class IRI="#Artificial_Intelligence"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Natural_Language_Processing"/>
         <Class IRI="#Linguistics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Natural_Science"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Natural_Science"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Network"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Network_Science"/>
+        <Class IRI="#Network"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Neurocognition_Of_Memory_And_Attention"/>
+        <Class IRI="#Neuroscience"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Neuroscience"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Neuroscience"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Organizing"/>
+        <Class IRI="#Skills"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pattern_Set_Mining"/>
+        <Class IRI="#Game"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Philosophy"/>
@@ -586,6 +1340,26 @@
     <SubClassOf>
         <Class IRI="#Philosophy_Of_AI"/>
         <Class IRI="#Philosophy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Philosophy_Of_Neuroscience"/>
+        <Class IRI="#Neuroscience"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Philosophy_Of_Neuroscience"/>
+        <Class IRI="#Philosophy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Philosophy_Of_Science"/>
+        <Class IRI="#Philosophy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Philosophy_Of_The_Mind"/>
+        <Class IRI="#Psychology"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Physics"/>
+        <Class IRI="#Topic"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Practical_Assignment"/>
@@ -596,20 +1370,64 @@
         <Class IRI="#Exam_Form"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#Process_Mining"/>
+        <Class IRI="#Business"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#Programming"/>
         <Class IRI="#Skills"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Psychology"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Reasoning_About_Meaning_In_Linguistic_Communication"/>
+        <Class IRI="#Linguistics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Requirements_Engineering"/>
+        <Class IRI="#Engineering"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Science"/>
         <Class IRI="#Topic"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Social_Computing"/>
-        <Class IRI="#Artificial_Intelligence"/>
+        <Class IRI="#Simulation"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Social_And_Affective_Neuroscience"/>
+        <Class IRI="#Neuroscience"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Social_Computing"/>
-        <Class IRI="#Computer_Science"/>
+        <Class IRI="#Computation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Social_Science"/>
+        <Class IRI="#Science"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Society"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Software"/>
+        <Class IRI="#Topic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Software_Architecture"/>
+        <Class IRI="#Software"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Software_Ecosystems"/>
+        <Class IRI="#Software"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sound_And_Music_Technology"/>
+        <Class IRI="#Game"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Speaking"/>
@@ -657,12 +1475,16 @@
         </ObjectUnionOf>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Teaching"/>
-        <Class IRI="#Skills"/>
+        <Class IRI="#Theoretical_Physics"/>
+        <Class IRI="#Physics"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Thursday"/>
         <Class IRI="#Week"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Topics_In_Epistemology_And_Philosophy_Of_Science"/>
+        <Class IRI="#Psychology"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Tuesday"/>
@@ -671,10 +1493,6 @@
     <SubClassOf>
         <Class IRI="#Wednesday"/>
         <Class IRI="#Week"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Written_Exam"/>
-        <Class IRI="#Exam_Form"/>
     </SubClassOf>
     <DisjointClasses>
         <Class IRI="#Afternoon"/>
@@ -717,12 +1535,24 @@
         <NamedIndividual IRI="#B_M_Harvey"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Lecturer"/>
+        <NamedIndividual IRI="#C_P_Janssen"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Research_Methodology"/>
         <NamedIndividual IRI="#Case_Studies"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Course"/>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Course"/>
         <NamedIndividual IRI="#Computational_Argumentation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lecturer"/>
+        <NamedIndividual IRI="#David_Terburg"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Lecturer"/>
@@ -741,6 +1571,10 @@
         <NamedIndividual IRI="#Dong_Nguyen"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Lecturer"/>
+        <NamedIndividual IRI="#Estrella_Montoya"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Course"/>
         <NamedIndividual IRI="#Experimentation_In_Psychology_And_Linguistics"/>
     </ClassAssertion>
@@ -750,7 +1584,23 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Faculty"/>
+        <NamedIndividual IRI="#Faculty_Of_Beta_Science"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Faculty"/>
         <NamedIndividual IRI="#Faculty_Of_Humanities"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Faculty"/>
+        <NamedIndividual IRI="#Faculty_Of_Medicine"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Faculty"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Faculty"/>
+        <NamedIndividual IRI="#Faculty_Of_Social_Science_And_Behavioural_Sciences"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Lecturer"/>
@@ -797,6 +1647,22 @@
         <NamedIndividual IRI="#Henry_Prakken"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Communication_Outside_Lecture_Hours"/>
+        <NamedIndividual IRI="#High_Communication_Outside_Lecture_Hours"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Freedom_Whithin_Courses"/>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Guidance_Whithin_Subject"/>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Organizing"/>
+        <NamedIndividual IRI="#High_Organizing"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Speaking"/>
         <NamedIndividual IRI="#High_Speaking"/>
     </ClassAssertion>
@@ -807,6 +1673,10 @@
     <ClassAssertion>
         <Class IRI="#Research_Methodology"/>
         <NamedIndividual IRI="#Interviews"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lecturer"/>
+        <NamedIndividual IRI="#Jack_Van_Honk"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Student"/>
@@ -827,6 +1697,22 @@
     <ClassAssertion>
         <Class IRI="#Course"/>
         <NamedIndividual IRI="#Logic_And_Language"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Communication_Outside_Lecture_Hours"/>
+        <NamedIndividual IRI="#Low_Communication_Outside_Lecture_Hours"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Freedom_Whithin_Courses"/>
+        <NamedIndividual IRI="#Low_Freedom_Whithin_Courses"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Guidance_Whithin_Subject"/>
+        <NamedIndividual IRI="#Low_Guidance_Whithin_Subject"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Organizing"/>
+        <NamedIndividual IRI="#Low_Organizing"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Speaking"/>
@@ -859,6 +1745,22 @@
     <ClassAssertion>
         <Class IRI="#Lecturer"/>
         <NamedIndividual IRI="#Mlmila_Akdag"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Communication_Outside_Lecture_Hours"/>
+        <NamedIndividual IRI="#Moderate_Communication_Outside_Lecture_Hours"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Freedom_Whithin_Courses"/>
+        <NamedIndividual IRI="#Moderate_Freedom_Whithin_Courses"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Guidance_Whithin_Subject"/>
+        <NamedIndividual IRI="#Moderate_Guidance_Whithin_Subject"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Organizing"/>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Speaking"/>
@@ -929,6 +1831,10 @@
         <NamedIndividual IRI="#Period_4"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#Lecturer"/>
+        <NamedIndividual IRI="#Peter_Bos"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#Course"/>
         <NamedIndividual IRI="#Philosophy_Of_AI"/>
     </ClassAssertion>
@@ -963,6 +1869,10 @@
     <ClassAssertion>
         <Class IRI="#Lecturer"/>
         <NamedIndividual IRI="#Samira_Shirzadeh"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Course"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#Course"/>
@@ -1068,12 +1978,31 @@
         <Class IRI="#Lecturer"/>
         <NamedIndividual IRI="#Wishnu_Prasetya"/>
     </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Exam"/>
+        <NamedIndividual IRI="#Written_Exam"/>
+    </ClassAssertion>
     <DifferentIndividuals>
         <NamedIndividual IRI="#Period_1"/>
         <NamedIndividual IRI="#Period_2"/>
         <NamedIndividual IRI="#Period_3"/>
         <NamedIndividual IRI="#Period_4"/>
     </DifferentIndividuals>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFriend"/>
+        <NamedIndividual IRI="#Adam_Smith"/>
+        <NamedIndividual IRI="#Antoine_Dumont"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFriend"/>
+        <NamedIndividual IRI="#Adam_Smith"/>
+        <NamedIndividual IRI="#Linda_Arden"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Advanced_Machine_Learning"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Advanced_Machine_Learning"/>
@@ -1100,6 +2029,76 @@
         <NamedIndividual IRI="#Tuesday_Afternoon"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFriend"/>
+        <NamedIndividual IRI="#Antoine_Dumont"/>
+        <NamedIndividual IRI="#Adam_Smith"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFriend"/>
+        <NamedIndividual IRI="#Antoine_Dumont"/>
+        <NamedIndividual IRI="#Linda_Arden"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#B_M_Harvey"/>
+        <NamedIndividual IRI="#Low_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#B_M_Harvey"/>
+        <NamedIndividual IRI="#Low_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#B_M_Harvey"/>
+        <NamedIndividual IRI="#Moderate_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#B_M_Harvey"/>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#B_M_Harvey"/>
+        <NamedIndividual IRI="#High_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+        <NamedIndividual IRI="#C_P_Janssen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtInPeriod"/>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+        <NamedIndividual IRI="#Period_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtOn"/>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+        <NamedIndividual IRI="#Friday_Morning"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtOn"/>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+        <NamedIndividual IRI="#Wednesday_Afternoon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#useMethodology"/>
+        <NamedIndividual IRI="#Cognitive_Modeling"/>
+        <NamedIndividual IRI="#Case_Studies"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Computational_Argumentation"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Computational_Argumentation"/>
         <NamedIndividual IRI="#Henry_Prakken"/>
@@ -1118,6 +2117,36 @@
         <ObjectProperty IRI="#isTaughtOn"/>
         <NamedIndividual IRI="#Computational_Argumentation"/>
         <NamedIndividual IRI="#Wednesday_Afternoon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Davide_DellAnna"/>
+        <NamedIndividual IRI="#High_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Davide_DellAnna"/>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Davide_DellAnna"/>
+        <NamedIndividual IRI="#Low_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Davide_DellAnna"/>
+        <NamedIndividual IRI="#Low_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Davide_DellAnna"/>
+        <NamedIndividual IRI="#Moderate_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Dilemmas_Of_The_Scientist"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1140,6 +2169,36 @@
         <NamedIndividual IRI="#Wednesday_Evening"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Dong_Nguyen"/>
+        <NamedIndividual IRI="#Low_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Dong_Nguyen"/>
+        <NamedIndividual IRI="#Low_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Dong_Nguyen"/>
+        <NamedIndividual IRI="#Moderate_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Dong_Nguyen"/>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Dong_Nguyen"/>
+        <NamedIndividual IRI="#High_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Experimentation_In_Psychology_And_Linguistics"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Experimentation_In_Psychology_And_Linguistics"/>
         <NamedIndividual IRI="#R_W_F_Nouwen"/>
@@ -1160,6 +2219,31 @@
         <NamedIndividual IRI="#Thursday_Morning"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Floris_Bex"/>
+        <NamedIndividual IRI="#High_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Floris_Bex"/>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Floris_Bex"/>
+        <NamedIndividual IRI="#Low_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Floris_Bex"/>
+        <NamedIndividual IRI="#Low_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Floris_Bex"/>
+        <NamedIndividual IRI="#Moderate_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasCourse"/>
         <NamedIndividual IRI="#Friday_Afternoon"/>
         <NamedIndividual IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
@@ -1173,6 +2257,66 @@
         <ObjectProperty IRI="#hasCourse"/>
         <NamedIndividual IRI="#Friday_Morning"/>
         <NamedIndividual IRI="#Computational_Argumentation"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#G_Greco"/>
+        <NamedIndividual IRI="#High_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#G_Greco"/>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#G_Greco"/>
+        <NamedIndividual IRI="#Low_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#G_Greco"/>
+        <NamedIndividual IRI="#Low_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#G_Greco"/>
+        <NamedIndividual IRI="#Moderate_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#H_M_Huistra"/>
+        <NamedIndividual IRI="#Low_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#H_M_Huistra"/>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#H_M_Huistra"/>
+        <NamedIndividual IRI="#Moderate_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#H_M_Huistra"/>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#H_M_Huistra"/>
+        <NamedIndividual IRI="#High_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#High_Speaking"/>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Intelligent_Agents"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1195,6 +2339,21 @@
         <NamedIndividual IRI="#Tuesday_Morning"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFriend"/>
+        <NamedIndividual IRI="#Linda_Arden"/>
+        <NamedIndividual IRI="#Adam_Smith"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFriend"/>
+        <NamedIndividual IRI="#Linda_Arden"/>
+        <NamedIndividual IRI="#Antoine_Dumont"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Logic_And_Computation"/>
+        <NamedIndividual IRI="#Faculty_Of_Humanities"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Logic_And_Computation"/>
         <NamedIndividual IRI="#R_Iemhoff"/>
@@ -1213,6 +2372,11 @@
         <ObjectProperty IRI="#isTaughtOn"/>
         <NamedIndividual IRI="#Logic_And_Computation"/>
         <NamedIndividual IRI="#Wednesday_Morning"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Logic_And_Language"/>
+        <NamedIndividual IRI="#Faculty_Of_Humanities"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1240,6 +2404,41 @@
         <NamedIndividual IRI="#Tuesday_Morning"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Low_Speaking"/>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#M_J_Moortgat"/>
+        <NamedIndividual IRI="#Moderate_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#M_J_Moortgat"/>
+        <NamedIndividual IRI="#Moderate_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#M_J_Moortgat"/>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#M_J_Moortgat"/>
+        <NamedIndividual IRI="#High_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#M_J_Moortgat"/>
+        <NamedIndividual IRI="#Low_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
+        <NamedIndividual IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
         <NamedIndividual IRI="#B_M_Harvey"/>
@@ -1247,7 +2446,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtInPeriod"/>
         <NamedIndividual IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
-        <NamedIndividual IRI="#Period_2"/>
+        <NamedIndividual IRI="#Period_1"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtOn"/>
@@ -1258,6 +2457,66 @@
         <ObjectProperty IRI="#isTaughtOn"/>
         <NamedIndividual IRI="#Machine_Learning_For_Human_Vision_And_Language"/>
         <NamedIndividual IRI="#Wednesday_Afternoon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Marijn_Schraagen"/>
+        <NamedIndividual IRI="#Low_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Marijn_Schraagen"/>
+        <NamedIndividual IRI="#Low_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Marijn_Schraagen"/>
+        <NamedIndividual IRI="#Moderate_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Marijn_Schraagen"/>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Marijn_Schraagen"/>
+        <NamedIndividual IRI="#High_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Mehdi_Dastani"/>
+        <NamedIndividual IRI="#High_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Mehdi_Dastani"/>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Mehdi_Dastani"/>
+        <NamedIndividual IRI="#Low_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Mehdi_Dastani"/>
+        <NamedIndividual IRI="#Low_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Mehdi_Dastani"/>
+        <NamedIndividual IRI="#Moderate_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Methods_In_AI_Research"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <NamedIndividual IRI="#Methods_In_AI_Research"/>
+        <NamedIndividual IRI="#C_P_Janssen"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1315,6 +2574,11 @@
         <NamedIndividual IRI="#Logic_And_Computation"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Multi-agent_Learning"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Multi-agent_Learning"/>
         <NamedIndividual IRI="#Gerard_Vreeswijk"/>
@@ -1333,6 +2597,11 @@
         <ObjectProperty IRI="#isTaughtOn"/>
         <NamedIndividual IRI="#Multi-agent_Learning"/>
         <NamedIndividual IRI="#Tuesday_Afternoon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Multi-agent_Systems"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1360,6 +2629,11 @@
         <NamedIndividual IRI="#Tuesday_Morning"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Natural_Language_Processing"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Natural_Language_Processing"/>
         <NamedIndividual IRI="#T_Deoskar"/>
@@ -1378,6 +2652,36 @@
         <ObjectProperty IRI="#isTaughtOn"/>
         <NamedIndividual IRI="#Natural_Language_Processing"/>
         <NamedIndividual IRI="#Wednesday_Afternoon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Onuralp_Ulusoy"/>
+        <NamedIndividual IRI="#Moderate_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Onuralp_Ulusoy"/>
+        <NamedIndividual IRI="#Moderate_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Onuralp_Ulusoy"/>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Onuralp_Ulusoy"/>
+        <NamedIndividual IRI="#High_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Onuralp_Ulusoy"/>
+        <NamedIndividual IRI="#Low_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Philosophy_Of_AI"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1405,6 +2709,36 @@
         <NamedIndividual IRI="#Wednesday_Morning"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Pinar_Yolum"/>
+        <NamedIndividual IRI="#Moderate_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Pinar_Yolum"/>
+        <NamedIndividual IRI="#Moderate_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Pinar_Yolum"/>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Pinar_Yolum"/>
+        <NamedIndividual IRI="#High_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Pinar_Yolum"/>
+        <NamedIndividual IRI="#Low_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Program_Semantics_And_Verification"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Program_Semantics_And_Verification"/>
         <NamedIndividual IRI="#Anna-Lena_Lamprecht"/>
@@ -1428,6 +2762,136 @@
         <ObjectProperty IRI="#isTaughtOn"/>
         <NamedIndividual IRI="#Program_Semantics_And_Verification"/>
         <NamedIndividual IRI="#Wednesday_Morning"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#R_Iemhoff"/>
+        <NamedIndividual IRI="#High_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#R_Iemhoff"/>
+        <NamedIndividual IRI="#High_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#R_Iemhoff"/>
+        <NamedIndividual IRI="#Low_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#R_Iemhoff"/>
+        <NamedIndividual IRI="#Low_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#R_Iemhoff"/>
+        <NamedIndividual IRI="#Moderate_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Richard_Starmans"/>
+        <NamedIndividual IRI="#Low_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Richard_Starmans"/>
+        <NamedIndividual IRI="#Low_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Richard_Starmans"/>
+        <NamedIndividual IRI="#Moderate_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Richard_Starmans"/>
+        <NamedIndividual IRI="#Moderate_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Richard_Starmans"/>
+        <NamedIndividual IRI="#High_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Samira_Shirzadeh"/>
+        <NamedIndividual IRI="#Moderate_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Samira_Shirzadeh"/>
+        <NamedIndividual IRI="#Moderate_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Samira_Shirzadeh"/>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Samira_Shirzadeh"/>
+        <NamedIndividual IRI="#High_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Samira_Shirzadeh"/>
+        <NamedIndividual IRI="#Low_Speaking"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasExamForm"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Written_Exam"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Faculty_Of_Medicine"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#David_Terburg"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Estrella_Montoya"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Jack_Van_Honk"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtBy"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Peter_Bos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtInPeriod"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Period_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtOn"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Friday_Evening"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isTaughtOn"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Thursday_Morning"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#useMethodology"/>
+        <NamedIndividual IRI="#Social_And_Affective_Neuroscience"/>
+        <NamedIndividual IRI="#Interviews"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Social_Computing"/>
+        <NamedIndividual IRI="#Faculty_Of_Science"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1460,6 +2924,11 @@
         <NamedIndividual IRI="#Tuesday_Morning"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <NamedIndividual IRI="#Sound_And_Music_Technology"/>
+        <NamedIndividual IRI="#Faculty_Of_Beta_Science"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
         <ObjectProperty IRI="#isTaughtBy"/>
         <NamedIndividual IRI="#Sound_And_Music_Technology"/>
         <NamedIndividual IRI="#A_Volk"/>
@@ -1478,6 +2947,31 @@
         <ObjectProperty IRI="#isTaughtOn"/>
         <NamedIndividual IRI="#Sound_And_Music_Technology"/>
         <NamedIndividual IRI="#Tuesday_Afternoon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <NamedIndividual IRI="#Thijs_Van_Ommen"/>
+        <NamedIndividual IRI="#Moderate_Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <NamedIndividual IRI="#Thijs_Van_Ommen"/>
+        <NamedIndividual IRI="#Moderate_Freedom_Whithin_Courses"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <NamedIndividual IRI="#Thijs_Van_Ommen"/>
+        <NamedIndividual IRI="#High_Guidance_Whithin_Subject"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <NamedIndividual IRI="#Thijs_Van_Ommen"/>
+        <NamedIndividual IRI="#High_Organizing"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <NamedIndividual IRI="#Thijs_Van_Ommen"/>
+        <NamedIndividual IRI="#Low_Speaking"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="#hasCourse"/>
@@ -1600,8 +3094,28 @@
         <Literal>Primary_Course</Literal>
     </DataPropertyAssertion>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <ObjectProperty IRI="#hasSkill"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#hasCourse"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <ObjectProperty IRI="#hasSkill"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <ObjectProperty IRI="#hasSkill"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <ObjectProperty IRI="#hasSkill"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <ObjectProperty IRI="#hasSkill"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#takesInPeriod_1"/>
@@ -1640,8 +3154,16 @@
         <ObjectProperty IRI="#isTaughtInPeriod"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
+        <ObjectProperty IRI="#coversTopic"/>
+        <ObjectProperty IRI="#isCoveredBy"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
         <ObjectProperty IRI="#hasPrerequisite"/>
         <ObjectProperty IRI="#prerequisiteFor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <ObjectProperty IRI="#offersCourse"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#isTaughtBy"/>
@@ -1651,6 +3173,24 @@
         <ObjectProperty IRI="#takenBy"/>
         <ObjectProperty IRI="#takes"/>
     </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#isOfferedBy"/>
+    </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#isTaughtInPeriod"/>
     </FunctionalObjectProperty>
@@ -1690,6 +3230,10 @@
         <Class IRI="#Course"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <Class IRI="#Lecturer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasCourse"/>
         <Class IRI="#Day"/>
     </ObjectPropertyDomain>
@@ -1702,8 +3246,20 @@
         <Class IRI="#Course"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <Class IRI="#Lecturer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasFriend"/>
         <Class IRI="#Student"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <Class IRI="#Lecturer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <Class IRI="#Lecturer"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasPrerequisite"/>
@@ -1712,6 +3268,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasSkill"/>
         <Class IRI="#Lecturer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <Class IRI="#Lecturer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <Class IRI="#Course"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#isPartOf"/>
@@ -1728,6 +3292,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#isTaughtOn"/>
         <Class IRI="#Course"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#offersCourse"/>
+        <Class IRI="#Faculty"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#prefers"/>
@@ -1782,6 +3350,10 @@
         <Class IRI="#Topic"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCommunicationOutsideLectureHours"/>
+        <Class IRI="#Communication_Outside_Lecture_Hours"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#hasCourse"/>
         <Class IRI="#Course"/>
     </ObjectPropertyRange>
@@ -1790,8 +3362,20 @@
         <Class IRI="#Exam_Form"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFreedomWhithinCourses"/>
+        <Class IRI="#Freedom_Whithin_Courses"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="#hasFriend"/>
         <Class IRI="#Student"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGuidanceWithSubject"/>
+        <Class IRI="#Guidance_Whithin_Subject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOrganizingSkills"/>
+        <Class IRI="#Organizing"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasPrerequisite"/>
@@ -1800,6 +3384,14 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasSkill"/>
         <Class IRI="#Skills"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSpeakingSkills"/>
+        <Class IRI="#Speaking"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isOfferedBy"/>
+        <Class IRI="#Faculty"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#isPartOf"/>
@@ -1820,6 +3412,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="#isTaughtOn"/>
         <Class IRI="#Week"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#offersCourse"/>
+        <Class IRI="#Course"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#prefers"/>
@@ -1885,6 +3481,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#Lecturer</IRI>
         <Literal>For the future: We can say that a lecture has a speaking skill, or has another skill</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Topic</IRI>
+        <Literal>the topic &quot;programming&quot; can&apos;t be added because it&apos;s already a skill. Looking for a shared and elegant solution</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>

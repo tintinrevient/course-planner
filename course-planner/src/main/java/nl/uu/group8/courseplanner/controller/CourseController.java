@@ -54,13 +54,13 @@ public class CourseController {
     private Map<String, Integer> evaluation = new HashMap<>();
 
     // set: this agent's registered courses
-    private Set<String> courses = new HashSet<>();
+    private Map<String, Set<String>> courses = new HashMap<>();
 
     // threshold: the maximum number of can-be registered courses per period
     private int max = 3;
 
     // set: this agent's availability calendar
-    private Set<String> availability = new HashSet<>();
+    private Map<String, Set<String>> availability = new HashMap<>();
 
     @PostMapping("/ask-eval")
     public ResponseEntity<?> ask(@RequestBody List<String> selected) throws Exception {
@@ -161,15 +161,22 @@ public class CourseController {
         Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
         for (OWLEntity entity : individuals) {
             String name = shortFormProvider.getShortForm(entity);
-            String _query = "hasCourse value " + name;
 
+            String hasCourseQuery = "hasCourse value " + name;
             Set<String> timeslot = new HashSet<>();
-            Set<OWLNamedIndividual> _individuals = engine.getInstances(_query, false);
-            for (OWLEntity _entity : _individuals) {
-                timeslot.add(shortFormProvider.getShortForm(_entity));
+            Set<OWLNamedIndividual> timeslotIndividuals = engine.getInstances(hasCourseQuery, false);
+            for (OWLEntity timeslotEntity : timeslotIndividuals) {
+                timeslot.add(shortFormProvider.getShortForm(timeslotEntity));
             }
 
-            courseList.add(name + "|" + String.join("|", timeslot));
+            String containsCoursesQuery = "containsCourses value " + name;
+            Set<String> period = new HashSet<>();
+            Set<OWLNamedIndividual> periodIndividuals = engine.getInstances(containsCoursesQuery, false);
+            for (OWLEntity periodEntity : periodIndividuals) {
+                period.add(shortFormProvider.getShortForm(periodEntity));
+            }
+
+            courseList.add(name + "|" + String.join("|", timeslot) + "|" + String.join("|", period));
         }
 
         long end = System.currentTimeMillis();
@@ -185,36 +192,40 @@ public class CourseController {
 
         Map response = new HashMap();
 
-        if(courses.size() >= max) {
-            response.put("msg", "Number of registered courses is over " + max);
-            response.put("courses", courses);
-            return ResponseEntity.ok().body(response);
-        }
-
         availability = updateAvailability();
 
         log.info("Availability: " + availability.toString());
 
         for(String select : selected) {
             String[] parts = select.split("[|]");
+            String period = parts[parts.length - 1];
 
             boolean conflict = false;
-            for(int i = 1; i < parts.length; i++) {
-                if(availability.contains(parts[i])) {
+            for(int i = 1; i < parts.length - 1; i++) {
+                if(null != availability.get(period) && availability.get(period).contains(parts[i])) {
                     response.put("msg", "Conflict: " + parts[i]);
                     conflict = true;
                     break;
                 }
             }
 
+            if(null != availability.get(period) && courses.get(period).size() >= max) {
+                response.put("msg", "Number of registered courses for " + period + " is over " + max);
+                response.put("courses", courses);
+                return ResponseEntity.ok().body(response);
+            }
+
             if(!conflict) {
                 // change of courses -> change of availability calendar
-                courses.add(select);
+                if(null == courses.get(period))
+                    courses.put(period, new HashSet<String>());
+
+                courses.get(period).add(select);
                 availability = updateAvailability();
             }
 
-            if(courses.size() >= max) {
-                response.put("msg", "Number of registered courses is over " + max);
+            if(null != availability.get(period) && courses.get(period).size() >= max) {
+                response.put("msg", "Number of registered courses for " + period + " is over " + max);
                 break;
             }
         }
@@ -227,12 +238,11 @@ public class CourseController {
         return ResponseEntity.ok().body(response);
     }
 
-    private Set<String> updateAvailability() {
-        for(String course : courses) {
-            String[] parts = course.split("[|]");
-
-            for(int i = 1; i < parts.length; i++) {
-                availability.add(parts[i]);
+    private Map<String, Set<String>> updateAvailability() {
+        for(String key : courses.keySet()) {
+            for(String course : courses.get(key)) {
+                String[] parts = course.split("[|]");
+                availability.put(key, new HashSet<>(Arrays.asList(Arrays.copyOfRange(parts, 1, parts.length - 1))));
             }
         }
 

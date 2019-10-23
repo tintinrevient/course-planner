@@ -296,7 +296,7 @@ public class CourseController {
                 if(intersection.size() > 0) {
                     flag = true;
                     for(String conflict : intersection) {
-                        message.append("Conflict in " + period + " on " + conflict);
+                        message.append("Conflict in " + period + " on " + conflict + "<br>");
                     }
                     break;
                 }

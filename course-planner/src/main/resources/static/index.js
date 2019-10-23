@@ -1,3 +1,71 @@
+var periods = ['Period 1', 'Period 2', 'Period 3', 'Period 4'];
+
+var period1 = [];
+var period2 = [];
+var period3 = [];
+var period4 = [];
+
+function prev() {
+    var period = $('#period-switch').text();
+    var index = periods.indexOf(period);
+    if(index > 0) {
+        index = index - 1;
+        $('#period-switch').html(periods[index]);
+        refresh();
+    }
+}
+
+function next() {
+    var period = $('#period-switch').text();
+    var index = periods.indexOf(period);
+    if(index < 3) {
+        index = index + 1;
+        $('#period-switch').html(periods[index]);
+        refresh();
+    }
+}
+
+function refresh() {
+    var period = $('#period-switch').text();
+
+    $('.days').children().html(" ")
+
+    switch(period){
+        case "Period 1":
+            if(period1.length > 0) {
+                for(var key in period1){
+                    $('#' + period1[key]["key"]).html(period1[key]["value"]);
+                }
+            }
+            break;
+
+
+        case "Period 2":
+            if(period2.length > 0) {
+                for(var key in period2){
+                    $('#' + period2[key]["key"]).html(period2[key]["value"]);
+                }
+            }
+            break;
+
+        case "Period 3":
+            if(period3.length > 0) {
+                for(var key in period3){
+                    $('#' + period3[key]["key"]).html(period3[key]["value"]);
+                }
+            }
+            break;
+
+        case "Period 4":
+            if(period4.length > 0) {
+                for(var key in period4){
+                    $('#' + period4[key]["key"]).html(period4[key]["value"]);
+                }
+            }
+            break;
+    }
+}
+
 function search() {
 
     $("#btn-search").prop("disabled", true);
@@ -110,64 +178,75 @@ function register() {
                 for(var key in item) {
                     var courseName = item[key]["name"];
                     var cssId = "";
-                    switch(period){
-                        case "Period 1":
-                            cssId += "p1-";
-                            break;
-                        case "Period 2":
-                            cssId += "p2-";
-                            break;
-                        case "Period 3":
-                            cssId += "p3-";
-                            break;
-                        case "Period 4":
-                            cssId += "p4-";
-                            break;
-                        default:
-                            cssId += "";
-                    }
 
-                    _cssId = "";
                     for(var _key in item[key]["timeslot"]) {
-                        _cssId = "";
+                        cssId = "";
                         var courseTimeslot = JSON.stringify(item[key]["timeslot"][_key]);
                         var day = courseTimeslot.split(" ");
 
                         switch(day[0].replace("\"", "")){
                             case "Monday":
-                                _cssId += "monday-";
+                                cssId += "monday-";
                                 break;
                             case "Tuesday":
-                                _cssId += "tuesday-";
+                                cssId += "tuesday-";
                                 break;
                             case "Wednesday":
-                                _cssId += "wednesday-";
+                                cssId += "wednesday-";
                                 break;
                             case "Thursday":
-                                _cssId += "thursday-";
+                                cssId += "thursday-";
                                 break;
                             case "Friday":
-                                _cssId += "friday-";
+                                cssId += "friday-";
                                 break;
                             default:
-                                _cssId += "";
+                                cssId += "";
                         }
 
                         switch(day[1].replace("\"", "")){
                             case "Morning":
-                                _cssId += "morning";
+                                cssId += "morning";
                                 break;
                             case "Afternoon":
-                                _cssId += "afternoon";
+                                cssId += "afternoon";
                                 break;
                             case "Evening":
-                                _cssId += "evening";
+                                cssId += "evening";
                                 break;
                             default:
-                                _cssId += "";
+                                cssId += "";
                         }
 
-                        $('#' + cssId + _cssId).html(courseName);
+                        switch(period){
+                            case "Period 1":
+                                period1.push({
+                                    key: cssId,
+                                    value: courseName
+                                });
+                                break;
+                            case "Period 2":
+                                period2.push({
+                                    key: cssId,
+                                    value: courseName
+                                });
+                                break;
+                            case "Period 3":
+                                period3.push({
+                                    key: cssId,
+                                    value: courseName
+                                });
+                                break;
+                            case "Period 4":
+                                period4.push({
+                                    key: cssId,
+                                    value: courseName
+                                });
+                                break;
+                            default:
+                        }
+
+                        refresh();
                     }
                 }
             });

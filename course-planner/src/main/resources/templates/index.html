@@ -15,10 +15,12 @@
 <section class="row">
     <nav>
         <div class="split top">
-            <div id="period1">
+            <div>
                 <div class="term">
                     <ul>
-                        <li>Period 1</li>
+                        <li class="prev" onclick="prev()">&#10094;</li>
+                        <li class="next" onclick="next()">&#10095;</li>
+                        <li id="period-switch">Period 1</li>
                     </ul>
                 </div>
                 <ul class="weekdays">
@@ -29,114 +31,21 @@
                     <li>Friday</li>
                 </ul>
                 <ul class="days">
-                    <li id="p1-monday-morning"> </li>
-                    <li id="p1-tuesday-morning"> </li>
-                    <li id="p1-wednesday-morning"> </li>
-                    <li id="p1-thursday-morning"> </li>
-                    <li id="p1-friday-morning"> </li>
-                    <li id="p1-monday-afternoon"> </li>
-                    <li id="p1-tuesday-afternoon"> </li>
-                    <li id="p1-wednesday-afternoon"> </li>
-                    <li id="p1-thursday-afternoon"> </li>
-                    <li id="p1-friday-afternoon"> </li>
-                    <li id="p1-monday-evening"> </li>
-                    <li id="p1-tuesday-evening"> </li>
-                    <li id="p1-wednesday-evening"> </li>
-                    <li id="p1-thursday-evening"> </li>
-                    <li id="p1-friday-evening"> </li>
-                </ul>
-            </div>
-            <div id="period2">
-                <div class="term">
-                    <ul>
-                        <li>Period 2</li>
-                    </ul>
-                </div>
-                <ul class="weekdays">
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                </ul>
-                <ul class="days">
-                    <li id="p2-monday-morning"> </li>
-                    <li id="p2-tuesday-morning"> </li>
-                    <li id="p2-wednesday-morning"> </li>
-                    <li id="p2-thursday-morning"> </li>
-                    <li id="p2-friday-morning"> </li>
-                    <li id="p2-monday-afternoon"> </li>
-                    <li id="p2-tuesday-afternoon"> </li>
-                    <li id="p2-wednesday-afternoon"> </li>
-                    <li id="p2-thursday-afternoon"> </li>
-                    <li id="p2-friday-afternoon"> </li>
-                    <li id="p2-monday-evening"> </li>
-                    <li id="p2-tuesday-evening"> </li>
-                    <li id="p2-wednesday-evening"> </li>
-                    <li id="p2-thursday-evening"> </li>
-                    <li id="p2-friday-evening"> </li>
-                </ul>
-            </div>
-            <div id="period3">
-                <div class="term">
-                    <ul>
-                        <li>Period 3</li>
-                    </ul>
-                </div>
-                <ul class="weekdays">
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                </ul>
-                <ul class="days">
-                    <li id="p3-monday-morning"> </li>
-                    <li id="p3-tuesday-morning"> </li>
-                    <li id="p3-wednesday-morning"> </li>
-                    <li id="p3-thursday-morning"> </li>
-                    <li id="p3-friday-morning"> </li>
-                    <li id="p3-monday-afternoon"> </li>
-                    <li id="p3-tuesday-afternoon"> </li>
-                    <li id="p3-wednesday-afternoon"> </li>
-                    <li id="p3-thursday-afternoon"> </li>
-                    <li id="p3-friday-afternoon"> </li>
-                    <li id="p3-monday-evening"> </li>
-                    <li id="p3-tuesday-evening"> </li>
-                    <li id="p3-wednesday-evening"> </li>
-                    <li id="p3-thursday-evening"> </li>
-                    <li id="p3-friday-evening"> </li>
-                </ul>
-            </div>
-            <div id="period4">
-                <div class="term">
-                    <ul>
-                        <li>Period 4</li>
-                    </ul>
-                </div>
-                <ul class="weekdays">
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                </ul>
-                <ul class="days">
-                    <li id="p4-monday-morning"> </li>
-                    <li id="p4-tuesday-morning"> </li>
-                    <li id="p4-wednesday-morning"> </li>
-                    <li id="p4-thursday-morning"> </li>
-                    <li id="p4-friday-morning"> </li>
-                    <li id="p4-monday-afternoon"> </li>
-                    <li id="p4-tuesday-afternoon"> </li>
-                    <li id="p4-wednesday-afternoon"> </li>
-                    <li id="p4-thursday-afternoon"> </li>
-                    <li id="p4-friday-afternoon"> </li>
-                    <li id="p4-monday-evening"> </li>
-                    <li id="p4-tuesday-evening"> </li>
-                    <li id="p4-wednesday-evening"> </li>
-                    <li id="p4-thursday-evening"> </li>
-                    <li id="p4-friday-evening"> </li>
+                    <li id="monday-morning"> </li>
+                    <li id="tuesday-morning"> </li>
+                    <li id="wednesday-morning"> </li>
+                    <li id="thursday-morning"> </li>
+                    <li id="friday-morning"> </li>
+                    <li id="monday-afternoon"> </li>
+                    <li id="tuesday-afternoon"> </li>
+                    <li id="wednesday-afternoon"> </li>
+                    <li id="thursday-afternoon"> </li>
+                    <li id="friday-afternoon"> </li>
+                    <li id="monday-evening"> </li>
+                    <li id="tuesday-evening"> </li>
+                    <li id="wednesday-evening"> </li>
+                    <li id="thursday-evening"> </li>
+                    <li id="friday-evening"> </li>
                 </ul>
             </div>
         </div>

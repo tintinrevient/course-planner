@@ -7,6 +7,7 @@
 - [x] performance metrics - data
 - [ ] Google calendar & Google assistant integration, etc...
 - [ ] "Similar Courses" search function implementation
+- [ ] min=2, max=3 courses per term
 
 ## User Guide
 

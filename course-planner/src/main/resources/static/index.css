@@ -175,6 +175,51 @@ footer {
   color: white !important
 }
 
+.agent {
+    border: 1px solid #666;
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 10px 20px 10px 0px;
+    overflow: auto;
+}
+
+.agent-rating {
+    margin-bottom: 20px;
+    font-weight: bold;
+    float: left;
+}
+
+.agent-name {
+    margin-bottom: 20px;
+    font-weight: bold;
+    float: right;
+}
+
+.rating {
+    float: left;
+    clear: both;
+}
+
+.evaluation {
+    border: 1px solid #666;
+    width: 100%;
+    height: auto;
+    float: left;
+    margin: 10px 20px 10px 0px;
+    overflow: auto;
+}
+
+.evaluation-name {
+    margin-bottom: 20px;
+    font-weight: bold;
+    float: left;
+}
+
+.evaluation-score {
+    float: left;
+    clear: both;
+}
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {

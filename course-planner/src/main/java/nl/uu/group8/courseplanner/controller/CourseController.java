@@ -1,6 +1,7 @@
 package nl.uu.group8.courseplanner.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import nl.uu.group8.courseplanner.domain.Agent;
 import nl.uu.group8.courseplanner.domain.Course;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import nl.uu.group8.courseplanner.util.Formula;
@@ -44,16 +45,10 @@ public class CourseController {
     @Value("${spring.application.name}")
     private String serviceId;
 
-    // mapping: url_course -> the history of all the scores this agent has received from neighbouring agents
-    private Map<String, List<Integer>> worldStates = new HashMap<>();
+    // multi-agent world state
+    private Map<String, Agent> agents = new HashMap<>();
 
-    // mapping: url_course -> the history of all the feedback this agent has given to neighbouring agents' scores
-    private Map<String, List<Boolean>> feedback = new HashMap<>();
-
-    // mapping: url_course -> beta reputation rating based on this agent's history of all the feedback
-    private Map<String, Double> rating = new HashMap<>();
-
-    // mapping: course -> the latest score by the most-trusted neighbouring agent
+    // known evaluation of courses
     private Map<String, Integer> evaluation = new HashMap<>();
 
     // the course dictionary
@@ -77,7 +72,10 @@ public class CourseController {
 
         if(selected.size() > 1) {
             response.put("msg", "Evaluation can only be applied to one course!");
-            response = getStates(response);
+
+            //1. all agents with beta reputation rating with their evaluation
+            //2. final course score
+            response.put("agents", agents);
 
             return ResponseEntity.ok().body(response);
         }
@@ -89,9 +87,8 @@ public class CourseController {
         // return the score from the previous state
         if(serviceInstanceList.size() < 2) {
             response.put("msg", "No neighbouring agents are online!");
-
-            response = getScore(response, course);
-            response = getStates(response);
+            response.put("agents", agents);
+            response.put("evaluation", evaluation);
             return ResponseEntity.ok().body(response);
         }
 
@@ -110,37 +107,57 @@ public class CourseController {
 
             String key = url + "_" + course;
 
-            if(!worldStates.containsKey(key)) {
-                List<Integer> occurrences = new ArrayList<>();
-                occurrences.add(responseEntity.getBody());
-                worldStates.put(key, occurrences);
+            if(!agents.containsKey(url)) {
+                Agent agent = new Agent();
+                agent.setAddress(url);
 
-                List<Boolean> feedbacks = new ArrayList<>();
-                feedbacks.add(new Random().nextBoolean());
-                feedback.put(key, feedbacks);
+                List<Integer> _occurrences = new ArrayList<>();
+                _occurrences.add(responseEntity.getBody());
+                Map<String, List<Integer>> occurrences = new HashMap<>();
+                occurrences.put(course, _occurrences);
+
+                agent.setOccurrences(occurrences);
+
+                List<Boolean> _feedbacks = new ArrayList<>();
+                _feedbacks.add(new Random().nextBoolean());
+                Map<String, List<Boolean>> feedbacks = new HashMap<>();
+                feedbacks.put(course, _feedbacks);
+
+                agent.setFeedbacks(feedbacks);
+
+                agent.setBetaReputationRating(Formula.betaReputationRating(feedbacks));
+
+                agents.put(url, agent);
 
             } else {
-                worldStates.get(key).add(responseEntity.getBody());
-                feedback.get(key).add(new Random().nextBoolean());
+                Agent agent = agents.get(url);
+
+                if(!agent.getOccurrences().containsKey(course)) {
+                    List<Integer> _occurrences = new ArrayList<>();
+                    _occurrences.add(responseEntity.getBody());
+                    agent.getOccurrences().put(course, _occurrences);
+
+                    List<Boolean> _feedbacks = new ArrayList<>();
+                    _feedbacks.add(new Random().nextBoolean());
+                    agent.getFeedbacks().put(course, _feedbacks);
+
+                    agent.setBetaReputationRating(Formula.betaReputationRating(agent.getFeedbacks()));
+
+                } else {
+                    agent.getOccurrences().get(course).add(responseEntity.getBody());
+                    agent.getFeedbacks().get(course).add(new Random().nextBoolean());
+                    agent.setBetaReputationRating(Formula.betaReputationRating(agent.getFeedbacks()));
+                }
             }
         }
 
-        rating = Formula.betaReputationRating(feedback);
-
-        String maxRatingKey = getMaxRatingKey(course);
-
-        if(maxRatingKey.isEmpty()) {
-            response.put("msg", "Neighbouring agents haven't any feedback for reference!");
-            response = getStates(response);
-            return ResponseEntity.ok().body(response);
-        }
-
-        response = updateScore(response, course, maxRatingKey);
-        response = getStates(response);
+        updateEvaluation(course);
 
         long end = System.currentTimeMillis();
         log.info("Evaluation time: " + (end - start) + " ms");
 
+        response.put("agents", agents);
+        response.put("evaluation", evaluation);
         return ResponseEntity.ok().body(response);
     }
 
@@ -276,63 +293,26 @@ public class CourseController {
         return input.replaceAll("_", " ");
     }
 
-    private String getMaxRatingKey(String course) {
-        double maxRating = -2;
-        String maxRatingKey = "";
+    private void updateEvaluation(String course) {
+        double max = -2;
+        int score = -1;
 
-        for(String key : rating.keySet()) {
-            if(key.contains(course)) {
-                if(rating.get(key) > maxRating) {
-                    maxRating = rating.get(key);
-                    maxRatingKey = key;
+        for(String url : agents.keySet()) {
+            Agent agent = agents.get(url);
+            if(agent.getBetaReputationRating().containsKey(course)) {
+                double rating = agent.getBetaReputationRating().get(course);
+
+                if(rating > max) {
+                    max = rating;
+                    score = agent.getOccurrences().get(course).get(agent.getOccurrences().get(course).size() - 1);
                 }
             }
         }
 
-        return maxRatingKey;
-    }
+        Course courseObj = courses.get(course);
+        courseObj.setEvaluation(score);
 
-    private Map getStates(Map response) {
-
-        List<String> worldStatesList = new ArrayList<>();
-        List<String> feedbackList = new ArrayList<>();
-        List<String> ratingList = new ArrayList<>();
-
-        for(String key : worldStates.keySet()) {
-            worldStatesList.add(key + " -> " + worldStates.get(key));
-            feedbackList.add(key + " -> " + feedback.get(key));
-            ratingList.add(key + " -> " + rating.get(key));
-        }
-
-        response.put("worldStates", worldStatesList);
-        response.put("feedback", feedbackList);
-        response.put("rating", ratingList);
-
-        return response;
-    }
-
-    private Map getScore(Map response, String course) {
-        int score = -1;
-        for(String key : evaluation.keySet()) {
-            if(key.contains(course)) {
-                score = evaluation.get(key);
-                break;
-            }
-        }
-
-        if(score != -1)
-            response.put("score", course + " -> " + score);
-
-        return response;
-    }
-
-    private Map updateScore(Map response, String course, String maxRatingKey) {
-        List<Integer> scoreList = worldStates.get(maxRatingKey);
-        int score = scoreList.get(scoreList.size()-1);
         evaluation.put(course, score);
-        response.put("score", course + " -> " + score);
-
-        return response;
     }
 
 }

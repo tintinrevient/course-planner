@@ -261,7 +261,7 @@ function register() {
                 }
             });
 
-            $('#messages').html(data["msg"]);
+            $('#messages').html('<div class="message">' + data["msg"] + '</div>');
 
             console.log("SUCCESS : ", data);
             $("#bth-register").prop("disabled", false);
@@ -294,34 +294,31 @@ function askeval() {
             json = '';
 
             if(data["msg"]) {
-                json += data["msg"] + '<br>';
+                json += '<div class="message">' + data["msg"] + '</div>';
             }
 
-            if(data["score"]) {
-                json += '<h4>Score</h4>'
-                json += data["score"] + '<br>';
+            if(data["agents"]) {
+                for(var key in data["agents"]) {
+                    json += '<div class="agent">' + '<div class="agent-rating">' + 'Beta Reputation Rating' + '</div>';
+                    json += '<div class="agent-name">' + key + '</div>';
+
+                    for(var _key in data["agents"][key]["betaReputationRating"]) {
+                        json += '<div class="rating">' + _key + ': ' + data["agents"][key]["betaReputationRating"][_key] + '</div>';
+                    }
+
+                    json += '</div>';
+                }
             }
 
-            if(data["worldStates"] && data["worldStates"].length > 0) {
-                json += '<h4>World States</h4>';
-            }
-            $.each(data["worldStates"], function(index, item) {
-                json += item + '<br>';
-            });
+            if(data["evaluation"]){
+                json += '<div class="evaluation">' + '<div class="evaluation-name">' + 'Evaluation Score of Courses' + '</div>';
 
-            if(data["feedback"] && data["feedback"].length > 0) {
-                json += '<h4>Feedback</h4>';
-            }
-            $.each(data["feedback"], function(index, item) {
-                json += item + '<br>';
-            });
+                for(var key in data["evaluation"]) {
+                    json += '<div class="evaluation-score">' + key + ': ' + data["evaluation"][key] + '</div>';
+                }
 
-            if(data["rating"] && data["rating"].length > 0) {
-                json += '<h4>Beta Reputation Rating</h4>'
+                json += '</div>';
             }
-            $.each(data["rating"], function(index, item) {
-                json += item + '<br>';
-            });
 
             $('#messages').html(json);
 

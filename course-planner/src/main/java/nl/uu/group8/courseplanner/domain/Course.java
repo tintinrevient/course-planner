@@ -19,5 +19,6 @@ public class Course {
     private String period;
     private Set<String> timeslot;
     private String lecturer;
+    private int evaluation;
 
 }

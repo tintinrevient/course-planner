@@ -14,11 +14,7 @@
 ## User Guide
 
 The UI is as below:
-* Query can be performed in the Manchester OWL syntax, and some examples:
-	* not (isTaughtOn some Morning)
-	* isTaughtBy value R_Iemhoff or isTaughtBy value Davide_DellAnna
-	* Course and isTaughtInPeriod value Period_4
-	* Course and not (isTaughtInPeriod value Period_4)
+* Query can be performed by checking any preferences in the checkbox.
 * Register can be performed by clicking the "Register" button when one or multiple courses have been checked.
 * "Ask for Evaluation" can be performed only in the multi-agent environment.
 

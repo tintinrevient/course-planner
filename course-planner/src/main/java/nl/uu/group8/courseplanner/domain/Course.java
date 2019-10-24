@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Course {
+public class Course implements Comparable<Course>{
 
     private String id;
     private String name;
@@ -20,5 +20,10 @@ public class Course {
     private Set<String> timeslot;
     private String lecturer;
     private int evaluation;
+
+    @Override
+    public int compareTo(Course course) {
+        return this.getPeriod().compareTo(course.getPeriod());
+    }
 
 }

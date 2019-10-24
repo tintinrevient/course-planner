@@ -17,7 +17,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.util.*;
@@ -177,6 +176,8 @@ public class CourseController {
 
         long start = System.currentTimeMillis();
 
+        // query must be constructed from preferences
+
         List<Course> courseList = parseQuery(query);
 
         long end = System.currentTimeMillis();
@@ -286,6 +287,7 @@ public class CourseController {
             courses.put(courseName, course);
         }
 
+        Collections.sort(courseList);
         return courseList;
     }
 

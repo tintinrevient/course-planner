@@ -1,0 +1,9 @@
+nl/uu/group8/courseplanner/domain/Agent.class
+nl/uu/group8/courseplanner/domain/Course.class
+nl/uu/group8/courseplanner/controller/CourseController.class
+nl/uu/group8/courseplanner/service/DLQueryEngine.class
+nl/uu/group8/courseplanner/util/Formula.class
+nl/uu/group8/courseplanner/service/DLQueryParser.class
+nl/uu/group8/courseplanner/CoursePlannerApplication.class
+nl/uu/group8/courseplanner/config/ReasonerConfig.class
+nl/uu/group8/courseplanner/domain/Preference.class

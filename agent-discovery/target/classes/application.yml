@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: agent-discovery
+
+server:
+  address: 192.168.178.24
+  port: 8761
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${server.address}:${server.port}/eureka/
+  instance:
+    hostname: ${server.address}
+    preferIpAddress: true
+  server:
+    enableSelfPreservation: false
+    waitTimeInMsWhenSyncEmpty: 0
+    numberRegistrySyncRetries: 0
+    response-cache-update-interval-ms: 1000

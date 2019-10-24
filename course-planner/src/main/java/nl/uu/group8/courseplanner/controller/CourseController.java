@@ -3,6 +3,7 @@ package nl.uu.group8.courseplanner.controller;
 import lombok.extern.slf4j.Slf4j;
 import nl.uu.group8.courseplanner.domain.Agent;
 import nl.uu.group8.courseplanner.domain.Course;
+import nl.uu.group8.courseplanner.domain.Preference;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import nl.uu.group8.courseplanner.util.Formula;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -172,33 +173,81 @@ public class CourseController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<?> search(@RequestBody String query) throws Exception {
+    public ResponseEntity<?> search(@RequestBody Preference preference) throws Exception {
 
         long start = System.currentTimeMillis();
+
+        StringBuilder queryBuilder = new StringBuilder();
 
         // query must be constructed from preferences
+        if(null != preference.getPeriod() && preference.getPeriod().size() > 0) {
+            List<String> period = preference.getPeriod();
 
-        List<Course> courseList = parseQuery(query);
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < period.size(); i++) {
+                queryBuilder.append("(isTaughtInPeriod value " + period.get(i) + ")");
+
+                if(i != period.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        if(null != preference.getDay() && preference.getDay().size() > 0) {
+            List<String> day = preference.getDay();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < day.size(); i++) {
+                queryBuilder.append("(isTaughtOn some " + day.get(i) + ")");
+
+                if(i != day.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        if(null != preference.getTimeslot() && preference.getTimeslot().size() > 0) {
+            List<String> timeslot = preference.getTimeslot();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < timeslot.size(); i++) {
+                queryBuilder.append("(isTaughtOn some " + timeslot.get(i) + ")");
+
+                if(i != timeslot.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        if(null != preference.getLecturer() && preference.getLecturer().size() > 0) {
+            List<String> lecturer = preference.getLecturer();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < lecturer.size(); i++) {
+                queryBuilder.append("(isTaughtBy value " + lecturer.get(i) + ")");
+
+                if(i != lecturer.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        List<Course> courseList = parseQuery(queryBuilder.toString());
 
         long end = System.currentTimeMillis();
         log.info("Search time: " + (end - start) + " ms");
 
         return ResponseEntity.ok().body(courseList);
     }
-
-    @PostMapping("/similar")
-    public ResponseEntity<?> similar(@RequestBody String course) throws Exception {
-
-        long start = System.currentTimeMillis();
-
-        List<Course> courseList = parseQuery("Course");
-
-        long end = System.currentTimeMillis();
-        log.info("Search time: " + (end - start) + " ms");
-
-        return ResponseEntity.ok().body(courseList);
-    }
-
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody List<String> selected) throws Exception {
@@ -261,6 +310,7 @@ public class CourseController {
 
         Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
         for (OWLEntity entity : individuals) {
+            log.info("IN COURSE");
             String courseName = shortFormProvider.getShortForm(entity);
 
             String hasCourseQuery = "hasCourse value " + courseName;

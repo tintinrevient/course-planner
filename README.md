@@ -3,13 +3,13 @@
 ## To-Do List
 - [x] UI to query based on the current ontologies and scenarios
 - [ ] reasoning process - data
-- [x] performance metrics - data
 - [ ] Google calendar & Google assistant integration, etc...
 - [ ] "Similar Courses" search function implementation
 - [x] min=2, max=3 courses per term
 - [ ] UI: checkbox for all preferences
 - [ ] UI & Ontology: full schedule ordered by period
 - [ ] a utility function - based on the user's final choice per the full schedule
+- [ ] performance metrics - report & illustration
 
 ## User Guide
 

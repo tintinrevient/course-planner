@@ -11,6 +11,11 @@
 - [ ] a utility function - based on the user's final choice per the full schedule
 - [ ] performance metrics - report & illustration
 
+## Presentation
+1. Ontology
+2. Agent Design
+3. Demo
+
 ## User Guide
 
 The UI is as below:

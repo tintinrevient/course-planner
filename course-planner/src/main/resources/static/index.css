@@ -1,249 +1,292 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
-    height: 100%;
+	height: 100%;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 100%;
 }
 
 ul {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 section {
-    height: auto;
-    overflow-wrap: break-word;
+	height: auto;
+	overflow-wrap: break-word;
 }
 
-/* Create two columns/boxes that floats next to each other */
 nav {
-    float: left;
-    width: 50%;
-    min-height: calc(100vh - 70px);
-    background-color: #E0E0E0;
+	float: left;
+	width: 50%;
+	min-height: calc(100vh - 70px);
+	background-color: #E0E0E0;
 }
 
 article {
-    float: left;
-    width: 50%;
-    background-color: #f1f1f1;
-    padding: 20px;
-    min-height: calc(100vh - 70px);
+	float: left;
+	width: 50%;
+	background-color: #f1f1f1;
+	padding: 20px;
+	min-height: calc(100vh - 70px);
 }
 
 #registered {
-    display: inline-block;
-    width: 100%;
+	display: inline-block;
+	width: 100%;
 }
 
 .course {
-    border: 1px solid #666;
-    width: 46%;
-    height: 90px;
-    float: left;
-    margin: 10px 20px 10px 0px;
-    overflow: auto;
+	border: 1px solid #666;
+	width: 46%;
+	height: 90px;
+	float: left;
+	margin: 10px 20px 10px 0px;
+	overflow: auto;
 }
 
 .tick {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .period {
-    float: left;
+	float: left;
 }
 
 .timeslots {
-    float: right;
+	float: right;
 }
+
 
 /* Clear floats after the columns */
+
 section:after {
-    content: "";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 
+
 /* Style the footer */
+
 footer {
-    background: #B8B8B8;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    height: 70px;
+	background: #B8B8B8;
+	padding: 10px;
+	text-align: center;
+	color: white;
+	height: 70px;
 }
 
 .row {
-    display: flex; /* equal height of the children */
+	display: flex;
+	/* equal height of the children */
 }
 
 .split {
-    width: 100%;
-    position: relative;
-    left: 0;
-    right: 0;
+	width: 100%;
+	position: relative;
+	left: 0;
+	right: 0;
 }
 
 .top {
-    top: 0;
+	top: 0;
 }
 
 .bottom {
-    bottom: 0;
+	bottom: 0;
 }
 
 .calendar {
-    border: 5px solid #ddd;
+	border: 5px solid #ddd;
 }
 
 .term {
-  padding: 70px 25px;
-  width: 100%;
-  background: #1abc9c;
-  text-align: center;
+	padding: 70px 25px;
+	width: 100%;
+	background: #1abc9c;
+	text-align: center;
 }
 
 .term ul {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .term ul li {
-  color: white;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+	color: white;
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
 }
 
 .term .prev {
-  float: left;
-  padding-top: 10px;
+	float: left;
+	padding-top: 10px;
 }
 
 .term .next {
-  float: right;
-  padding-top: 10px;
+	float: right;
+	padding-top: 10px;
 }
 
 .weekdays {
-  margin: 0;
-  padding: 10px 0;
-  background-color: #ddd;
+	margin: 0;
+	padding: 10px 0;
+	background-color: #ddd;
 }
 
 .weekdays li {
-  display: inline-block;
-  width: 19%;
-  color: #666;
-  text-align: center;
+	display: inline-block;
+	width: 19%;
+	color: #666;
+	text-align: center;
 }
 
 .days {
-  padding: 10px 0;
-  background: #eee;
-  min-height: 300px;
-  margin: 0;
+	padding: 10px 0;
+	background: #eee;
+	min-height: 300px;
+	margin: 0;
 }
 
 .days li {
-  list-style-type: none;
-  display: inline-block;
-  width: 19%;
-  text-align: left;
-  margin-bottom: 5px;
-  font-size:17px;
-  color: #777;
-  min-height: 50px;
+	list-style-type: none;
+	display: inline-block;
+	width: 19%;
+	text-align: left;
+	margin-bottom: 5px;
+	font-size: 17px;
+	color: #777;
+	min-height: 50px;
 }
 
 .days li .active {
-  padding: 5px;
-  background: #1abc9c;
-  color: white !important
+	padding: 5px;
+	background: #1abc9c;
+	color: white !important
 }
 
 .agent {
-    border: 1px solid #666;
-    width: 100%;
-    height: auto;
-    float: left;
-    margin: 10px 20px 10px 0px;
-    overflow: auto;
+	border: 1px solid #666;
+	width: 100%;
+	height: auto;
+	float: left;
+	margin: 10px 20px 10px 0px;
+	overflow: auto;
 }
 
 .agent-rating {
-    margin-bottom: 20px;
-    font-weight: bold;
-    float: left;
+	margin-bottom: 20px;
+	font-weight: bold;
+	float: left;
 }
 
 .agent-name {
-    margin-bottom: 20px;
-    font-weight: bold;
-    float: right;
+	margin-bottom: 20px;
+	font-weight: bold;
+	float: right;
 }
 
 .rating {
-    float: left;
-    clear: both;
+	float: left;
+	clear: both;
 }
 
 .evaluation {
-    border: 1px solid #666;
-    width: 100%;
-    height: auto;
-    float: left;
-    margin: 10px 20px 10px 0px;
-    overflow: auto;
+	border: 1px solid #666;
+	width: 100%;
+	height: auto;
+	float: left;
+	margin: 10px 20px 10px 0px;
+	overflow: auto;
 }
 
 .evaluation-name {
-    margin-bottom: 20px;
-    font-weight: bold;
-    float: left;
+	margin-bottom: 20px;
+	font-weight: bold;
+	float: left;
 }
 
 .evaluation-score {
-    float: left;
-    clear: both;
+	float: left;
+	clear: both;
 }
 
 #preference {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
+
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+
 @media (max-width: 600px) {
-    nav, article {
-        width: 100%;
-        height: auto;
-    }
+	nav,
+	article {
+		width: 100%;
+		height: auto;
+	}
 }
 
 fieldset {
-    width: 100%;
-    display: inline-block;
+	width: 100%;
+	display: inline-block;
 }
 
-fieldset > div {
-    width: 33%;
-    display: inline-block;
+fieldset>div {
+	width: 32%;
+	display: inline-block;
+}
+
+.w3-button {
+	border: none;
+	display: inline-block;
+	padding: 8px 16px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap
+}
+
+.w3-block {
+	display: block;
+	width: 100%;
+	background: #1abc9c;
+	text-align: center;
+	color: white;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 @media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
+	.weekdays li,
+	.days li {
+		width: 13.1%;
+	}
 }
 
 @media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
+	.weekdays li,
+	.days li {
+		width: 12.5%;
+	}
+	.days li .active {
+		padding: 2px;
+	}
 }
 
 @media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
+	.weekdays li,
+	.days li {
+		width: 12.2%;
+	}
 }

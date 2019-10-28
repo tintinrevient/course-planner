@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -20,4 +21,9 @@ public class Preference {
     private List<String> timeslot;
     private List<String> topic;
     private List<String> lecturer;
+    private List<String> deadline;
+    private List<String> exam;
+    private List<String> instruction;
+    private List<String> research;
+    private List<String> faculty;
 }

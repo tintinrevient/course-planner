@@ -49,7 +49,6 @@
             <div id="messages"></div>
         </div>
     </nav>
-
     <article>
         <div id="preference">
             <div id="period-preference">
@@ -61,7 +60,6 @@
                     <input name="Period_4" type="checkbox"> Period 4
                 </fieldset>
             </div>
-
             <div id="day-preference">
                 <fieldset>
                     <legend>Day of Week</legend>
@@ -72,7 +70,6 @@
                     <input name="Friday" type="checkbox"> Friday
                 </fieldset>
             </div>
-
             <div id="timeslot-preference">
                 <fieldset>
                     <legend>Time Slot</legend>
@@ -81,7 +78,6 @@
                     <input name="Evening" type="checkbox"> Evening
                 </fieldset>
             </div>
-
             <div id="topic-preference">
                 <fieldset>
                     <legend>Topic</legend>
@@ -99,7 +95,6 @@
                     <div><input name="Sound_And_Media_Topic" type="checkbox"> Sound And Media</div>
                 </fieldset>
             </div>
-
             <div id="lecturer-preference">
                 <fieldset>
                     <legend>Lecturer</legend>
@@ -143,17 +138,61 @@
                     <div><input name="Wishnu_Prasetya" type="checkbox"> Wishnu_Prasetya</div>
                 </fieldset>
             </div>
+            <div id="deadline-preference">
+                <fieldset>
+                    <legend>Deadline</legend>
+                    <input name="Monthly_Deadlines" type="checkbox"> Monthly
+                    <input name="Biweekly_Deadlines" type="checkbox"> Biweekly
+                    <input name="Weekly_Deadlines" type="checkbox"> Weekly
+                    <input name="No_Deadlines" type="checkbox"> No Deadlines
+                </fieldset>
+            </div>
+            <div id="exam-preference">
+                <fieldset>
+                    <legend>Exam Form</legend>
+                    <input name="Paper" type="checkbox"> Paper
+                    <input name="Presentation" type="checkbox"> Presentation
+                    <input name="Project" type="checkbox"> Project
+                    <input name="Written_Exam" type="checkbox"> Written Exam
+                </fieldset>
+            </div>
+            <div id="instruction-preference">
+                <fieldset>
+                    <legend>Instructional Format</legend>
+                    <input name="Lab_Format" type="checkbox"> Lab
+                    <input name="Lecture_Format" type="checkbox"> Lecture
+                    <input name="Seminar_Format" type="checkbox"> Seminar
+                </fieldset>
+            </div>
+            <div id="research-preference">
+                <fieldset>
+                    <legend>Research Methodology</legend>
+                    <div><input name="Case_Studies" type="checkbox"> Case Studies</div>
+                    <div><input name="Delphi_Method" type="checkbox"> Delphi Method</div>
+                    <div><input name="Experiments" type="checkbox"> Experiments</div>
+                    <div><input name="Interviews" type="checkbox"> Interviews</div>
+                    <div><input name="Observation" type="checkbox"> Observation</div>
+                    <div><input name="Theoretical_Analysis" type="checkbox"> Theoretical Analysis</div>
+                </fieldset>
+            </div>
+            <div id="faculty-preference">
+                <fieldset>
+                    <legend>Faculty</legend>
+                    <div><input name="Faculty_Of_Beta_Science" type="checkbox"> Beta Science</div>
+                    <div><input name="Faculty_Of_Humanities" type="checkbox"> Humanities</div>
+                    <div><input name="Faculty_Of_Medicine" type="checkbox"> Medicine</div>
+                    <div><input name="Faculty_Of_Science" type="checkbox"> Science</div>
+                    <div style="white-space:nowrap"><input name="Faculty_Of_Social_Science_And_Behavioural_Sciences" type="checkbox"> Social Science And Behavioural Sciences</div>
+                </fieldset>
+            </div>
         </div>
-
-        <button type="button" id="bth-search" onclick="search()">Search</button>
+        <p><button type="button" id="bth-search" class="w3-button w3-block w3-teal" onclick="search()">Search</button></p>
         <div id="feedback"></div>
     </article>
 </section>
-
 <footer>
     <p>© UU Group 8</p>
 </footer>
-
 <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
 </body>

@@ -19,6 +19,7 @@ public class Course implements Comparable<Course>{
     private String period;
     private Set<String> timeslot;
     private String lecturer;
+    private String deadline;
     private int evaluation;
 
     @Override

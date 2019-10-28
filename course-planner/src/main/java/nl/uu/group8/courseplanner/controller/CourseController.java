@@ -177,6 +177,8 @@ public class CourseController {
 
         long start = System.currentTimeMillis();
 
+        Map response = new HashMap();
+        StringBuilder message = new StringBuilder();
         StringBuilder queryBuilder = new StringBuilder();
 
         // query must be constructed from preferences
@@ -257,24 +259,74 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        if(null != preference.getDeadline() && preference.getDeadline().size() > 0) {
+            List<String> deadline = preference.getDeadline();
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < deadline.size(); i++) {
+                queryBuilder.append("(hasDeadlines value " + deadline.get(i) + ")");
+
+                if(i != deadline.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        if(null != preference.getExam() && preference.getExam().size() > 0) {
+            List<String> exam = preference.getExam();
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < exam.size(); i++) {
+                queryBuilder.append("(hasExamForm value " + exam.get(i) + ")");
+
+                if(i != exam.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        if(null != preference.getInstruction() && preference.getInstruction().size() > 0) {
+            List<String> instruction = preference.getInstruction();
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < instruction.size(); i++) {
+                queryBuilder.append("(hasInstructionalFormat value " + instruction.get(i) + ")");
+
+                if(i != instruction.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        if(null != preference.getResearch() && preference.getResearch().size() > 0) {
+            List<String> research = preference.getResearch();
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < research.size(); i++) {
+                queryBuilder.append("(usesMethodology value " + research.get(i) + ")");
+
+                if(i != research.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        if(null != preference.getFaculty() && preference.getFaculty().size() > 0) {
+            List<String> faculty = preference.getFaculty();
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < faculty.size(); i++) {
+                queryBuilder.append("(isOfferedBy value " + faculty.get(i) + ")");
+
+                if(i != faculty.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
         List<Course> courseList = parseQuery(queryBuilder.toString());
 
-        long end = System.currentTimeMillis();
-        log.info("Search time: " + (end - start) + " ms");
-
-        return ResponseEntity.ok().body(courseList);
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody List<String> selected) throws Exception {
-
-        long start = System.currentTimeMillis();
-
-        Map response = new HashMap();
-        StringBuilder message = new StringBuilder();
-
-        for(String courseName : selected) {
-            Course course = courses.get(courseName);
+        for(Course course : courseList) {
             String period = course.getPeriod();
             Set<String> timeslot = course.getTimeslot();
 
@@ -315,7 +367,7 @@ public class CourseController {
         response.put("msg", message.toString());
 
         long end = System.currentTimeMillis();
-        log.info("Register time: " + (end - start) + " ms");
+        log.info("Search time: " + (end - start) + " ms");
 
         return ResponseEntity.ok().body(response);
     }

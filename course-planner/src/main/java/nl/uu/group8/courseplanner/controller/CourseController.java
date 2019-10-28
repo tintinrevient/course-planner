@@ -328,6 +328,8 @@ public class CourseController {
         for (OWLEntity entity : individuals) {
             String courseName = shortFormProvider.getShortForm(entity);
 
+            log.info("Check the course's period and timeslot for " + courseName);
+
             String hasCourseQuery = "hasCourse value " + courseName;
             Set<String> timeslot = new HashSet<>();
             Set<OWLNamedIndividual> timeslotIndividuals = engine.getInstances(hasCourseQuery, false);

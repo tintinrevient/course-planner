@@ -3,7 +3,7 @@ spring:
     name: agent-server
 
 server:
-  address: 192.168.178.24
+  address: localhost
   port: 8080
 
 # reasoner type can be chosen among "hermit", "pellet" and "jfact"
@@ -12,7 +12,7 @@ reasoner:
 
 # ontology filename in the directory "resources"
 ontology:
-  filename: ontology.owl
+  filename: ontology_v1.owl
 
 eureka:
   client:

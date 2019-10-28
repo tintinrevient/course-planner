@@ -326,7 +326,6 @@ public class CourseController {
 
         Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
         for (OWLEntity entity : individuals) {
-            log.info("IN COURSE");
             String courseName = shortFormProvider.getShortForm(entity);
 
             String hasCourseQuery = "hasCourse value " + courseName;

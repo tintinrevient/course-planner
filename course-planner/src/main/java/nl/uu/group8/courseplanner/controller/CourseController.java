@@ -225,6 +225,22 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        if(null != preference.getTopic() && preference.getTopic().size() > 0) {
+            List<String> topic = preference.getTopic();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < topic.size(); i++) {
+                queryBuilder.append("(coversTopic value " + topic.get(i) + ")");
+
+                if(i != topic.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
         if(null != preference.getLecturer() && preference.getLecturer().size() > 0) {
             List<String> lecturer = preference.getLecturer();
 

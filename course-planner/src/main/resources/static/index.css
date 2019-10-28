@@ -15,16 +15,6 @@ ul {
     list-style-type: none;
 }
 
-/* Style the header */
-header {
-    background: #B8B8B8;
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-    color: white;
-    height: 230px;
-}
-
 section {
     height: auto;
     overflow-wrap: break-word;
@@ -34,7 +24,7 @@ section {
 nav {
     float: left;
     width: 50%;
-    min-height: calc(100vh - 300px);
+    min-height: calc(100vh - 70px);
     background-color: #E0E0E0;
 }
 
@@ -43,7 +33,7 @@ article {
     width: 50%;
     background-color: #f1f1f1;
     padding: 20px;
-    min-height: calc(100vh - 300px);
+    min-height: calc(100vh - 70px);
 }
 
 #registered {
@@ -156,6 +146,7 @@ footer {
 .days {
   padding: 10px 0;
   background: #eee;
+  min-height: 300px;
   margin: 0;
 }
 
@@ -165,8 +156,9 @@ footer {
   width: 19%;
   text-align: left;
   margin-bottom: 5px;
-  font-size:12px;
+  font-size:17px;
   color: #777;
+  min-height: 50px;
 }
 
 .days li .active {
@@ -231,6 +223,16 @@ footer {
         width: 100%;
         height: auto;
     }
+}
+
+fieldset {
+    width: 100%;
+    display: inline-block;
+}
+
+fieldset > div {
+    width: 25%;
+    display: inline-block;
 }
 
 @media screen and (max-width:720px) {

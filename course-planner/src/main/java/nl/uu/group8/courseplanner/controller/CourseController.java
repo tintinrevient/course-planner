@@ -60,25 +60,23 @@ public class CourseController {
     // threshold: the maximum number of can-be registered courses per period
     private int max = 3;
 
+    // threshold: the default maximum number of can-be registered courses per period
+    private int defaultMax = 2;
+
+    // depth of the topic tree
+    private int depth = 1;
+
 
     @PostMapping("/ask-eval")
-    public ResponseEntity<?> ask(@RequestBody List<String> selected) throws Exception {
+    public ResponseEntity<?> ask(@RequestBody String selected) throws Exception {
 
         long start = System.currentTimeMillis();
 
         Map response = new HashMap();
 
-        String course = selected.get(0).split("[|]")[0];
+        String course = selected.replaceAll("\"", "");
 
-        if(selected.size() > 1) {
-            response.put("msg", "Evaluation can only be applied to one course!");
-
-            //1. all agents with beta reputation rating with their evaluation
-            //2. final course score
-            response.put("agents", agents);
-
-            return ResponseEntity.ok().body(response);
-        }
+        log.info("Start to evaluate course: " + course);
 
         String localServerUrl = InetAddress.getLocalHost().getHostAddress() + ":" + environment.getProperty("local.server.port");
         log.info("local server URL: " + localServerUrl);
@@ -181,20 +179,24 @@ public class CourseController {
         StringBuilder message = new StringBuilder();
         StringBuilder queryBuilder = new StringBuilder();
 
-        // query must be constructed from preferences
-        if(null != preference.getPeriod() && preference.getPeriod().size() > 0) {
-            List<String> period = preference.getPeriod();
+        // Preference - Maximum Courses per Period
+        if(null != preference.getMax() && preference.getMax().size() > 0)
+            setMax(Integer.parseInt(preference.getMax().get(0)));
+        else
+            setMax(defaultMax);
+
+        // Preference - Period
+        if(null != preference.getPeriod()) {
+            String period = preference.getPeriod();
+
+            log.info("Search courses in " + period);
 
             queryBuilder.append("(Course and (");
-            for(int i = 0; i < period.size(); i++) {
-                queryBuilder.append("(isTaughtInPeriod value " + period.get(i) + ")");
-
-                if(i != period.size() - 1)
-                    queryBuilder.append(" or ");
-            }
+            queryBuilder.append("(isTaughtInPeriod value " + period + ")");
             queryBuilder.append("))");
         }
 
+        // Preference - Day of Week
         if(null != preference.getDay() && preference.getDay().size() > 0) {
             List<String> day = preference.getDay();
 
@@ -211,6 +213,7 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Time Slot
         if(null != preference.getTimeslot() && preference.getTimeslot().size() > 0) {
             List<String> timeslot = preference.getTimeslot();
 
@@ -227,8 +230,10 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Topic
         if(null != preference.getTopic() && preference.getTopic().size() > 0) {
             List<String> topic = preference.getTopic();
+            topic = parseTopic(topic);
 
             if(!queryBuilder.toString().isEmpty())
                 queryBuilder.append(" and ");
@@ -243,6 +248,7 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Lecturer
         if(null != preference.getLecturer() && preference.getLecturer().size() > 0) {
             List<String> lecturer = preference.getLecturer();
 
@@ -259,6 +265,7 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Deadline
         if(null != preference.getDeadline() && preference.getDeadline().size() > 0) {
             List<String> deadline = preference.getDeadline();
 
@@ -272,6 +279,7 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Exam Form
         if(null != preference.getExam() && preference.getExam().size() > 0) {
             List<String> exam = preference.getExam();
 
@@ -285,6 +293,7 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Instructional Format
         if(null != preference.getInstruction() && preference.getInstruction().size() > 0) {
             List<String> instruction = preference.getInstruction();
 
@@ -298,6 +307,7 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Research Methodology
         if(null != preference.getResearch() && preference.getResearch().size() > 0) {
             List<String> research = preference.getResearch();
 
@@ -311,6 +321,7 @@ public class CourseController {
             queryBuilder.append("))");
         }
 
+        // Preference - Faculty
         if(null != preference.getFaculty() && preference.getFaculty().size() > 0) {
             List<String> faculty = preference.getFaculty();
 
@@ -319,6 +330,20 @@ public class CourseController {
                 queryBuilder.append("(isOfferedBy value " + faculty.get(i) + ")");
 
                 if(i != faculty.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        // Preference - Location
+        if(null != preference.getLocation() && preference.getLocation().size() > 0) {
+            List<String> location = preference.getLocation();
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < location.size(); i++) {
+                queryBuilder.append("(isOfferedBy some (isLocatedAt value " + location.get(i) + "))");
+
+                if(i != location.size() - 1)
                     queryBuilder.append(" or ");
             }
             queryBuilder.append("))");
@@ -336,7 +361,7 @@ public class CourseController {
             }
 
             if(availability.get(period).size() >= max) {
-                message.append("Number of registered courses for " + period + " is over " + max + "\n");
+                message.append("Number of registered courses for " + period + " is over " + max + "<br>");
                 continue;
             }
 
@@ -410,6 +435,29 @@ public class CourseController {
         return courseList;
     }
 
+    private List<String> parseTopic(List<String> topic) {
+        Set<String> topicSet = new HashSet<>(topic);
+
+        for(int level = 0; level < depth; level++) {
+
+            log.info("Topic tree search on depth " + level);
+
+            for(String parentTopic : topicSet) {
+
+                String query = "isPartOf value " + parentTopic;
+                Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
+
+                for (OWLEntity entity : individuals) {
+                    String childTopic = shortFormProvider.getShortForm(entity);
+                    log.info("Depth ["  + level + "] Child topic [" + childTopic + "] has been added");
+                    topicSet.add(childTopic);
+                }
+            }
+        }
+
+        return new ArrayList<>(topicSet);
+    }
+
     private String standarize(String input) {
         return input.replaceAll("_", " ");
     }
@@ -434,6 +482,10 @@ public class CourseController {
         courseObj.setEvaluation(score);
 
         evaluation.put(course, score);
+    }
+
+    private void setMax(int max) {
+        this.max = max;
     }
 
 }

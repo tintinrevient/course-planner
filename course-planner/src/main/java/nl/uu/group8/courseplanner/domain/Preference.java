@@ -16,7 +16,7 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Preference {
 
-    private List<String> period;
+    private String period;
     private List<String> day;
     private List<String> timeslot;
     private List<String> topic;
@@ -26,4 +26,6 @@ public class Preference {
     private List<String> instruction;
     private List<String> research;
     private List<String> faculty;
+    private List<String> location;
+    private List<String> max;
 }

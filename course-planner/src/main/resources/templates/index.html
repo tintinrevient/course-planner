@@ -26,168 +26,579 @@
                     <li>Friday</li>
                 </ul>
                 <ul class="days">
-                    <li id="monday-morning"> </li>
-                    <li id="tuesday-morning"> </li>
-                    <li id="wednesday-morning"> </li>
-                    <li id="thursday-morning"> </li>
-                    <li id="friday-morning"> </li>
-                    <li id="monday-afternoon"> </li>
-                    <li id="tuesday-afternoon"> </li>
-                    <li id="wednesday-afternoon"> </li>
-                    <li id="thursday-afternoon"> </li>
-                    <li id="friday-afternoon"> </li>
-                    <li id="monday-evening"> </li>
-                    <li id="tuesday-evening"> </li>
-                    <li id="wednesday-evening"> </li>
-                    <li id="thursday-evening"> </li>
-                    <li id="friday-evening"> </li>
+                    <li id="monday-morning" onclick="openCourse(event);"> </li>
+                    <li id="tuesday-morning" onclick="openCourse(event);"> </li>
+                    <li id="wednesday-morning" onclick="openCourse(event);"> </li>
+                    <li id="thursday-morning" onclick="openCourse(event);"> </li>
+                    <li id="friday-morning" onclick="openCourse(event);"> </li>
+                    <li id="monday-afternoon" onclick="openCourse(event);"> </li>
+                    <li id="tuesday-afternoon" onclick="openCourse(event);"> </li>
+                    <li id="wednesday-afternoon" onclick="openCourse(event);"> </li>
+                    <li id="thursday-afternoon" onclick="openCourse(event);"> </li>
+                    <li id="friday-afternoon" onclick="openCourse(event);"> </li>
+                    <li id="monday-evening" onclick="openCourse(event);"> </li>
+                    <li id="tuesday-evening" onclick="openCourse(event);"> </li>
+                    <li id="wednesday-evening" onclick="openCourse(event);"> </li>
+                    <li id="thursday-evening" onclick="openCourse(event);"> </li>
+                    <li id="friday-evening" onclick="openCourse(event);"> </li>
                 </ul>
             </div>
+            <p><button type="button" id="bth-ask-eval" class="search-button search-block" onclick="askeval()">Ask for Evaluation</button></p>
         </div>
         <div class="split bottom">
-            <h4>Messages</h4>
+            <div class="message-board">Messages</div>
             <div id="messages"></div>
         </div>
     </nav>
     <article>
-        <div id="preference">
-            <div id="period-preference">
-                <fieldset>
-                    <legend>Period</legend>
-                    <input name="Period_1" type="checkbox"> Period 1
-                    <input name="Period_2" type="checkbox"> Period 2
-                    <input name="Period_3" type="checkbox"> Period 3
-                    <input name="Period_4" type="checkbox"> Period 4
-                </fieldset>
-            </div>
-            <div id="day-preference">
-                <fieldset>
-                    <legend>Day of Week</legend>
-                    <input name="Monday" type="checkbox"> Monday
-                    <input name="Tuesday" type="checkbox"> Tuesday
-                    <input name="Wednesday" type="checkbox"> Wednesday
-                    <input name="Thursday" type="checkbox"> Thursday
-                    <input name="Friday" type="checkbox"> Friday
-                </fieldset>
-            </div>
-            <div id="timeslot-preference">
-                <fieldset>
-                    <legend>Time Slot</legend>
-                    <input name="Morning" type="checkbox"> Morning
-                    <input name="Afternoon" type="checkbox"> Afternoon
-                    <input name="Evening" type="checkbox"> Evening
-                </fieldset>
-            </div>
+        <div class="preference">
             <div id="topic-preference">
                 <fieldset>
                     <legend>Topic</legend>
-                    <div><input name="Computation_Topic" type="checkbox"> Computation </div>
-                    <div><input name="Agents_Topic" type="checkbox"> Agents</div>
+                    <div><input name="Artificial_Intelligence_Topic" type="checkbox"> Artificial Intelligence</div>
                     <div><input name="Machine_Learning_Topic" type="checkbox"> Machine Learning</div>
-                    <div><input name="Psychology_Topic" type="checkbox"> Psychology</div>
+                    <div><input name="Agents_Topic" type="checkbox"> Agents</div>
+                    <div><input name="Computation_Topic" type="checkbox"> Computation </div>
+                    <div><input name="Logic_Topic" type="checkbox"> Logic</div>
+                    <div><input name="Data_Topic" type="checkbox"> Data</div>
+                    <div><input name="Algorithms_Topic" type="checkbox"> Algorithms</div>
+                    <div><input name="Software_Topic" type="checkbox"> Software</div>
+                    <div><input name="Engineering_Topic" type="checkbox"> Engineering</div>
+                    <div><input name="Network_Topic" type="checkbox"> Network</div>
+                    <div><input name="Programming_Topic" type="checkbox"> Programming</div>
+                    <div><input name="Computer_Vision_Topic" type="checkbox"> Computer Vision</div>
                     <div><input name="Simulation_Topic" type="checkbox"> Simulation</div>
                     <div><input name="Game_Topic" type="checkbox"> Game</div>
-                    <div><input name="Applied_Data_Science_Topic" type="checkbox"> Applied Data Science</div>
+                    <div><input name="Multimedia_Topic" type="checkbox"> Multimedia</div>
+                    <div><input name="Psychology_Topic" type="checkbox"> Psychology</div>
                     <div><input name="Natural_Science_Topic" type="checkbox"> Natural Science</div>
-                    <div><input name="Logic_Topic" type="checkbox"> Logic</div>
-                    <div><input name="Artificial_Intelligence_Topic" type="checkbox"> Artificial Intelligence</div>
                     <div><input name="Neuroscience_Topic" type="checkbox"> Neuroscience</div>
-                    <div><input name="Sound_And_Media_Topic" type="checkbox"> Sound And Media</div>
+                    <div><input name="Biology_Topic" type="checkbox"> Biology</div>
+                    <div><input name="Chemistry_Topic" type="checkbox"> Chemistry</div>
+                    <div><input name="Theoretical_Physics_Topic" type="checkbox"> Theoretical Physics</div>
+                    <div><input name="Society_Topic" type="checkbox"> Society</div>
+                    <div><input name="Philosophy_Topic" type="checkbox"> Philosophy</div>
+                    <div><input name="Business_Topic" type="checkbox"> Business</div>
                 </fieldset>
             </div>
-            <div id="lecturer-preference">
-                <fieldset>
-                    <legend>Lecturer</legend>
-                    <div><input name="A_C_Telea" type="checkbox"> A_C_Telea</div>
-                    <div><input name="A_P_J_M_Siebes" type="checkbox"> A_P_J_M_Siebes</div>
-                    <div><input name="A_Postma" type="checkbox"> A_Postma</div>
-                    <div><input name="A_Volk" type="checkbox"> A_Volk</div>
-                    <div><input name="Albert_Salah" type="checkbox"> Albert_Salah</div>
-                    <div><input name="Anna-Lena_Lamprecht" type="checkbox"> Lena_Lamprecht</div>
-                    <div><input name="B_M_Harvey" type="checkbox"> B_M_Harvey</div>
-                    <div><input name="C_P_Janssen" type="checkbox"> C_P_Janssen</div>
-                    <div><input name="David_Terburg" type="checkbox"> David_Terburg</div>
-                    <div><input name="Davide_DellAnna" type="checkbox"> Davide DellAnna</div>
-                    <div><input name="Dong_Nguyen" type="checkbox"> Dong_Nguyen</div>
-                    <div><input name="Estrella_Montoya" type="checkbox"> Estrella_Montoya</div>
-                    <div><input name="Floris_Bex" type="checkbox"> Floris_Bex</div>
-                    <div><input name="G_Greco" type="checkbox"> G_Greco</div>
-                    <div><input name="Gerald_Vreeswijk" type="checkbox"> Gerald_Vreeswijk</div>
-                    <div><input name="H_M_Huistra" type="checkbox"> H_M_Huistra</div>
-                    <div><input name="J_H_Anderson" type="checkbox"> J_H_Anderson</div>
-                    <div><input name="J_J_Bolhuis" type="checkbox"> J_J_Bolhuis</div>
-                    <div><input name="J_L_Kenemans" type="checkbox"> J_L_Kenemans</div>
-                    <div><input name="J_Van_Honk" type="checkbox"> J_Van_Honk</div>
-                    <div><input name="M_J_Moortgat" type="checkbox"> M_J_Moortgat</div>
-                    <div><input name="M_J_R_Brinkhuis" type="checkbox"> M_J_R_Brinkhuis</div>
-                    <div><input name="M_R_Spruit" type="checkbox"> M_R_Spruit</div>
-                    <div><input name="Marijn_Schraagen" type="checkbox"> Marijn_Schraagen</div>
-                    <div><input name="Mehdi_Dastani" type="checkbox"> Mehdi_Dastani</div>
-                    <div><input name="Mlmila_Akdag" type="checkbox"> Mlmila_Akdag</div>
-                    <div><input name="Onuralp_Ulusoy" type="checkbox"> Onuralp_Ulusoy</div>
-                    <div><input name="Peter_Bos" type="checkbox"> Peter_Bos</div>
-                    <div><input name="Pinar_Yolum" type="checkbox"> Pinar_Yolum</div>
-                    <div><input name="R_Iemhoff" type="checkbox"> R Iemhoff</div>
-                    <div><input name="R_J_Geraerts" type="checkbox"> R_J_Geraerts</div>
-                    <div><input name="R_W_F_Nouwen" type="checkbox"> R_W_F_Nouwen</div>
-                    <div><input name="Richard_Starmans" type="checkbox"> Richard_Starmans</div>
-                    <div><input name="Samira_Shirzadeh" type="checkbox"> Samira_Shirzadeh</div>
-                    <div><input name="T_Deoskar" type="checkbox"> T_Deoskar</div>
-                    <div><input name="Thijs_Van_Ommen" type="checkbox"> Thijs_Van_Ommen</div>
-                    <div><input name="Tim_Baarslag" type="checkbox"> Tim_Baarslag</div>
-                    <div><input name="Wishnu_Prasetya" type="checkbox"> Wishnu_Prasetya</div>
-                </fieldset>
-            </div>
-            <div id="deadline-preference">
-                <fieldset>
-                    <legend>Deadline</legend>
-                    <input name="Monthly_Deadlines" type="checkbox"> Monthly
-                    <input name="Biweekly_Deadlines" type="checkbox"> Biweekly
-                    <input name="Weekly_Deadlines" type="checkbox"> Weekly
-                    <input name="No_Deadlines" type="checkbox"> No Deadlines
-                </fieldset>
-            </div>
-            <div id="exam-preference">
-                <fieldset>
-                    <legend>Exam Form</legend>
-                    <input name="Paper" type="checkbox"> Paper
-                    <input name="Presentation" type="checkbox"> Presentation
-                    <input name="Project" type="checkbox"> Project
-                    <input name="Written_Exam" type="checkbox"> Written Exam
-                </fieldset>
-            </div>
-            <div id="instruction-preference">
-                <fieldset>
-                    <legend>Instructional Format</legend>
-                    <input name="Lab_Format" type="checkbox"> Lab
-                    <input name="Lecture_Format" type="checkbox"> Lecture
-                    <input name="Seminar_Format" type="checkbox"> Seminar
-                </fieldset>
-            </div>
-            <div id="research-preference">
-                <fieldset>
-                    <legend>Research Methodology</legend>
-                    <div><input name="Case_Studies" type="checkbox"> Case Studies</div>
-                    <div><input name="Delphi_Method" type="checkbox"> Delphi Method</div>
-                    <div><input name="Experiments" type="checkbox"> Experiments</div>
-                    <div><input name="Interviews" type="checkbox"> Interviews</div>
-                    <div><input name="Observation" type="checkbox"> Observation</div>
-                    <div><input name="Theoretical_Analysis" type="checkbox"> Theoretical Analysis</div>
-                </fieldset>
-            </div>
-            <div id="faculty-preference">
-                <fieldset>
-                    <legend>Faculty</legend>
-                    <div><input name="Faculty_Of_Beta_Science" type="checkbox"> Beta Science</div>
-                    <div><input name="Faculty_Of_Humanities" type="checkbox"> Humanities</div>
-                    <div><input name="Faculty_Of_Medicine" type="checkbox"> Medicine</div>
-                    <div><input name="Faculty_Of_Science" type="checkbox"> Science</div>
-                    <div style="white-space:nowrap"><input name="Faculty_Of_Social_Science_And_Behavioural_Sciences" type="checkbox"> Social Science And Behavioural Sciences</div>
-                </fieldset>
+            <div class="period-row">
+                <a href="javascript:void(0)" onclick="openPeriod(event, 'period1');">
+                    <div class="fourth-column tablink bottombar hover-light-grey">Period 1</div>
+                </a>
+                <a href="javascript:void(0)" onclick="openPeriod(event, 'period2');">
+                    <div class="fourth-column tablink bottombar hover-light-grey">Period 2</div>
+                </a>
+                <a href="javascript:void(0)" onclick="openPeriod(event, 'period3');">
+                    <div class="fourth-column tablink bottombar hover-light-grey">Period 3</div>
+                </a>
+                <a href="javascript:void(0)" onclick="openPeriod(event, 'period4');">
+                    <div class="fourth-column tablink bottombar hover-light-grey">Period 4</div>
+                </a>
             </div>
         </div>
-        <p><button type="button" id="bth-search" class="w3-button w3-block w3-teal" onclick="search()">Search</button></p>
-        <div id="feedback"></div>
+        <div class="preference">
+            <div id="period1" class="period-preference" style="display:none">
+                <div class="day-preference">
+                    <fieldset>
+                        <legend>Day of Week</legend>
+                        <input name="Monday" type="checkbox"> Monday
+                        <input name="Tuesday" type="checkbox"> Tuesday
+                        <input name="Wednesday" type="checkbox"> Wednesday
+                        <input name="Thursday" type="checkbox"> Thursday
+                        <input name="Friday" type="checkbox"> Friday
+                    </fieldset>
+                </div>
+                <div class="timeslot-preference">
+                    <fieldset>
+                        <legend>Time Slot</legend>
+                        <input name="Morning" type="checkbox"> Morning
+                        <input name="Afternoon" type="checkbox"> Afternoon
+                        <input name="Evening" type="checkbox"> Evening
+                    </fieldset>
+                </div>
+                <div class="lecturer-preference">
+                    <fieldset>
+                        <legend>Lecturer</legend>
+                        <div><input name="A_C_Telea" type="checkbox"> A_C_Telea</div>
+                        <div><input name="A_P_J_M_Siebes" type="checkbox"> A_P_J_M_Siebes</div>
+                        <div><input name="A_Postma" type="checkbox"> A_Postma</div>
+                        <div><input name="A_Volk" type="checkbox"> A_Volk</div>
+                        <div><input name="Albert_Salah" type="checkbox"> Albert_Salah</div>
+                        <div><input name="Anna-Lena_Lamprecht" type="checkbox"> Lena_Lamprecht</div>
+                        <div><input name="B_M_Harvey" type="checkbox"> B_M_Harvey</div>
+                        <div><input name="C_P_Janssen" type="checkbox"> C_P_Janssen</div>
+                        <div><input name="David_Terburg" type="checkbox"> David_Terburg</div>
+                        <div><input name="Davide_DellAnna" type="checkbox"> Davide DellAnna</div>
+                        <div><input name="Dong_Nguyen" type="checkbox"> Dong_Nguyen</div>
+                        <div><input name="Estrella_Montoya" type="checkbox"> Estrella_Montoya</div>
+                        <div><input name="Floris_Bex" type="checkbox"> Floris_Bex</div>
+                        <div><input name="G_Greco" type="checkbox"> G_Greco</div>
+                        <div><input name="Gerald_Vreeswijk" type="checkbox"> Gerald_Vreeswijk</div>
+                        <div><input name="H_M_Huistra" type="checkbox"> H_M_Huistra</div>
+                        <div><input name="J_H_Anderson" type="checkbox"> J_H_Anderson</div>
+                        <div><input name="J_J_Bolhuis" type="checkbox"> J_J_Bolhuis</div>
+                        <div><input name="J_L_Kenemans" type="checkbox"> J_L_Kenemans</div>
+                        <div><input name="J_Van_Honk" type="checkbox"> J_Van_Honk</div>
+                        <div><input name="M_J_Moortgat" type="checkbox"> M_J_Moortgat</div>
+                        <div><input name="M_J_R_Brinkhuis" type="checkbox"> M_J_R_Brinkhuis</div>
+                        <div><input name="M_R_Spruit" type="checkbox"> M_R_Spruit</div>
+                        <div><input name="Marijn_Schraagen" type="checkbox"> Marijn_Schraagen</div>
+                        <div><input name="Mehdi_Dastani" type="checkbox"> Mehdi_Dastani</div>
+                        <div><input name="Mlmila_Akdag" type="checkbox"> Mlmila_Akdag</div>
+                        <div><input name="Onuralp_Ulusoy" type="checkbox"> Onuralp_Ulusoy</div>
+                        <div><input name="Peter_Bos" type="checkbox"> Peter_Bos</div>
+                        <div><input name="Pinar_Yolum" type="checkbox"> Pinar_Yolum</div>
+                        <div><input name="R_Iemhoff" type="checkbox"> R Iemhoff</div>
+                        <div><input name="R_J_Geraerts" type="checkbox"> R_J_Geraerts</div>
+                        <div><input name="R_W_F_Nouwen" type="checkbox"> R_W_F_Nouwen</div>
+                        <div><input name="Richard_Starmans" type="checkbox"> Richard_Starmans</div>
+                        <div><input name="Samira_Shirzadeh" type="checkbox"> Samira_Shirzadeh</div>
+                        <div><input name="T_Deoskar" type="checkbox"> T_Deoskar</div>
+                        <div><input name="Thijs_Van_Ommen" type="checkbox"> Thijs_Van_Ommen</div>
+                        <div><input name="Tim_Baarslag" type="checkbox"> Tim_Baarslag</div>
+                        <div><input name="Wishnu_Prasetya" type="checkbox"> Wishnu_Prasetya</div>
+                    </fieldset>
+                </div>
+                <div class="deadline-preference">
+                    <fieldset>
+                        <legend>Deadline</legend>
+                        <input name="Monthly_Deadlines" type="checkbox"> Monthly
+                        <input name="Biweekly_Deadlines" type="checkbox"> Biweekly
+                        <input name="Weekly_Deadlines" type="checkbox"> Weekly
+                        <input name="No_Deadlines" type="checkbox"> No Deadlines
+                    </fieldset>
+                </div>
+                <div class="exam-preference">
+                    <fieldset>
+                        <legend>Exam Form</legend>
+                        <input name="Paper" type="checkbox"> Paper
+                        <input name="Presentation" type="checkbox"> Presentation
+                        <input name="Project" type="checkbox"> Project
+                        <input name="Written_Exam" type="checkbox"> Written Exam
+                    </fieldset>
+                </div>
+                <div class="instruction-preference">
+                    <fieldset>
+                        <legend>Instructional Format</legend>
+                        <input name="Lab_Format" type="checkbox"> Lab
+                        <input name="Lecture_Format" type="checkbox"> Lecture
+                        <input name="Seminar_Format" type="checkbox"> Seminar
+                    </fieldset>
+                </div>
+                <div class="research-preference">
+                    <fieldset>
+                        <legend>Research Methodology</legend>
+                        <div><input name="Case_Studies" type="checkbox"> Case Studies</div>
+                        <div><input name="Delphi_Method" type="checkbox"> Delphi Method</div>
+                        <div><input name="Experiments" type="checkbox"> Experiments</div>
+                        <div><input name="Interviews" type="checkbox"> Interviews</div>
+                        <div><input name="Observation" type="checkbox"> Observation</div>
+                        <div><input name="Theoretical_Analysis" type="checkbox"> Theoretical Analysis</div>
+                    </fieldset>
+                </div>
+                <div class="faculty-preference">
+                    <fieldset>
+                        <legend>Faculty</legend>
+                        <div><input name="Faculty_Of_Beta_Science" type="checkbox"> Beta Science</div>
+                        <div><input name="Faculty_Of_Humanities" type="checkbox"> Humanities</div>
+                        <div><input name="Faculty_Of_Medicine" type="checkbox"> Medicine</div>
+                        <div><input name="Faculty_Of_Science" type="checkbox"> Science</div>
+                        <div style="white-space:nowrap"><input name="Faculty_Of_Social_Science_And_Behavioural_Sciences" type="checkbox"> Social Science And Behavioural Sciences</div>
+                    </fieldset>
+                </div>
+                <div class="location-preference">
+                    <fieldset>
+                        <legend>Location</legend>
+                        <input name="Domplein" type="checkbox"> Domplein
+                        <input name="Drift" type="checkbox"> Drift
+                        <input name="Science_Park" type="checkbox"> Science Park
+                    </fieldset>
+                </div>
+                <div class="max-preference">
+                    <fieldset>
+                        <legend>Courses per Period</legend>
+                        <input name="course-threshold" value="2" type="radio"> Two Courses
+                        <input name="course-threshold" value="3" type="radio"> Three Courses
+                    </fieldset>
+                </div>
+            </div>
+            <div id="period2" class="period-preference" style="display:none">
+                <div class="day-preference">
+                    <fieldset>
+                        <legend>Day of Week</legend>
+                        <input name="Monday" type="checkbox"> Monday
+                        <input name="Tuesday" type="checkbox"> Tuesday
+                        <input name="Wednesday" type="checkbox"> Wednesday
+                        <input name="Thursday" type="checkbox"> Thursday
+                        <input name="Friday" type="checkbox"> Friday
+                    </fieldset>
+                </div>
+                <div class="timeslot-preference">
+                    <fieldset>
+                        <legend>Time Slot</legend>
+                        <input name="Morning" type="checkbox"> Morning
+                        <input name="Afternoon" type="checkbox"> Afternoon
+                        <input name="Evening" type="checkbox"> Evening
+                    </fieldset>
+                </div>
+                <div class="lecturer-preference">
+                    <fieldset>
+                        <legend>Lecturer</legend>
+                        <div><input name="A_C_Telea" type="checkbox"> A_C_Telea</div>
+                        <div><input name="A_P_J_M_Siebes" type="checkbox"> A_P_J_M_Siebes</div>
+                        <div><input name="A_Postma" type="checkbox"> A_Postma</div>
+                        <div><input name="A_Volk" type="checkbox"> A_Volk</div>
+                        <div><input name="Albert_Salah" type="checkbox"> Albert_Salah</div>
+                        <div><input name="Anna-Lena_Lamprecht" type="checkbox"> Lena_Lamprecht</div>
+                        <div><input name="B_M_Harvey" type="checkbox"> B_M_Harvey</div>
+                        <div><input name="C_P_Janssen" type="checkbox"> C_P_Janssen</div>
+                        <div><input name="David_Terburg" type="checkbox"> David_Terburg</div>
+                        <div><input name="Davide_DellAnna" type="checkbox"> Davide DellAnna</div>
+                        <div><input name="Dong_Nguyen" type="checkbox"> Dong_Nguyen</div>
+                        <div><input name="Estrella_Montoya" type="checkbox"> Estrella_Montoya</div>
+                        <div><input name="Floris_Bex" type="checkbox"> Floris_Bex</div>
+                        <div><input name="G_Greco" type="checkbox"> G_Greco</div>
+                        <div><input name="Gerald_Vreeswijk" type="checkbox"> Gerald_Vreeswijk</div>
+                        <div><input name="H_M_Huistra" type="checkbox"> H_M_Huistra</div>
+                        <div><input name="J_H_Anderson" type="checkbox"> J_H_Anderson</div>
+                        <div><input name="J_J_Bolhuis" type="checkbox"> J_J_Bolhuis</div>
+                        <div><input name="J_L_Kenemans" type="checkbox"> J_L_Kenemans</div>
+                        <div><input name="J_Van_Honk" type="checkbox"> J_Van_Honk</div>
+                        <div><input name="M_J_Moortgat" type="checkbox"> M_J_Moortgat</div>
+                        <div><input name="M_J_R_Brinkhuis" type="checkbox"> M_J_R_Brinkhuis</div>
+                        <div><input name="M_R_Spruit" type="checkbox"> M_R_Spruit</div>
+                        <div><input name="Marijn_Schraagen" type="checkbox"> Marijn_Schraagen</div>
+                        <div><input name="Mehdi_Dastani" type="checkbox"> Mehdi_Dastani</div>
+                        <div><input name="Mlmila_Akdag" type="checkbox"> Mlmila_Akdag</div>
+                        <div><input name="Onuralp_Ulusoy" type="checkbox"> Onuralp_Ulusoy</div>
+                        <div><input name="Peter_Bos" type="checkbox"> Peter_Bos</div>
+                        <div><input name="Pinar_Yolum" type="checkbox"> Pinar_Yolum</div>
+                        <div><input name="R_Iemhoff" type="checkbox"> R Iemhoff</div>
+                        <div><input name="R_J_Geraerts" type="checkbox"> R_J_Geraerts</div>
+                        <div><input name="R_W_F_Nouwen" type="checkbox"> R_W_F_Nouwen</div>
+                        <div><input name="Richard_Starmans" type="checkbox"> Richard_Starmans</div>
+                        <div><input name="Samira_Shirzadeh" type="checkbox"> Samira_Shirzadeh</div>
+                        <div><input name="T_Deoskar" type="checkbox"> T_Deoskar</div>
+                        <div><input name="Thijs_Van_Ommen" type="checkbox"> Thijs_Van_Ommen</div>
+                        <div><input name="Tim_Baarslag" type="checkbox"> Tim_Baarslag</div>
+                        <div><input name="Wishnu_Prasetya" type="checkbox"> Wishnu_Prasetya</div>
+                    </fieldset>
+                </div>
+                <div class="deadline-preference">
+                    <fieldset>
+                        <legend>Deadline</legend>
+                        <input name="Monthly_Deadlines" type="checkbox"> Monthly
+                        <input name="Biweekly_Deadlines" type="checkbox"> Biweekly
+                        <input name="Weekly_Deadlines" type="checkbox"> Weekly
+                        <input name="No_Deadlines" type="checkbox"> No Deadlines
+                    </fieldset>
+                </div>
+                <div class="exam-preference">
+                    <fieldset>
+                        <legend>Exam Form</legend>
+                        <input name="Paper" type="checkbox"> Paper
+                        <input name="Presentation" type="checkbox"> Presentation
+                        <input name="Project" type="checkbox"> Project
+                        <input name="Written_Exam" type="checkbox"> Written Exam
+                    </fieldset>
+                </div>
+                <div class="instruction-preference">
+                    <fieldset>
+                        <legend>Instructional Format</legend>
+                        <input name="Lab_Format" type="checkbox"> Lab
+                        <input name="Lecture_Format" type="checkbox"> Lecture
+                        <input name="Seminar_Format" type="checkbox"> Seminar
+                    </fieldset>
+                </div>
+                <div class="research-preference">
+                    <fieldset>
+                        <legend>Research Methodology</legend>
+                        <div><input name="Case_Studies" type="checkbox"> Case Studies</div>
+                        <div><input name="Delphi_Method" type="checkbox"> Delphi Method</div>
+                        <div><input name="Experiments" type="checkbox"> Experiments</div>
+                        <div><input name="Interviews" type="checkbox"> Interviews</div>
+                        <div><input name="Observation" type="checkbox"> Observation</div>
+                        <div><input name="Theoretical_Analysis" type="checkbox"> Theoretical Analysis</div>
+                    </fieldset>
+                </div>
+                <div class="faculty-preference">
+                    <fieldset>
+                        <legend>Faculty</legend>
+                        <div><input name="Faculty_Of_Beta_Science" type="checkbox"> Beta Science</div>
+                        <div><input name="Faculty_Of_Humanities" type="checkbox"> Humanities</div>
+                        <div><input name="Faculty_Of_Medicine" type="checkbox"> Medicine</div>
+                        <div><input name="Faculty_Of_Science" type="checkbox"> Science</div>
+                        <div style="white-space:nowrap"><input name="Faculty_Of_Social_Science_And_Behavioural_Sciences" type="checkbox"> Social Science And Behavioural Sciences</div>
+                    </fieldset>
+                </div>
+                <div class="location-preference">
+                    <fieldset>
+                        <legend>Location</legend>
+                        <input name="Domplein" type="checkbox"> Domplein
+                        <input name="Drift" type="checkbox"> Drift
+                        <input name="Science_Park" type="checkbox"> Science Park
+                    </fieldset>
+                </div>
+                <div class="max-preference">
+                    <fieldset>
+                        <legend>Courses per Period</legend>
+                        <input name="course-threshold" value="2" type="radio"> Two Courses
+                        <input name="course-threshold" value="3" type="radio"> Three Courses
+                    </fieldset>
+                </div>
+            </div>
+            <div id="period3" class="period-preference" style="display:none">
+                <div class="day-preference">
+                    <fieldset>
+                        <legend>Day of Week</legend>
+                        <input name="Monday" type="checkbox"> Monday
+                        <input name="Tuesday" type="checkbox"> Tuesday
+                        <input name="Wednesday" type="checkbox"> Wednesday
+                        <input name="Thursday" type="checkbox"> Thursday
+                        <input name="Friday" type="checkbox"> Friday
+                    </fieldset>
+                </div>
+                <div class="timeslot-preference">
+                    <fieldset>
+                        <legend>Time Slot</legend>
+                        <input name="Morning" type="checkbox"> Morning
+                        <input name="Afternoon" type="checkbox"> Afternoon
+                        <input name="Evening" type="checkbox"> Evening
+                    </fieldset>
+                </div>
+                <div class="lecturer-preference">
+                    <fieldset>
+                        <legend>Lecturer</legend>
+                        <div><input name="A_C_Telea" type="checkbox"> A_C_Telea</div>
+                        <div><input name="A_P_J_M_Siebes" type="checkbox"> A_P_J_M_Siebes</div>
+                        <div><input name="A_Postma" type="checkbox"> A_Postma</div>
+                        <div><input name="A_Volk" type="checkbox"> A_Volk</div>
+                        <div><input name="Albert_Salah" type="checkbox"> Albert_Salah</div>
+                        <div><input name="Anna-Lena_Lamprecht" type="checkbox"> Lena_Lamprecht</div>
+                        <div><input name="B_M_Harvey" type="checkbox"> B_M_Harvey</div>
+                        <div><input name="C_P_Janssen" type="checkbox"> C_P_Janssen</div>
+                        <div><input name="David_Terburg" type="checkbox"> David_Terburg</div>
+                        <div><input name="Davide_DellAnna" type="checkbox"> Davide DellAnna</div>
+                        <div><input name="Dong_Nguyen" type="checkbox"> Dong_Nguyen</div>
+                        <div><input name="Estrella_Montoya" type="checkbox"> Estrella_Montoya</div>
+                        <div><input name="Floris_Bex" type="checkbox"> Floris_Bex</div>
+                        <div><input name="G_Greco" type="checkbox"> G_Greco</div>
+                        <div><input name="Gerald_Vreeswijk" type="checkbox"> Gerald_Vreeswijk</div>
+                        <div><input name="H_M_Huistra" type="checkbox"> H_M_Huistra</div>
+                        <div><input name="J_H_Anderson" type="checkbox"> J_H_Anderson</div>
+                        <div><input name="J_J_Bolhuis" type="checkbox"> J_J_Bolhuis</div>
+                        <div><input name="J_L_Kenemans" type="checkbox"> J_L_Kenemans</div>
+                        <div><input name="J_Van_Honk" type="checkbox"> J_Van_Honk</div>
+                        <div><input name="M_J_Moortgat" type="checkbox"> M_J_Moortgat</div>
+                        <div><input name="M_J_R_Brinkhuis" type="checkbox"> M_J_R_Brinkhuis</div>
+                        <div><input name="M_R_Spruit" type="checkbox"> M_R_Spruit</div>
+                        <div><input name="Marijn_Schraagen" type="checkbox"> Marijn_Schraagen</div>
+                        <div><input name="Mehdi_Dastani" type="checkbox"> Mehdi_Dastani</div>
+                        <div><input name="Mlmila_Akdag" type="checkbox"> Mlmila_Akdag</div>
+                        <div><input name="Onuralp_Ulusoy" type="checkbox"> Onuralp_Ulusoy</div>
+                        <div><input name="Peter_Bos" type="checkbox"> Peter_Bos</div>
+                        <div><input name="Pinar_Yolum" type="checkbox"> Pinar_Yolum</div>
+                        <div><input name="R_Iemhoff" type="checkbox"> R Iemhoff</div>
+                        <div><input name="R_J_Geraerts" type="checkbox"> R_J_Geraerts</div>
+                        <div><input name="R_W_F_Nouwen" type="checkbox"> R_W_F_Nouwen</div>
+                        <div><input name="Richard_Starmans" type="checkbox"> Richard_Starmans</div>
+                        <div><input name="Samira_Shirzadeh" type="checkbox"> Samira_Shirzadeh</div>
+                        <div><input name="T_Deoskar" type="checkbox"> T_Deoskar</div>
+                        <div><input name="Thijs_Van_Ommen" type="checkbox"> Thijs_Van_Ommen</div>
+                        <div><input name="Tim_Baarslag" type="checkbox"> Tim_Baarslag</div>
+                        <div><input name="Wishnu_Prasetya" type="checkbox"> Wishnu_Prasetya</div>
+                    </fieldset>
+                </div>
+                <div class="deadline-preference">
+                    <fieldset>
+                        <legend>Deadline</legend>
+                        <input name="Monthly_Deadlines" type="checkbox"> Monthly
+                        <input name="Biweekly_Deadlines" type="checkbox"> Biweekly
+                        <input name="Weekly_Deadlines" type="checkbox"> Weekly
+                        <input name="No_Deadlines" type="checkbox"> No Deadlines
+                    </fieldset>
+                </div>
+                <div class="exam-preference">
+                    <fieldset>
+                        <legend>Exam Form</legend>
+                        <input name="Paper" type="checkbox"> Paper
+                        <input name="Presentation" type="checkbox"> Presentation
+                        <input name="Project" type="checkbox"> Project
+                        <input name="Written_Exam" type="checkbox"> Written Exam
+                    </fieldset>
+                </div>
+                <div class="instruction-preference">
+                    <fieldset>
+                        <legend>Instructional Format</legend>
+                        <input name="Lab_Format" type="checkbox"> Lab
+                        <input name="Lecture_Format" type="checkbox"> Lecture
+                        <input name="Seminar_Format" type="checkbox"> Seminar
+                    </fieldset>
+                </div>
+                <div class="research-preference">
+                    <fieldset>
+                        <legend>Research Methodology</legend>
+                        <div><input name="Case_Studies" type="checkbox"> Case Studies</div>
+                        <div><input name="Delphi_Method" type="checkbox"> Delphi Method</div>
+                        <div><input name="Experiments" type="checkbox"> Experiments</div>
+                        <div><input name="Interviews" type="checkbox"> Interviews</div>
+                        <div><input name="Observation" type="checkbox"> Observation</div>
+                        <div><input name="Theoretical_Analysis" type="checkbox"> Theoretical Analysis</div>
+                    </fieldset>
+                </div>
+                <div class="faculty-preference">
+                    <fieldset>
+                        <legend>Faculty</legend>
+                        <div><input name="Faculty_Of_Beta_Science" type="checkbox"> Beta Science</div>
+                        <div><input name="Faculty_Of_Humanities" type="checkbox"> Humanities</div>
+                        <div><input name="Faculty_Of_Medicine" type="checkbox"> Medicine</div>
+                        <div><input name="Faculty_Of_Science" type="checkbox"> Science</div>
+                        <div style="white-space:nowrap"><input name="Faculty_Of_Social_Science_And_Behavioural_Sciences" type="checkbox"> Social Science And Behavioural Sciences</div>
+                    </fieldset>
+                </div>
+                <div class="location-preference">
+                    <fieldset>
+                        <legend>Location</legend>
+                        <input name="Domplein" type="checkbox"> Domplein
+                        <input name="Drift" type="checkbox"> Drift
+                        <input name="Science_Park" type="checkbox"> Science Park
+                    </fieldset>
+                </div>
+                <div class="max-preference">
+                    <fieldset>
+                        <legend>Courses per Period</legend>
+                        <input name="course-threshold" value="2" type="radio"> Two Courses
+                        <input name="course-threshold" value="3" type="radio"> Three Courses
+                    </fieldset>
+                </div>
+            </div>
+            <div id="period4" class="period-preference" style="display:none">
+                <div class="day-preference">
+                    <fieldset>
+                        <legend>Day of Week</legend>
+                        <input name="Monday" type="checkbox"> Monday
+                        <input name="Tuesday" type="checkbox"> Tuesday
+                        <input name="Wednesday" type="checkbox"> Wednesday
+                        <input name="Thursday" type="checkbox"> Thursday
+                        <input name="Friday" type="checkbox"> Friday
+                    </fieldset>
+                </div>
+                <div class="timeslot-preference">
+                    <fieldset>
+                        <legend>Time Slot</legend>
+                        <input name="Morning" type="checkbox"> Morning
+                        <input name="Afternoon" type="checkbox"> Afternoon
+                        <input name="Evening" type="checkbox"> Evening
+                    </fieldset>
+                </div>
+                <div class="lecturer-preference">
+                    <fieldset>
+                        <legend>Lecturer</legend>
+                        <div><input name="A_C_Telea" type="checkbox"> A_C_Telea</div>
+                        <div><input name="A_P_J_M_Siebes" type="checkbox"> A_P_J_M_Siebes</div>
+                        <div><input name="A_Postma" type="checkbox"> A_Postma</div>
+                        <div><input name="A_Volk" type="checkbox"> A_Volk</div>
+                        <div><input name="Albert_Salah" type="checkbox"> Albert_Salah</div>
+                        <div><input name="Anna-Lena_Lamprecht" type="checkbox"> Lena_Lamprecht</div>
+                        <div><input name="B_M_Harvey" type="checkbox"> B_M_Harvey</div>
+                        <div><input name="C_P_Janssen" type="checkbox"> C_P_Janssen</div>
+                        <div><input name="David_Terburg" type="checkbox"> David_Terburg</div>
+                        <div><input name="Davide_DellAnna" type="checkbox"> Davide DellAnna</div>
+                        <div><input name="Dong_Nguyen" type="checkbox"> Dong_Nguyen</div>
+                        <div><input name="Estrella_Montoya" type="checkbox"> Estrella_Montoya</div>
+                        <div><input name="Floris_Bex" type="checkbox"> Floris_Bex</div>
+                        <div><input name="G_Greco" type="checkbox"> G_Greco</div>
+                        <div><input name="Gerald_Vreeswijk" type="checkbox"> Gerald_Vreeswijk</div>
+                        <div><input name="H_M_Huistra" type="checkbox"> H_M_Huistra</div>
+                        <div><input name="J_H_Anderson" type="checkbox"> J_H_Anderson</div>
+                        <div><input name="J_J_Bolhuis" type="checkbox"> J_J_Bolhuis</div>
+                        <div><input name="J_L_Kenemans" type="checkbox"> J_L_Kenemans</div>
+                        <div><input name="J_Van_Honk" type="checkbox"> J_Van_Honk</div>
+                        <div><input name="M_J_Moortgat" type="checkbox"> M_J_Moortgat</div>
+                        <div><input name="M_J_R_Brinkhuis" type="checkbox"> M_J_R_Brinkhuis</div>
+                        <div><input name="M_R_Spruit" type="checkbox"> M_R_Spruit</div>
+                        <div><input name="Marijn_Schraagen" type="checkbox"> Marijn_Schraagen</div>
+                        <div><input name="Mehdi_Dastani" type="checkbox"> Mehdi_Dastani</div>
+                        <div><input name="Mlmila_Akdag" type="checkbox"> Mlmila_Akdag</div>
+                        <div><input name="Onuralp_Ulusoy" type="checkbox"> Onuralp_Ulusoy</div>
+                        <div><input name="Peter_Bos" type="checkbox"> Peter_Bos</div>
+                        <div><input name="Pinar_Yolum" type="checkbox"> Pinar_Yolum</div>
+                        <div><input name="R_Iemhoff" type="checkbox"> R Iemhoff</div>
+                        <div><input name="R_J_Geraerts" type="checkbox"> R_J_Geraerts</div>
+                        <div><input name="R_W_F_Nouwen" type="checkbox"> R_W_F_Nouwen</div>
+                        <div><input name="Richard_Starmans" type="checkbox"> Richard_Starmans</div>
+                        <div><input name="Samira_Shirzadeh" type="checkbox"> Samira_Shirzadeh</div>
+                        <div><input name="T_Deoskar" type="checkbox"> T_Deoskar</div>
+                        <div><input name="Thijs_Van_Ommen" type="checkbox"> Thijs_Van_Ommen</div>
+                        <div><input name="Tim_Baarslag" type="checkbox"> Tim_Baarslag</div>
+                        <div><input name="Wishnu_Prasetya" type="checkbox"> Wishnu_Prasetya</div>
+                    </fieldset>
+                </div>
+                <div class="deadline-preference">
+                    <fieldset>
+                        <legend>Deadline</legend>
+                        <input name="Monthly_Deadlines" type="checkbox"> Monthly
+                        <input name="Biweekly_Deadlines" type="checkbox"> Biweekly
+                        <input name="Weekly_Deadlines" type="checkbox"> Weekly
+                        <input name="No_Deadlines" type="checkbox"> No Deadlines
+                    </fieldset>
+                </div>
+                <div class="exam-preference">
+                    <fieldset>
+                        <legend>Exam Form</legend>
+                        <input name="Paper" type="checkbox"> Paper
+                        <input name="Presentation" type="checkbox"> Presentation
+                        <input name="Project" type="checkbox"> Project
+                        <input name="Written_Exam" type="checkbox"> Written Exam
+                    </fieldset>
+                </div>
+                <div class="instruction-preference">
+                    <fieldset>
+                        <legend>Instructional Format</legend>
+                        <input name="Lab_Format" type="checkbox"> Lab
+                        <input name="Lecture_Format" type="checkbox"> Lecture
+                        <input name="Seminar_Format" type="checkbox"> Seminar
+                    </fieldset>
+                </div>
+                <div class="research-preference">
+                    <fieldset>
+                        <legend>Research Methodology</legend>
+                        <div><input name="Case_Studies" type="checkbox"> Case Studies</div>
+                        <div><input name="Delphi_Method" type="checkbox"> Delphi Method</div>
+                        <div><input name="Experiments" type="checkbox"> Experiments</div>
+                        <div><input name="Interviews" type="checkbox"> Interviews</div>
+                        <div><input name="Observation" type="checkbox"> Observation</div>
+                        <div><input name="Theoretical_Analysis" type="checkbox"> Theoretical Analysis</div>
+                    </fieldset>
+                </div>
+                <div class="faculty-preference">
+                    <fieldset>
+                        <legend>Faculty</legend>
+                        <div><input name="Faculty_Of_Beta_Science" type="checkbox"> Beta Science</div>
+                        <div><input name="Faculty_Of_Humanities" type="checkbox"> Humanities</div>
+                        <div><input name="Faculty_Of_Medicine" type="checkbox"> Medicine</div>
+                        <div><input name="Faculty_Of_Science" type="checkbox"> Science</div>
+                        <div style="white-space:nowrap"><input name="Faculty_Of_Social_Science_And_Behavioural_Sciences" type="checkbox"> Social Science And Behavioural Sciences</div>
+                    </fieldset>
+                </div>
+                <div class="location-preference">
+                    <fieldset>
+                        <legend>Location</legend>
+                        <input name="Domplein" type="checkbox"> Domplein
+                        <input name="Drift" type="checkbox"> Drift
+                        <input name="Science_Park" type="checkbox"> Science Park
+                    </fieldset>
+                </div>
+                <div class="max-preference">
+                    <fieldset>
+                        <legend>Courses per Period</legend>
+                        <input name="course-threshold" value="2" type="radio"> Two Courses
+                        <input name="course-threshold" value="3" type="radio"> Three Courses
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <p><button type="button" id="bth-search" class="search-button search-block" onclick="search()">Search</button></p>
     </article>
 </section>
 <footer>

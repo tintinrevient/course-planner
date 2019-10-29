@@ -66,40 +66,71 @@ function refresh() {
 	}
 }
 
+function openPeriod(evt, periodName) {
+	var i, x, tablinks;
+	x = $(".period-preference");
+	for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+	}
+	tablinks = $(".tablink");
+	for (i = 0; i < x.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" border-green", "");
+	}
+	document.getElementById(periodName).style.display = "block";
+	evt.currentTarget.firstElementChild.className += " border-green";
+}
+
+function openCourse(evt) {
+	var i, x;
+	x = $(".days > li");
+	for (i = 0; i < x.length; i++) {
+		x[i].className = x[i].className.replace("active", "");
+	}
+	evt.currentTarget.className += "active";
+}
+
 function search() {
 
 	$("#btn-search").prop("disabled", true);
 
-	var periodSelected = $('#period-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var daySelected = $('#day-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var timeslotSelected = $('#timeslot-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
+	var period = $('.border-green').text().split(" ")[1];
+
+	var periodSelected = "Period_" + period;
+
 	var topicSelected = $('#topic-preference input:checkbox:checked').map(function () {
+    		return $(this).attr("name");
+    }).toArray();
+
+	var daySelected = $('#period' + period + ' > .day-preference input:checkbox:checked').map(function () {
 		return $(this).attr("name");
 	}).toArray();
-	var lecturerSelected = $('#lecturer-preference input:checkbox:checked').map(function () {
+	var timeslotSelected = $('#period' + period + ' > .timeslot-preference input:checkbox:checked').map(function () {
 		return $(this).attr("name");
 	}).toArray();
-	var deadlineSelected = $('#deadline-preference input:checkbox:checked').map(function () {
+	var lecturerSelected = $('#period' + period + ' > .lecturer-preference input:checkbox:checked').map(function () {
 		return $(this).attr("name");
 	}).toArray();
-	var examSelected = $('#exam-preference input:checkbox:checked').map(function () {
+	var deadlineSelected = $('#period' + period + ' > .deadline-preference input:checkbox:checked').map(function () {
 		return $(this).attr("name");
 	}).toArray();
-	var instructionSelected = $('#instruction-preference input:checkbox:checked').map(function () {
+	var examSelected = $('#period' + period + ' > .exam-preference input:checkbox:checked').map(function () {
 		return $(this).attr("name");
 	}).toArray();
-	var researchSelected = $('#research-preference input:checkbox:checked').map(function () {
+	var instructionSelected = $('#period' + period + ' > .instruction-preference input:checkbox:checked').map(function () {
 		return $(this).attr("name");
 	}).toArray();
-	var facultySelected = $('#faculty-preference input:checkbox:checked').map(function () {
+	var researchSelected = $('#period' + period + ' > .research-preference input:checkbox:checked').map(function () {
 		return $(this).attr("name");
 	}).toArray();
+	var facultySelected = $('#period' + period + ' > .faculty-preference input:checkbox:checked').map(function () {
+		return $(this).attr("name");
+	}).toArray();
+	var locationSelected = $('#period' + period + ' > .location-preference input:checkbox:checked').map(function () {
+    		return $(this).attr("name");
+    }).toArray();
+    var maxSelected = $('#period' + period + ' > .max-preference input:radio:checked').map(function () {
+    		return $(this).attr("value");
+    }).toArray();
 
 	var preference = {
 		"period": periodSelected,
@@ -111,7 +142,9 @@ function search() {
 		"exam": examSelected,
 		"instruction": instructionSelected,
 		"research": researchSelected,
-		"faculty": facultySelected
+		"faculty": facultySelected,
+		"location": locationSelected,
+		"max": maxSelected
 	}
 
 	$.ajax({
@@ -220,9 +253,7 @@ function askeval() {
 
 	$("#bth-ask-eval").prop("disabled", true);
 
-	var selected = $('#registered input:checkbox:checked').map(function () {
-		return $(this).attr("data-course");
-	}).toArray();
+	var selected = $(".days > li.active").text().split(" ").join("_");
 
 	$.ajax({
 		type: "POST",

@@ -15,6 +15,12 @@ ul {
 	list-style-type: none;
 }
 
+ul.days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 section {
 	height: auto;
 	overflow-wrap: break-word;
@@ -61,7 +67,6 @@ article {
 	float: right;
 }
 
-
 /* Clear floats after the columns */
 
 section:after {
@@ -99,6 +104,7 @@ footer {
 
 .bottom {
 	bottom: 0;
+	background-color: #E0E0E0;
 }
 
 .calendar {
@@ -127,11 +133,13 @@ footer {
 .term .prev {
 	float: left;
 	padding-top: 10px;
+	cursor: pointer;
 }
 
 .term .next {
 	float: right;
 	padding-top: 10px;
+	cursor: pointer;
 }
 
 .weekdays {
@@ -150,25 +158,62 @@ footer {
 .days {
 	padding: 10px 0;
 	background: #eee;
-	min-height: 300px;
 	margin: 0;
 }
 
 .days li {
-	list-style-type: none;
-	display: inline-block;
-	width: 19%;
-	text-align: left;
-	margin-bottom: 5px;
-	font-size: 17px;
-	color: #777;
-	min-height: 50px;
+	flex: 0 0 20%;
+    border: 1px solid silver;
+    padding: 1em;
+    display: flex;
+    align-items: flex-end;
+    overflow: auto;
+    cursor: pointer;
 }
 
-.days li .active {
-	padding: 5px;
+.days li.active {
 	background: #1abc9c;
-	color: white !important
+	color: white !important;
+}
+
+.message-board {
+    text-align: center;
+    color: #686868;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px;
+}
+
+.bottombar {
+    border-bottom: 6px solid #ccc;
+    padding: 8px 16px;
+    color: grey;
+}
+
+.border-green {
+    border-color: #1abc9c !important;
+}
+
+.hover-light-grey:hover {
+    color: #000 !important;
+    background-color: #f1f1f1 !important;
+}
+
+.fourth-column {
+    float: left;
+    width: 25%;
+}
+
+.period-row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.period-row:after,.period-row:before {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .agent {
@@ -217,10 +262,9 @@ footer {
 	clear: both;
 }
 
-#preference {
+.preference {
 	margin-bottom: 10px;
 }
-
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 
@@ -242,7 +286,7 @@ fieldset>div {
 	display: inline-block;
 }
 
-.w3-button {
+.search-button {
 	border: none;
 	display: inline-block;
 	padding: 8px 16px;
@@ -256,7 +300,7 @@ fieldset>div {
 	white-space: nowrap
 }
 
-.w3-block {
+.search-block {
 	display: block;
 	width: 100%;
 	background: #1abc9c;

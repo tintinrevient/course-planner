@@ -98,7 +98,7 @@ function search() {
 	var periodSelected = "Period_" + period;
 
 	var topicSelected = $('#topic-preference input:checkbox:checked').map(function () {
-    		return $(this).attr("name");
+    	return $(this).attr("name");
     }).toArray();
 
 	var daySelected = $('#period' + period + ' > .day-preference input:checkbox:checked').map(function () {
@@ -126,10 +126,28 @@ function search() {
 		return $(this).attr("name");
 	}).toArray();
 	var locationSelected = $('#period' + period + ' > .location-preference input:checkbox:checked').map(function () {
-    		return $(this).attr("name");
+    	return $(this).attr("name");
+    }).toArray();
+    var communicationSelected = $('#period' + period + ' > .communication-preference input:checkbox:checked').map(function () {
+        return $(this).attr("name");
+    }).toArray();
+    var freedomSelected = $('#period' + period + ' > .freedom-preference input:checkbox:checked').map(function () {
+        return $(this).attr("name");
+    }).toArray();
+    var guidanceSelected = $('#period' + period + ' > .guidance-preference input:checkbox:checked').map(function () {
+        return $(this).attr("name");
+    }).toArray();
+    var organizingSelected = $('#period' + period + ' > .organizing-preference input:checkbox:checked').map(function () {
+        return $(this).attr("name");
+    }).toArray();
+    var speakingSelected = $('#period' + period + ' > .speaking-preference input:checkbox:checked').map(function () {
+        return $(this).attr("name");
+    }).toArray();
+    var skillSelected = $('#period' + period + ' > .skill-preference input:checkbox:checked').map(function () {
+        return $(this).attr("name");
     }).toArray();
     var maxSelected = $('#period' + period + ' > .max-preference input:radio:checked').map(function () {
-    		return $(this).attr("value");
+        return $(this).attr("value");
     }).toArray();
 
 	var preference = {
@@ -144,6 +162,12 @@ function search() {
 		"research": researchSelected,
 		"faculty": facultySelected,
 		"location": locationSelected,
+		"communication": communicationSelected,
+		"freedom": freedomSelected,
+		"guidance": guidanceSelected,
+		"organizing": organizingSelected,
+		"speaking": speakingSelected,
+		"skill": skillSelected,
 		"max": maxSelected
 	}
 

@@ -269,6 +269,9 @@ public class CourseController {
         if(null != preference.getDeadline() && preference.getDeadline().size() > 0) {
             List<String> deadline = preference.getDeadline();
 
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
             queryBuilder.append("(Course and (");
             for(int i = 0; i < deadline.size(); i++) {
                 queryBuilder.append("(hasDeadlines value " + deadline.get(i) + ")");
@@ -282,6 +285,9 @@ public class CourseController {
         // Preference - Exam Form
         if(null != preference.getExam() && preference.getExam().size() > 0) {
             List<String> exam = preference.getExam();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
 
             queryBuilder.append("(Course and (");
             for(int i = 0; i < exam.size(); i++) {
@@ -297,6 +303,9 @@ public class CourseController {
         if(null != preference.getInstruction() && preference.getInstruction().size() > 0) {
             List<String> instruction = preference.getInstruction();
 
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
             queryBuilder.append("(Course and (");
             for(int i = 0; i < instruction.size(); i++) {
                 queryBuilder.append("(hasInstructionalFormat value " + instruction.get(i) + ")");
@@ -310,6 +319,9 @@ public class CourseController {
         // Preference - Research Methodology
         if(null != preference.getResearch() && preference.getResearch().size() > 0) {
             List<String> research = preference.getResearch();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
 
             queryBuilder.append("(Course and (");
             for(int i = 0; i < research.size(); i++) {
@@ -325,6 +337,9 @@ public class CourseController {
         if(null != preference.getFaculty() && preference.getFaculty().size() > 0) {
             List<String> faculty = preference.getFaculty();
 
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
             queryBuilder.append("(Course and (");
             for(int i = 0; i < faculty.size(); i++) {
                 queryBuilder.append("(isOfferedBy value " + faculty.get(i) + ")");
@@ -339,11 +354,120 @@ public class CourseController {
         if(null != preference.getLocation() && preference.getLocation().size() > 0) {
             List<String> location = preference.getLocation();
 
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
             queryBuilder.append("(Course and (");
             for(int i = 0; i < location.size(); i++) {
                 queryBuilder.append("(isOfferedBy some (isLocatedAt value " + location.get(i) + "))");
 
                 if(i != location.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        // Preference - Communication
+        if(null != preference.getCommunication() && preference.getCommunication().size() > 0) {
+            List<String> communication = preference.getCommunication();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < communication.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + communication.get(i) + ")");
+
+                if(i != communication.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        // Preference - Freedom
+        if(null != preference.getFreedom() && preference.getFreedom().size() > 0) {
+            List<String> freedom = preference.getFreedom();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < freedom.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + freedom.get(i) + ")");
+
+                if(i != freedom.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        // Preference - Guidance
+        if(null != preference.getGuidance() && preference.getGuidance().size() > 0) {
+            List<String> guidance = preference.getGuidance();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < guidance.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + guidance.get(i) + ")");
+
+                if(i != guidance.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        // Preference - Orgazing
+        if(null != preference.getOrganizing() && preference.getOrganizing().size() > 0) {
+            List<String> organizing = preference.getOrganizing();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < organizing.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + organizing.get(i) + ")");
+
+                if(i != organizing.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        // Preference - Speaking
+        if(null != preference.getSpeaking() && preference.getSpeaking().size() > 0) {
+            List<String> speaking = preference.getSpeaking();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < speaking.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + speaking.get(i) + ")");
+
+                if(i != speaking.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+            queryBuilder.append("))");
+        }
+
+        // Preference - Skill
+        if(null != preference.getSkill() && preference.getSkill().size() > 0) {
+            List<String> skill = preference.getSkill();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            queryBuilder.append("(Course and (");
+            for(int i = 0; i < skill.size(); i++) {
+
+                if(skill.contains("Programming"))
+                    queryBuilder.append("(usesSkill some " + skill.get(i) + ")");
+                else
+                    queryBuilder.append("(usesSkill value " + skill.get(i) + ")");
+
+                if(i != skill.size() - 1)
                     queryBuilder.append(" or ");
             }
             queryBuilder.append("))");

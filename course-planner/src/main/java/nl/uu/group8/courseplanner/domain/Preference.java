@@ -27,5 +27,11 @@ public class Preference {
     private List<String> research;
     private List<String> faculty;
     private List<String> location;
+    private List<String> communication;
+    private List<String> freedom;
+    private List<String> guidance;
+    private List<String> organizing;
+    private List<String> speaking;
+    private List<String> skill;
     private List<String> max;
 }

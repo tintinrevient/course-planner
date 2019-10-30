@@ -23,19 +23,19 @@ public class ScheduleCreator {
         ArrayList<OWLNamedIndividual> combinedCourses = new ArrayList<>();
         ArrayList<OWLNamedIndividual> timeSlots = new ArrayList<>();
         for(Node node : nodes){
-            //verify timeslot conflict
-            for (OWLNamedIndividual courseInstance : node.getCourseInstances()){
-                String courseName = shortFormProvider.getShortForm(courseInstance);
-                String query = "hasCourse value " + courseName;
-                Set<OWLNamedIndividual> timeSlotsOnt = engine.getInstances(query, false);
-
-                for (OWLNamedIndividual timeSlotInstance : timeSlotsOnt) {
-                    if (timeSlots.contains(timeSlotInstance))
-                      System.out.println("FRANCO: Conflict: " + courseName + " on " + timeSlotInstance.toStringID());
-                    else
-                      timeSlots.add(timeSlotInstance);
-              }
-          }
+//            //verify timeslot conflict
+//            for (OWLNamedIndividual courseInstance : node.getCourseInstances()){
+//                String courseName = shortFormProvider.getShortForm(courseInstance);
+//                String query = "hasCourse value " + courseName;
+//                Set<OWLNamedIndividual> timeSlotsOnt = engine.getInstances(query, false);
+//
+//                for (OWLNamedIndividual timeSlotInstance : timeSlotsOnt) {
+//                    if (timeSlots.contains(timeSlotInstance))
+//                      System.out.println("FRANCO: Conflict: " + courseName + " on " + timeSlotInstance.toStringID());
+//                    else
+//                      timeSlots.add(timeSlotInstance);
+//                  }
+//              }
           combinedCourses.addAll(node.getCourseInstances());
         }
         return combinedCourses;

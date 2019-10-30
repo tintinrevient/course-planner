@@ -175,18 +175,17 @@ public class CourseController {
 
     @GetMapping("/bfs")
     public ResponseEntity<?> testBsf(HttpServletRequest request) throws Exception {
-        //BreadthFirstSearch bfs = new BreadthFirstSearch(engine);
         ScheduleCreator sc = new ScheduleCreator(engine, shortFormProvider);
 
         ArrayList<Node> pNodes = new ArrayList<>();
 
-        Node resultP1 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_1 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        Node resultP1 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_1 and not(usesSkill some Programming and usesSkill some Math) and not(isTaughtOn some {Monday_Afternoon, Tuesday_Morning}) and isTaughtBy some {R_Iemhoff, Dong_Nguyen} and isTaughtBy some (hasSkill value High_Freedom_Whithin_Courses) and takenBy value Linda_Arden");
         pNodes.add(resultP1);
-        Node resultP2 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_2  and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        Node resultP2 = new BreadthFirstSearch(engine, shortFormProvider).search("");
         pNodes.add(resultP2);
-        Node resultP3 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_3 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        Node resultP3 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_3 and isTaughtBy some {R_Iemhoff, Dong_Nguyen} and isTaughtBy some (hasSkill value High_Freedom_Whithin_Courses) and takenBy value Linda_Arden");
         pNodes.add(resultP3);
-        Node resultP4 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_4 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        Node resultP4 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_4 and isTaughtBy some {R_Iemhoff, Dong_Nguyen} and isTaughtBy some (hasSkill value High_Freedom_Whithin_Courses) and takenBy value Linda_Arden");
         pNodes.add(resultP4);
 
         String response = "";

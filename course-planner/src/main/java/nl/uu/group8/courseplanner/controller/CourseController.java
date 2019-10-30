@@ -1,11 +1,15 @@
 package nl.uu.group8.courseplanner.controller;
 
+import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import nl.uu.group8.courseplanner.domain.Agent;
 import nl.uu.group8.courseplanner.domain.Course;
 import nl.uu.group8.courseplanner.domain.Preference;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
+import nl.uu.group8.courseplanner.util.BreadthFirstSearch;
 import nl.uu.group8.courseplanner.util.Formula;
+import nl.uu.group8.courseplanner.util.Node;
+import nl.uu.group8.courseplanner.util.ScheduleCreator;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -26,7 +30,6 @@ import java.util.*;
 @RequestMapping("/course")
 @Slf4j
 public class CourseController {
-
     @Autowired
     private DLQueryEngine engine;
 
@@ -168,6 +171,30 @@ public class CourseController {
         log.info("Answer the evaluation from " + url);
 
         return new Random().ints(1, 11).findFirst().getAsInt();
+    }
+
+    @GetMapping("/bfs")
+    public ResponseEntity<?> testBsf(HttpServletRequest request) throws Exception {
+        //BreadthFirstSearch bfs = new BreadthFirstSearch(engine);
+        ScheduleCreator sc = new ScheduleCreator(engine, shortFormProvider);
+
+        ArrayList<Node> pNodes = new ArrayList<>();
+
+        Node resultP1 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_1 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        pNodes.add(resultP1);
+        Node resultP2 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_2  and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        pNodes.add(resultP2);
+        Node resultP3 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_3 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        pNodes.add(resultP3);
+        Node resultP4 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_4 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
+        pNodes.add(resultP4);
+
+        String response = "";
+        for (OWLNamedIndividual instance : sc.create(pNodes)) {
+            response += shortFormProvider.getShortForm(instance) + "<br>";
+        }
+
+        return ResponseEntity.ok().body(response);
     }
 
     @PostMapping("/search")

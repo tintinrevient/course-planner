@@ -12,7 +12,7 @@ public class BreadthFirstSearch {
     private ShortFormProvider shortFormProvider;
     private ArrayList<ArrayList<String>> preferenceCache;
     private Node highestNode;
-    private List<Node> bestNodes = new ArrayList<>();
+    private List<Node> bestNodes;
 
     public BreadthFirstSearch(DLQueryEngine engine, ShortFormProvider shortFormProvider) {
         this.engine = engine;
@@ -22,6 +22,9 @@ public class BreadthFirstSearch {
     public Node search(String query) {
         System.out.println("franco sto facendo la query "+ query);
         preferenceCache = new ArrayList<>();
+        highestNode = null;
+        bestNodes = new ArrayList<>();
+
         ArrayList<String> splitQuery = new ArrayList<String>(Arrays.asList(query.split("(?i)and")));
 
         int totalPreferencesAmount = splitQuery.size();

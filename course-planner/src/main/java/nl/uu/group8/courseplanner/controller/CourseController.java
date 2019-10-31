@@ -181,7 +181,7 @@ public class CourseController {
 
         Node resultP1 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_1 and isTaughtBy some (hasSkill some {Moderate_Speaking, High_Speaking}) and isTaughtBy value H_M_Huistra and usesMethodology value Theoretical_Analysis and hasExamForm value Written_Exam");
         pNodes.add(resultP1);
-        Node resultP2 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_2 and iisTaughtBy some (hasSkill some {Moderate_Speaking, High_Speaking}) and isTaughtBy value H_M_Huistra and usesMethodology value Theoretical_Analysis and hasExamForm value Written_Exam and not(isTaughtOn some {Wednesday_Afternoon, Wednesday_Evening, Thursday_Afternoon, Thursday_Evening})");
+        Node resultP2 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_2 and isTaughtBy some (hasSkill some {Moderate_Speaking, High_Speaking}) and isTaughtBy value H_M_Huistra and usesMethodology value Theoretical_Analysis and hasExamForm value Written_Exam and not(isTaughtOn some {Wednesday_Afternoon, Wednesday_Evening, Thursday_Afternoon, Thursday_Evening})");
         pNodes.add(resultP2);
         Node resultP3 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_3 and isTaughtBy some (hasSkill some {Moderate_Speaking, High_Speaking}) and isTaughtBy value H_M_Huistra and usesMethodology value Theoretical_Analysis and hasExamForm value Written_Exam and not(isTaughtOn some {Wednesday_Afternoon, Wednesday_Evening, Thursday_Afternoon, Thursday_Evening})");
         pNodes.add(resultP3);

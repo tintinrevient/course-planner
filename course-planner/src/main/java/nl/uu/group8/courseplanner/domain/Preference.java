@@ -33,5 +33,4 @@ public class Preference {
     private List<String> organizing;
     private List<String> speaking;
     private List<String> skill;
-    private List<String> max;
 }

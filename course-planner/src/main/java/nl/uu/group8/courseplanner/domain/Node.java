@@ -1,4 +1,4 @@
-package nl.uu.group8.courseplanner.util;
+package nl.uu.group8.courseplanner.domain;
 
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -33,7 +33,6 @@ public class Node {
     public double getUtility() {
         if (courseInstances == null)
             getCourseInstances();
-        //-(x^2) + 4x\
 
         if(courseInstances.size() == 0)
             return 0.0;
@@ -70,7 +69,6 @@ public class Node {
     public void setChildNodes(ArrayList<Node> childNodes) {
         this.childNodes = childNodes;
     }
-
 
     public void setCourseInstances(Set<OWLNamedIndividual> courseInstances) {
         this.courseInstances = courseInstances;

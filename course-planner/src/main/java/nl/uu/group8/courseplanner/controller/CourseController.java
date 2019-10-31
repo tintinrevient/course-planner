@@ -1,16 +1,13 @@
 package nl.uu.group8.courseplanner.controller;
 
-import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import nl.uu.group8.courseplanner.domain.Agent;
 import nl.uu.group8.courseplanner.domain.Course;
 import nl.uu.group8.courseplanner.domain.Preference;
 import nl.uu.group8.courseplanner.service.DLQueryEngine;
-import nl.uu.group8.courseplanner.util.BreadthFirstSearch;
+import nl.uu.group8.courseplanner.service.BreadthFirstSearch;
 import nl.uu.group8.courseplanner.util.Formula;
-import nl.uu.group8.courseplanner.util.Node;
-import nl.uu.group8.courseplanner.util.ScheduleCreator;
-import org.semanticweb.owlapi.model.OWLClass;
+import nl.uu.group8.courseplanner.domain.Node;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.util.ShortFormProvider;
@@ -35,6 +32,9 @@ public class CourseController {
 
     @Autowired
     private ShortFormProvider shortFormProvider;
+
+    @Autowired
+    private BreadthFirstSearch breadthFirstSearch;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -62,9 +62,6 @@ public class CourseController {
 
     // threshold: the maximum number of can-be registered courses per period
     private int max = 3;
-
-    // threshold: the default maximum number of can-be registered courses per period
-    private int defaultMax = 2;
 
     // depth of the topic tree
     private int depth = 1;
@@ -173,334 +170,27 @@ public class CourseController {
         return new Random().ints(1, 11).findFirst().getAsInt();
     }
 
-    @GetMapping("/bfs")
-    public ResponseEntity<?> testBsf(HttpServletRequest request) throws Exception {
-        //BreadthFirstSearch bfs = new BreadthFirstSearch(engine);
-        ScheduleCreator sc = new ScheduleCreator(engine, shortFormProvider);
-
-        ArrayList<Node> pNodes = new ArrayList<>();
-
-        Node resultP1 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_1 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
-        pNodes.add(resultP1);
-        Node resultP2 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_2  and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
-        pNodes.add(resultP2);
-        Node resultP3 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_3 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
-        pNodes.add(resultP3);
-        Node resultP4 = new BreadthFirstSearch(engine, shortFormProvider).search("isTaughtInPeriod value Period_4 and hasExamForm value Project and not (hasExamForm value Presentation) and isTaughtBy value G_Greco and not (isTaughtOn some Morning) and isOfferedBy some (isLocatedAt some {Drift, Domplein}) and hasSkill value High_Communication_Outside_Lecture_Hours and hasSkill value High_Guidance_Whithin_Subject");
-        pNodes.add(resultP4);
-
-        String response = "";
-        for (OWLNamedIndividual instance : sc.create(pNodes)) {
-            response += shortFormProvider.getShortForm(instance) + "<br>";
-        }
-
-        return ResponseEntity.ok().body(response);
-    }
-
     @PostMapping("/search")
-    public ResponseEntity<?> search(@RequestBody Preference preference) throws Exception {
+    public ResponseEntity<?> search(@RequestBody List<Preference> preferences) throws Exception {
 
         long start = System.currentTimeMillis();
 
         Map response = new HashMap();
         StringBuilder message = new StringBuilder();
-        StringBuilder queryBuilder = new StringBuilder();
 
-        // Preference - Maximum Courses per Period
-        if(null != preference.getMax() && preference.getMax().size() > 0)
-            setMax(Integer.parseInt(preference.getMax().get(0)));
-        else
-            setMax(defaultMax);
+        List<Course> courseList = new ArrayList<>();
 
-        // Preference - Period
-        if(null != preference.getPeriod()) {
-            String period = preference.getPeriod();
+        int periodIndex = 1;
+        if(null != preferences && preferences.size() > 0) {
+            for(Preference preference : preferences) {
+                String query = parsePreference(preference);
 
-            log.info("Search courses in " + period);
-
-            queryBuilder.append("(Course and (");
-            queryBuilder.append("(isTaughtInPeriod value " + period + ")");
-            queryBuilder.append("))");
-        }
-
-        // Preference - Day of Week
-        if(null != preference.getDay() && preference.getDay().size() > 0) {
-            List<String> day = preference.getDay();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < day.size(); i++) {
-                queryBuilder.append("(isTaughtOn some " + day.get(i) + ")");
-
-                if(i != day.size() - 1)
-                    queryBuilder.append(" or ");
+                Map map = parseQuery(query);
+                courseList.addAll((List<Course>) map.get("courseList"));
+                message.append("Utility for Period " + periodIndex + ": " + (Double) map.get("utility") + "<br>");
+                periodIndex++;
             }
-            queryBuilder.append("))");
         }
-
-        // Preference - Time Slot
-        if(null != preference.getTimeslot() && preference.getTimeslot().size() > 0) {
-            List<String> timeslot = preference.getTimeslot();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < timeslot.size(); i++) {
-                queryBuilder.append("(isTaughtOn some " + timeslot.get(i) + ")");
-
-                if(i != timeslot.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Topic
-        if(null != preference.getTopic() && preference.getTopic().size() > 0) {
-            List<String> topic = preference.getTopic();
-            topic = parseTopic(topic);
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < topic.size(); i++) {
-                queryBuilder.append("(coversTopic value " + topic.get(i) + ")");
-
-                if(i != topic.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Lecturer
-        if(null != preference.getLecturer() && preference.getLecturer().size() > 0) {
-            List<String> lecturer = preference.getLecturer();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < lecturer.size(); i++) {
-                queryBuilder.append("(isTaughtBy value " + lecturer.get(i) + ")");
-
-                if(i != lecturer.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Deadline
-        if(null != preference.getDeadline() && preference.getDeadline().size() > 0) {
-            List<String> deadline = preference.getDeadline();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < deadline.size(); i++) {
-                queryBuilder.append("(hasDeadlines value " + deadline.get(i) + ")");
-
-                if(i != deadline.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Exam Form
-        if(null != preference.getExam() && preference.getExam().size() > 0) {
-            List<String> exam = preference.getExam();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < exam.size(); i++) {
-                queryBuilder.append("(hasExamForm value " + exam.get(i) + ")");
-
-                if(i != exam.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Instructional Format
-        if(null != preference.getInstruction() && preference.getInstruction().size() > 0) {
-            List<String> instruction = preference.getInstruction();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < instruction.size(); i++) {
-                queryBuilder.append("(hasInstructionalFormat value " + instruction.get(i) + ")");
-
-                if(i != instruction.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Research Methodology
-        if(null != preference.getResearch() && preference.getResearch().size() > 0) {
-            List<String> research = preference.getResearch();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < research.size(); i++) {
-                queryBuilder.append("(usesMethodology value " + research.get(i) + ")");
-
-                if(i != research.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Faculty
-        if(null != preference.getFaculty() && preference.getFaculty().size() > 0) {
-            List<String> faculty = preference.getFaculty();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < faculty.size(); i++) {
-                queryBuilder.append("(isOfferedBy value " + faculty.get(i) + ")");
-
-                if(i != faculty.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Location
-        if(null != preference.getLocation() && preference.getLocation().size() > 0) {
-            List<String> location = preference.getLocation();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < location.size(); i++) {
-                queryBuilder.append("(isOfferedBy some (isLocatedAt value " + location.get(i) + "))");
-
-                if(i != location.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Communication
-        if(null != preference.getCommunication() && preference.getCommunication().size() > 0) {
-            List<String> communication = preference.getCommunication();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < communication.size(); i++) {
-                queryBuilder.append("isTaughtBy some (hasSkill value " + communication.get(i) + ")");
-
-                if(i != communication.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Freedom
-        if(null != preference.getFreedom() && preference.getFreedom().size() > 0) {
-            List<String> freedom = preference.getFreedom();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < freedom.size(); i++) {
-                queryBuilder.append("isTaughtBy some (hasSkill value " + freedom.get(i) + ")");
-
-                if(i != freedom.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Guidance
-        if(null != preference.getGuidance() && preference.getGuidance().size() > 0) {
-            List<String> guidance = preference.getGuidance();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < guidance.size(); i++) {
-                queryBuilder.append("isTaughtBy some (hasSkill value " + guidance.get(i) + ")");
-
-                if(i != guidance.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Orgazing
-        if(null != preference.getOrganizing() && preference.getOrganizing().size() > 0) {
-            List<String> organizing = preference.getOrganizing();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < organizing.size(); i++) {
-                queryBuilder.append("isTaughtBy some (hasSkill value " + organizing.get(i) + ")");
-
-                if(i != organizing.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Speaking
-        if(null != preference.getSpeaking() && preference.getSpeaking().size() > 0) {
-            List<String> speaking = preference.getSpeaking();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < speaking.size(); i++) {
-                queryBuilder.append("isTaughtBy some (hasSkill value " + speaking.get(i) + ")");
-
-                if(i != speaking.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        // Preference - Skill
-        if(null != preference.getSkill() && preference.getSkill().size() > 0) {
-            List<String> skill = preference.getSkill();
-
-            if(!queryBuilder.toString().isEmpty())
-                queryBuilder.append(" and ");
-
-            queryBuilder.append("(Course and (");
-            for(int i = 0; i < skill.size(); i++) {
-
-                if(skill.contains("Programming"))
-                    queryBuilder.append("(usesSkill some " + skill.get(i) + ")");
-                else
-                    queryBuilder.append("(usesSkill value " + skill.get(i) + ")");
-
-                if(i != skill.size() - 1)
-                    queryBuilder.append(" or ");
-            }
-            queryBuilder.append("))");
-        }
-
-        List<Course> courseList = parseQuery(queryBuilder.toString());
 
         for(Course course : courseList) {
             String period = course.getPeriod();
@@ -511,8 +201,8 @@ public class CourseController {
                 continue;
             }
 
-            if(availability.get(period).size() >= max) {
-                message.append("Number of registered courses for " + period + " is over " + max + "<br>");
+            if(availability.get(period).size() >= getMax()) {
+                message.append("Number of registered courses for " + period + " is over " + getMax() + "<br>");
                 continue;
             }
 
@@ -533,26 +223,29 @@ public class CourseController {
             if(!flag)
                 availability.get(period).add(course);
 
-            if(availability.get(period).size() >= max) {
-                message.append("Number of registered courses for " + period + " is over " + max);
+            if(availability.get(period).size() >= getMax()) {
+                message.append("Number of registered courses for " + period + " is over " + getMax() + "<br>");
                 continue;
             }
         }
 
-        response.put("courses", availability);
-        response.put("msg", message.toString());
-
         long end = System.currentTimeMillis();
         log.info("Search time: " + (end - start) + " ms");
+        message.append("Total search time: " + (end - start)/1000 + " seconds. <br>");
+
+        response.put("courses", availability);
+        response.put("msg", message.toString());
 
         return ResponseEntity.ok().body(response);
     }
 
-    private List<Course> parseQuery(String query) {
+    private Map parseQuery(String query) {
 
         List<Course> courseList = new ArrayList<>();
 
-        Set<OWLNamedIndividual> individuals = engine.getInstances(query, false);
+        Node node = breadthFirstSearch.search(query, getMax());
+
+        Set<OWLNamedIndividual> individuals = node.getCourseInstances();
         for (OWLEntity entity : individuals) {
             String courseName = shortFormProvider.getShortForm(entity);
 
@@ -583,7 +276,12 @@ public class CourseController {
         }
 
         Collections.sort(courseList);
-        return courseList;
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("courseList", courseList);
+        response.put("utility", node.getUtility());
+
+        return response;
     }
 
     private List<String> parseTopic(List<String> topic) {
@@ -637,6 +335,269 @@ public class CourseController {
 
     private void setMax(int max) {
         this.max = max;
+    }
+    private int getMax(){
+        return this.max;
+    };
+
+    private String parsePreference(Preference preference) {
+        StringBuilder queryBuilder = new StringBuilder();
+
+        // Preference - Period
+        if(null != preference.getPeriod()) {
+            String period = preference.getPeriod();
+
+            log.info("Search courses in " + period);
+
+            queryBuilder.append("(isTaughtInPeriod value " + period + ")");
+        }
+
+        // Preference - Day of Week
+        if(null != preference.getDay() && preference.getDay().size() > 0) {
+            List<String> day = preference.getDay();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < day.size(); i++) {
+                queryBuilder.append("(isTaughtOn some " + day.get(i) + ")");
+
+                if(i != day.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Time Slot
+        if(null != preference.getTimeslot() && preference.getTimeslot().size() > 0) {
+            List<String> timeslot = preference.getTimeslot();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < timeslot.size(); i++) {
+                queryBuilder.append("(isTaughtOn some " + timeslot.get(i) + ")");
+
+                if(i != timeslot.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Topic
+        if(null != preference.getTopic() && preference.getTopic().size() > 0) {
+            List<String> topic = preference.getTopic();
+            topic = parseTopic(topic);
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < topic.size(); i++) {
+                queryBuilder.append("(coversTopic value " + topic.get(i) + ")");
+
+                if(i != topic.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Lecturer
+        if(null != preference.getLecturer() && preference.getLecturer().size() > 0) {
+            List<String> lecturer = preference.getLecturer();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < lecturer.size(); i++) {
+                queryBuilder.append("(isTaughtBy value " + lecturer.get(i) + ")");
+
+                if(i != lecturer.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Deadline
+        if(null != preference.getDeadline() && preference.getDeadline().size() > 0) {
+            List<String> deadline = preference.getDeadline();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < deadline.size(); i++) {
+                queryBuilder.append("(hasDeadlines value " + deadline.get(i) + ")");
+
+                if(i != deadline.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Exam Form
+        if(null != preference.getExam() && preference.getExam().size() > 0) {
+            List<String> exam = preference.getExam();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < exam.size(); i++) {
+                queryBuilder.append("(hasExamForm value " + exam.get(i) + ")");
+
+                if(i != exam.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Instructional Format
+        if(null != preference.getInstruction() && preference.getInstruction().size() > 0) {
+            List<String> instruction = preference.getInstruction();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < instruction.size(); i++) {
+                queryBuilder.append("(hasInstructionalFormat value " + instruction.get(i) + ")");
+
+                if(i != instruction.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Research Methodology
+        if(null != preference.getResearch() && preference.getResearch().size() > 0) {
+            List<String> research = preference.getResearch();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < research.size(); i++) {
+                queryBuilder.append("(usesMethodology value " + research.get(i) + ")");
+
+                if(i != research.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Faculty
+        if(null != preference.getFaculty() && preference.getFaculty().size() > 0) {
+            List<String> faculty = preference.getFaculty();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < faculty.size(); i++) {
+                queryBuilder.append("(isOfferedBy value " + faculty.get(i) + ")");
+
+                if(i != faculty.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Location
+        if(null != preference.getLocation() && preference.getLocation().size() > 0) {
+            List<String> location = preference.getLocation();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < location.size(); i++) {
+                queryBuilder.append("(isOfferedBy some (isLocatedAt value " + location.get(i) + "))");
+
+                if(i != location.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Communication
+        if(null != preference.getCommunication() && preference.getCommunication().size() > 0) {
+            List<String> communication = preference.getCommunication();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < communication.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + communication.get(i) + ")");
+
+                if(i != communication.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Freedom
+        if(null != preference.getFreedom() && preference.getFreedom().size() > 0) {
+            List<String> freedom = preference.getFreedom();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < freedom.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + freedom.get(i) + ")");
+
+                if(i != freedom.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Guidance
+        if(null != preference.getGuidance() && preference.getGuidance().size() > 0) {
+            List<String> guidance = preference.getGuidance();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < guidance.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + guidance.get(i) + ")");
+
+                if(i != guidance.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Organizing
+        if(null != preference.getOrganizing() && preference.getOrganizing().size() > 0) {
+            List<String> organizing = preference.getOrganizing();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < organizing.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + organizing.get(i) + ")");
+
+                if(i != organizing.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Speaking
+        if(null != preference.getSpeaking() && preference.getSpeaking().size() > 0) {
+            List<String> speaking = preference.getSpeaking();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < speaking.size(); i++) {
+                queryBuilder.append("isTaughtBy some (hasSkill value " + speaking.get(i) + ")");
+
+                if(i != speaking.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        // Preference - Skill
+        if(null != preference.getSkill() && preference.getSkill().size() > 0) {
+            List<String> skill = preference.getSkill();
+
+            if(!queryBuilder.toString().isEmpty())
+                queryBuilder.append(" and ");
+
+            for(int i = 0; i < skill.size(); i++) {
+
+                if(skill.contains("Programming"))
+                    queryBuilder.append("(usesSkill some " + skill.get(i) + ")");
+                else
+                    queryBuilder.append("(usesSkill value " + skill.get(i) + ")");
+
+                if(i != skill.size() - 1)
+                    queryBuilder.append(" or ");
+            }
+        }
+
+        return queryBuilder.toString();
     }
 
 }

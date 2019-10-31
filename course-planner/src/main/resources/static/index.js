@@ -93,89 +93,95 @@ function search() {
 
 	$("#btn-search").prop("disabled", true);
 
-	var period = $('.border-green').text().split(" ")[1];
+//	var period = $('.border-green').text().split(" ")[1];
+	var period;
+    var preferences = [];
+//	var max = document.querySelector('input[name="course-threshold"]:checked').value;
 
-	var periodSelected = "Period_" + period;
+	for (period = 1; period < 5; period++) {
+        var periodSelected = "Period_" + period;
 
-	var topicSelected = $('#topic-preference input:checkbox:checked').map(function () {
-    	return $(this).attr("name");
-    }).toArray();
+        var topicSelected = $('#period' + period + ' > .topic-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var daySelected = $('#period' + period + ' > .day-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var timeslotSelected = $('#period' + period + ' > .timeslot-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var lecturerSelected = $('#period' + period + ' > .lecturer-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var deadlineSelected = $('#period' + period + ' > .deadline-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var examSelected = $('#period' + period + ' > .exam-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var instructionSelected = $('#period' + period + ' > .instruction-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var researchSelected = $('#period' + period + ' > .research-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var facultySelected = $('#period' + period + ' > .faculty-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var locationSelected = $('#period' + period + ' > .location-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var communicationSelected = $('#period' + period + ' > .communication-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var freedomSelected = $('#period' + period + ' > .freedom-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var guidanceSelected = $('#period' + period + ' > .guidance-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var organizingSelected = $('#period' + period + ' > .organizing-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var speakingSelected = $('#period' + period + ' > .speaking-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var skillSelected = $('#period' + period + ' > .skill-preference input:checkbox:checked').map(function () {
+            return $(this).attr("name");
+        }).toArray();
+        var maxSelected = $('#period' + period + ' > .max-preference input:radio:checked').map(function () {
+            return $(this).attr("value");
+        }).toArray();
 
-	var daySelected = $('#period' + period + ' > .day-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var timeslotSelected = $('#period' + period + ' > .timeslot-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var lecturerSelected = $('#period' + period + ' > .lecturer-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var deadlineSelected = $('#period' + period + ' > .deadline-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var examSelected = $('#period' + period + ' > .exam-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var instructionSelected = $('#period' + period + ' > .instruction-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var researchSelected = $('#period' + period + ' > .research-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var facultySelected = $('#period' + period + ' > .faculty-preference input:checkbox:checked').map(function () {
-		return $(this).attr("name");
-	}).toArray();
-	var locationSelected = $('#period' + period + ' > .location-preference input:checkbox:checked').map(function () {
-    	return $(this).attr("name");
-    }).toArray();
-    var communicationSelected = $('#period' + period + ' > .communication-preference input:checkbox:checked').map(function () {
-        return $(this).attr("name");
-    }).toArray();
-    var freedomSelected = $('#period' + period + ' > .freedom-preference input:checkbox:checked').map(function () {
-        return $(this).attr("name");
-    }).toArray();
-    var guidanceSelected = $('#period' + period + ' > .guidance-preference input:checkbox:checked').map(function () {
-        return $(this).attr("name");
-    }).toArray();
-    var organizingSelected = $('#period' + period + ' > .organizing-preference input:checkbox:checked').map(function () {
-        return $(this).attr("name");
-    }).toArray();
-    var speakingSelected = $('#period' + period + ' > .speaking-preference input:checkbox:checked').map(function () {
-        return $(this).attr("name");
-    }).toArray();
-    var skillSelected = $('#period' + period + ' > .skill-preference input:checkbox:checked').map(function () {
-        return $(this).attr("name");
-    }).toArray();
-    var maxSelected = $('#period' + period + ' > .max-preference input:radio:checked').map(function () {
-        return $(this).attr("value");
-    }).toArray();
+        var preference = {
+            "period": periodSelected,
+            "day": daySelected,
+            "timeslot": timeslotSelected,
+            "topic": topicSelected,
+            "lecturer": lecturerSelected,
+            "deadline": deadlineSelected,
+            "exam": examSelected,
+            "instruction": instructionSelected,
+            "research": researchSelected,
+            "faculty": facultySelected,
+            "location": locationSelected,
+            "communication": communicationSelected,
+            "freedom": freedomSelected,
+            "guidance": guidanceSelected,
+            "organizing": organizingSelected,
+            "speaking": speakingSelected,
+            "skill": skillSelected,
+            "max": maxSelected
+        }
 
-	var preference = {
-		"period": periodSelected,
-		"day": daySelected,
-		"timeslot": timeslotSelected,
-		"topic": topicSelected,
-		"lecturer": lecturerSelected,
-		"deadline": deadlineSelected,
-		"exam": examSelected,
-		"instruction": instructionSelected,
-		"research": researchSelected,
-		"faculty": facultySelected,
-		"location": locationSelected,
-		"communication": communicationSelected,
-		"freedom": freedomSelected,
-		"guidance": guidanceSelected,
-		"organizing": organizingSelected,
-		"speaking": speakingSelected,
-		"skill": skillSelected,
-		"max": maxSelected
+        preferences.push(preference);
 	}
 
 	$.ajax({
 		type: "POST",
 		contentType: "application/json",
 		url: "/course/search",
-		data: JSON.stringify(preference),
+		data: JSON.stringify(preferences),
 		dataType: 'json',
 		cache: false,
 		timeout: 600000,

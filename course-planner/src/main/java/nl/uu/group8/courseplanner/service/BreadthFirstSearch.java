@@ -1,31 +1,37 @@
-package nl.uu.group8.courseplanner.util;
+package nl.uu.group8.courseplanner.service;
 
-import nl.uu.group8.courseplanner.service.DLQueryEngine;
+import lombok.extern.slf4j.Slf4j;
+import nl.uu.group8.courseplanner.domain.Node;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.util.ShortFormProvider;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.*;
 
+@Service
+@Slf4j
 public class BreadthFirstSearch {
 
+    @Autowired
     private DLQueryEngine engine;
+
+    @Autowired
     private ShortFormProvider shortFormProvider;
+
     private ArrayList<ArrayList<String>> preferenceCache;
     private Node higestNode;
     private List<Node> bestNodes = new ArrayList<>();
     private ArrayList<String> bestPreference = new ArrayList<>();
+    private int max;
 
-    public BreadthFirstSearch(DLQueryEngine engine, ShortFormProvider shortFormProvider) {
-        this.engine = engine;
-        this.shortFormProvider = shortFormProvider;
-    }
-
-    public Node search(String query) {
-        System.out.println("franco sto facendo la query "+ query);
+    public Node search(String query, int max) {
+        this.max = max;
+        log.info("max: " + max);
+        log.info("Query: " + query);
         preferenceCache = new ArrayList<>();
         ArrayList<String> splitQuery = new ArrayList<String>(Arrays.asList(query.split("(?i)and")));
-
         int totalPreferencesAmount = splitQuery.size();
+
         Node rootNode = new Node(null, splitQuery, totalPreferencesAmount, engine, shortFormProvider);
         createTree(rootNode, totalPreferencesAmount);
         List<Node> list = new ArrayList<>();
@@ -33,17 +39,12 @@ public class BreadthFirstSearch {
         searchOnTreeGoal(list);
 
         for(Node node : bestNodes) {
-            System.out.println("franco e un best node" + node.getPreferences());
+            log.info("Preferences: " + node.getPreferences());
             if (higestNode == null || node.getPreferences().size() > higestNode.getPreferences().size())
                 higestNode = node;
         }
 
-//        ArrayList<ArrayList<String>> outputPreferences = new ArrayList<>();
-//        createPreferenceList(splitQuery, outputPreferences);
-//        outputPreferences.sort(new PreferenceSizeComparator());
-//        searchList(outputPreferences);
-
-        System.out.println("franco e un higest node" + higestNode.getPreferences());
+        log.info("Highest node: " + higestNode.getPreferences());
         return higestNode;
     }
 
@@ -59,7 +60,6 @@ public class BreadthFirstSearch {
                 outputPreferences.add(tempClone);
                 createPreferenceList(tempClone, outputPreferences);
             }
-
         }
     }
 
@@ -104,11 +104,12 @@ public class BreadthFirstSearch {
         }
         return noConflictsSet;
     }
+
     private void searchList(ArrayList<ArrayList<String>> preferences){
         for(ArrayList<String> preference : preferences){
             String query = String.join("and", preference);
             Set<OWLNamedIndividual> courseInstances = engine.getInstances(query, false);
-            if(verifyTimeSlots(courseInstances).size() >= 2){
+            if(verifyTimeSlots(courseInstances).size() >= this.max){
                 bestPreference = preference;
                 return;
             }
@@ -119,7 +120,7 @@ public class BreadthFirstSearch {
         boolean goalReached = false;
         for(Node currentNode: currentNodes){
             Set<OWLNamedIndividual> coursesInstances = verifyTimeSlots(currentNode.getCourseInstances());
-            if(coursesInstances.size() >= 2) {
+            if(coursesInstances.size() >= this.max) {
                 currentNode.setCourseInstances(coursesInstances);
                 bestNodes.add(currentNode);
                 goalReached = true;
@@ -130,8 +131,6 @@ public class BreadthFirstSearch {
             return;
         }
 
-
-        System.out.println("franco sto passando al livello successivo");
         List<Node> children = new ArrayList<>();
         for(Node currentNode: currentNodes){
             if (currentNode.getChildNodes() != null){
@@ -139,8 +138,8 @@ public class BreadthFirstSearch {
                     children.add(childnode);
                 }
             }
-
         }
+
         searchOnTreeGoal(children);
     }
 
@@ -150,13 +149,16 @@ public class BreadthFirstSearch {
                 bestNodes.add(currentNode);
             return;
         }
+
         boolean foundBetterNode = false;
+
         for (Node childNode: currentNode.getChildNodes()) {
             if( Double.compare(childNode.getUtility(),currentNode.getUtility()) >= 0) {
                 foundBetterNode = true;
                 searchOnTreeUtility(childNode);
             }
         }
+
         if (!foundBetterNode)
             bestNodes.add(currentNode);
     }

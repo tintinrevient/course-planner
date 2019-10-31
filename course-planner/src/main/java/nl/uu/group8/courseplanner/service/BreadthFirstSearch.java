@@ -19,47 +19,59 @@ public class BreadthFirstSearch {
     private ShortFormProvider shortFormProvider;
 
     private ArrayList<ArrayList<String>> preferenceCache;
-    private Node higestNode;
-    private List<Node> bestNodes = new ArrayList<>();
-    private ArrayList<String> bestPreference = new ArrayList<>();
+    private Node highestNode;
+    private List<Node> bestNodes;
     private int max;
+
+    public BreadthFirstSearch(DLQueryEngine engine, ShortFormProvider shortFormProvider) {
+        this.engine = engine;
+        this.shortFormProvider = shortFormProvider;
+    }
 
     public Node search(String query, int max) {
         this.max = max;
-        log.info("max: " + max);
-        log.info("Query: " + query);
+        log.info("Query: "+ query);
         preferenceCache = new ArrayList<>();
+        highestNode = null;
+        bestNodes = new ArrayList<>();
+
         ArrayList<String> splitQuery = new ArrayList<String>(Arrays.asList(query.split("(?i)and")));
+
         int totalPreferencesAmount = splitQuery.size();
+//        Node rootNode = new Node(null, splitQuery, totalPreferencesAmount, engine, shortFormProvider);
+//        createTree(rootNode, totalPreferencesAmount);
+//        List<Node> list = new ArrayList<>();
+//        list.add(rootNode);
+//        searchOnTreeGoal(list);
+//
+//        for(Node node : bestNodes) {
+//            System.out.println("franco e un best node" + node.getPreferences());
+//            if (highestNode == null || node.getPreferences().size() > higestNode.getPreferences().size())
+//                highestNode = node;
+//        }
 
-        Node rootNode = new Node(null, splitQuery, totalPreferencesAmount, engine, shortFormProvider);
-        createTree(rootNode, totalPreferencesAmount);
-        List<Node> list = new ArrayList<>();
-        list.add(rootNode);
-        searchOnTreeGoal(list);
+        ArrayList<ArrayList<String>> outputPreferences = new ArrayList<>();
+        createPreferenceList(splitQuery, outputPreferences);
+        outputPreferences.sort(new PreferenceSizeComparator());
+        searchList(outputPreferences, totalPreferencesAmount);
 
-        for(Node node : bestNodes) {
-            log.info("Preferences: " + node.getPreferences());
-            if (higestNode == null || node.getPreferences().size() > higestNode.getPreferences().size())
-                higestNode = node;
-        }
-
-        log.info("Highest node: " + higestNode.getPreferences());
-        return higestNode;
+        log.info("Preference: " + highestNode.getPreferences());
+        return highestNode;
     }
 
     private void createPreferenceList(ArrayList<String> input, ArrayList<ArrayList<String>> outputPreferences) {
 
-        if (input.size() == 1)
+        if (input.size() == 0)
             return;
+
+        if (!outputPreferences.contains(input)) {
+            outputPreferences.add(input);
+        }
 
         for (int i = 1; i < input.size(); i++) {
             ArrayList<String> tempClone = (ArrayList<String>) input.clone();
             tempClone.remove(i);
-            if (!outputPreferences.contains(tempClone)) {
-                outputPreferences.add(tempClone);
-                createPreferenceList(tempClone, outputPreferences);
-            }
+            createPreferenceList(tempClone, outputPreferences);
         }
     }
 
@@ -86,31 +98,30 @@ public class BreadthFirstSearch {
 
     private Set<OWLNamedIndividual> verifyTimeSlots(Set<OWLNamedIndividual> courseInstances){
         Set<OWLNamedIndividual> noConflictsSet = new HashSet<>();
-        ArrayList<OWLNamedIndividual> timeSlots = new ArrayList<>();
+        ArrayList<OWLNamedIndividual> totalTimeSlots = new ArrayList<>();
+
         for (OWLNamedIndividual courseInstance : courseInstances) {
             String courseName = shortFormProvider.getShortForm(courseInstance);
             String query = "hasCourse value " + courseName;
-            Set<OWLNamedIndividual> timeSlotsOnt = engine.getInstances(query, false);
-            boolean overlap = false;
-            for (OWLNamedIndividual timeSlotInstance : timeSlotsOnt) {
-                if (timeSlots.contains(timeSlotInstance)){
-                    overlap = true;
+            Set<OWLNamedIndividual> timeSlotsOfCourse = engine.getInstances(query, false);
+
+            for (OWLNamedIndividual timeSlotInstance : timeSlotsOfCourse) {
+                if (!totalTimeSlots.contains(timeSlotInstance)) {
+                    noConflictsSet.add(courseInstance);
+                    totalTimeSlots.addAll(timeSlotsOfCourse);
                 }
-            }
-            if (!overlap){
-                noConflictsSet.add(courseInstance);
-                timeSlots.addAll(timeSlotsOnt);
             }
         }
         return noConflictsSet;
     }
-
-    private void searchList(ArrayList<ArrayList<String>> preferences){
+    private void searchList(ArrayList<ArrayList<String>> preferences, int totalPreferencesAmount){
         for(ArrayList<String> preference : preferences){
             String query = String.join("and", preference);
             Set<OWLNamedIndividual> courseInstances = engine.getInstances(query, false);
-            if(verifyTimeSlots(courseInstances).size() >= this.max){
-                bestPreference = preference;
+            Set<OWLNamedIndividual> noConflictCourseInstances = verifyTimeSlots(courseInstances);
+            if(noConflictCourseInstances.size() >= this.max){
+                highestNode = new Node(null, preference, totalPreferencesAmount, engine, shortFormProvider);
+                highestNode.setCourseInstances(noConflictCourseInstances);
                 return;
             }
         }
@@ -119,11 +130,13 @@ public class BreadthFirstSearch {
     private void searchOnTreeGoal(List<Node> currentNodes){
         boolean goalReached = false;
         for(Node currentNode: currentNodes){
-            Set<OWLNamedIndividual> coursesInstances = verifyTimeSlots(currentNode.getCourseInstances());
-            if(coursesInstances.size() >= this.max) {
-                currentNode.setCourseInstances(coursesInstances);
-                bestNodes.add(currentNode);
-                goalReached = true;
+            if (currentNode.getCourseInstances() != null){
+                Set<OWLNamedIndividual> coursesInstances = verifyTimeSlots(currentNode.getCourseInstances());
+                if(coursesInstances.size() >= this.max) {
+                    currentNode.setCourseInstances(coursesInstances);
+                    bestNodes.add(currentNode);
+                    goalReached = true;
+                }
             }
         }
 
@@ -138,8 +151,8 @@ public class BreadthFirstSearch {
                     children.add(childnode);
                 }
             }
-        }
 
+        }
         searchOnTreeGoal(children);
     }
 
@@ -149,16 +162,13 @@ public class BreadthFirstSearch {
                 bestNodes.add(currentNode);
             return;
         }
-
         boolean foundBetterNode = false;
-
         for (Node childNode: currentNode.getChildNodes()) {
             if( Double.compare(childNode.getUtility(),currentNode.getUtility()) >= 0) {
                 foundBetterNode = true;
                 searchOnTreeUtility(childNode);
             }
         }
-
         if (!foundBetterNode)
             bestNodes.add(currentNode);
     }
@@ -170,6 +180,3 @@ class PreferenceSizeComparator implements Comparator<ArrayList<String>>{
         return o2.size() - o1.size();
     }
 }
-
-
-

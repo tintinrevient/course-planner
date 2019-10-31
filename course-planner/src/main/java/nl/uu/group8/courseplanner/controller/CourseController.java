@@ -203,7 +203,7 @@ public class CourseController {
             }
 
             if(availability.get(period).size() >= getMax()) {
-                message.append("Number of registered courses for " + period + " is over " + getMax() + "<br>");
+//                message.append("Number of registered courses for " + period + " is over " + getMax() + "<br>");
                 continue;
             }
 

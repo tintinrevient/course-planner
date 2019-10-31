@@ -188,6 +188,7 @@ public class CourseController {
                 Map map = parseQuery(query);
                 courseList.addAll((List<Course>) map.get("courseList"));
                 message.append("Utility for Period " + periodIndex + ": " + (Double) map.get("utility") + "<br>");
+                message.append("Preferences for Period " + periodIndex + ": " + map.get("preferences") + "<br>");
                 periodIndex++;
             }
         }
@@ -213,9 +214,9 @@ public class CourseController {
                 intersection.retainAll(timeslot);
                 if(intersection.size() > 0) {
                     flag = true;
-                    for(String conflict : intersection) {
-                        message.append("Conflict in " + period + " on " + conflict + "<br>");
-                    }
+//                    for(String conflict : intersection) {
+//                        message.append("Conflict in " + period + " on " + conflict + "<br>");
+//                    }
                     break;
                 }
             }
@@ -280,6 +281,7 @@ public class CourseController {
         Map<String, Object> response = new HashMap<>();
         response.put("courseList", courseList);
         response.put("utility", node.getUtility());
+        response.put("preferences", node.getPreferences());
 
         return response;
     }

@@ -387,7 +387,7 @@ public class CourseController {
         // Preference - Topic
         if(null != preference.getTopic() && preference.getTopic().size() > 0) {
             List<String> topic = preference.getTopic();
-            topic = parseTopic(topic);
+//            topic = parseTopic(topic);
 
             if(!queryBuilder.toString().isEmpty())
                 queryBuilder.append(" and ");

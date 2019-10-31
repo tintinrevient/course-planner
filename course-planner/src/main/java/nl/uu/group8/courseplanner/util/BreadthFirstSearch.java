@@ -13,7 +13,6 @@ public class BreadthFirstSearch {
     private ArrayList<ArrayList<String>> preferenceCache;
     private Node highestNode;
     private List<Node> bestNodes = new ArrayList<>();
-    private ArrayList<String> bestPreference = new ArrayList<>();
 
     public BreadthFirstSearch(DLQueryEngine engine, ShortFormProvider shortFormProvider) {
         this.engine = engine;
@@ -41,8 +40,7 @@ public class BreadthFirstSearch {
         ArrayList<ArrayList<String>> outputPreferences = new ArrayList<>();
         createPreferenceList(splitQuery, outputPreferences);
         outputPreferences.sort(new PreferenceSizeComparator());
-        searchList(outputPreferences);
-        highestNode = new Node(null, bestPreference, totalPreferencesAmount, engine, shortFormProvider);
+        searchList(outputPreferences, totalPreferencesAmount);
 
         System.out.println("franco e un higest node" + highestNode.getPreferences());
         return highestNode;
@@ -103,12 +101,14 @@ public class BreadthFirstSearch {
         }
         return noConflictsSet;
     }
-    private void searchList(ArrayList<ArrayList<String>> preferences){
+    private void searchList(ArrayList<ArrayList<String>> preferences, int totalPreferencesAmount){
         for(ArrayList<String> preference : preferences){
             String query = String.join("and", preference);
             Set<OWLNamedIndividual> courseInstances = engine.getInstances(query, false);
-            if(verifyTimeSlots(courseInstances).size() >= 2){
-                bestPreference = preference;
+            Set<OWLNamedIndividual> noConflictCourseInstances = verifyTimeSlots(courseInstances);
+            if(noConflictCourseInstances.size() >= 2){
+                highestNode = new Node(null, preference, totalPreferencesAmount, engine, shortFormProvider);
+                highestNode.setCourseInstances(noConflictCourseInstances);
                 return;
             }
         }

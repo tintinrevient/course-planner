@@ -12,7 +12,7 @@ reasoner:
 
 # ontology filename in the directory "resources"
 ontology:
-  filename: ontology_v3.owl
+  filename: sometimesyoutry.rdf
 
 eureka:
   client:

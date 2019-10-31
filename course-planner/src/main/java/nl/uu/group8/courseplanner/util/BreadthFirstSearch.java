@@ -88,22 +88,25 @@ public class BreadthFirstSearch {
 
     private Set<OWLNamedIndividual> verifyTimeSlots(Set<OWLNamedIndividual> courseInstances){
         Set<OWLNamedIndividual> noConflictsSet = new HashSet<>();
-        ArrayList<OWLNamedIndividual> totalTimeSlots = new ArrayList<>();
-
+        ArrayList<OWLNamedIndividual> timeSlots = new ArrayList<>();
         for (OWLNamedIndividual courseInstance : courseInstances) {
             String courseName = shortFormProvider.getShortForm(courseInstance);
             String query = "hasCourse value " + courseName;
-            Set<OWLNamedIndividual> timeSlotsOfCourse = engine.getInstances(query, false);
-
-            for (OWLNamedIndividual timeSlotInstance : timeSlotsOfCourse) {
-                if (!totalTimeSlots.contains(timeSlotInstance)) {
-                    noConflictsSet.add(courseInstance);
-                    totalTimeSlots.addAll(timeSlotsOfCourse);
+            Set<OWLNamedIndividual> timeSlotsOnt = engine.getInstances(query, false);
+            boolean overlap = false;
+            for (OWLNamedIndividual timeSlotInstance : timeSlotsOnt) {
+                if (timeSlots.contains(timeSlotInstance)){
+                    overlap = true;
                 }
+            }
+            if (!overlap){
+                noConflictsSet.add(courseInstance);
+                timeSlots.addAll(timeSlotsOnt);
             }
         }
         return noConflictsSet;
     }
+
     private void searchList(ArrayList<ArrayList<String>> preferences, int totalPreferencesAmount){
         for(ArrayList<String> preference : preferences){
             String query = String.join("and", preference);

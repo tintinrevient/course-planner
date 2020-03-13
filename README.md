@@ -1,18 +1,7 @@
 # Project Description
-
-## To-Do List
-- [x] UI to query based on the current ontologies and scenarios
-- [ ] reasoning process - data
-- [ ] Google calendar & Google assistant integration, etc...
-- [ ] "Similar Courses" search function implementation
-- [x] min=2, max=3 courses per term
-- [x] UI: checkbox for all preferences
-- [x] UI & Ontology: full schedule ordered by period
-- [ ] a utility function - based on the user's final choice per the full schedule
-- [ ] performance metrics - report & illustration
+This is the repository of the group project of the "Intelligents Agents" course at Utrecht University, academic year 19/20. The project consists in designing and implementing a personal assistant agent that will help a new master student choose courses. Our solution is an OWL 2 Web Ontology  implemented within the Protégé framework of Stanford university with the Manchester syntax. The user interface has been implemented in Java.
 
 ## User Guide
-
 The UI is as below:
 * Query can be performed by checking any preferences in the checkbox.
 * Register can be performed by clicking the "Register" button when one or multiple courses have been checked.
@@ -119,14 +108,17 @@ Combining opinion: X's opinion about Y = (bxy, dxy, uxy), Y's opinion about Z = 
 * Gaussian Model: It estimates the probability of satisfaction
 * Case-Based Reasoning (CBR): Score for experience = recency * similarity * satisfaction
 
-## Scenario
+## Scenarios
+[to be completed...]
 
 ## Evaluation
 
 * Correctness ratio
 
 ## Performance Metrics
-
-## References
-
+[to be completed...]
+## References 
+More information about the Manchester syntax and the OWL 2 Web Ontology language can be found in the following links.
+http://ceur-ws.org/Vol-216/submission_9.pdf
+https://www.w3.org/TR/owl2-manchester-syntax/
 * https://owlcs.github.io/owlapi/apidocs_5/index.html

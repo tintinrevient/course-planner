@@ -51,7 +51,7 @@ How the world evolves (which is perceived by the sensors) and what my actions do
 |--------------------------------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
 | E1: Neighbouring agents online |                                                                                                                                 | S1: Online neighbouring agents                                         |
 |                                | A2: Ask for the evaluation of a course from neighbouring agents <br> A3: Answer the evaluation of a course from neighbouring agents | S2: Course evaluation from neighbouring agents                         |
-|                                | A1: Register for a cours                                                                                                        | S3: Total registered courses <br> S4: Available time slots in the calendar |
+|                                | A1: Register for a course                                                                                                        | S3: Total registered courses <br> S4: Available time slots in the calendar |
 |                                | A4: Give positive or negative feedback for evaluations of courses from neighbouring agents                                      | S5: Reputation rating of neighbouring agents                           |
 
 The **utility** is calculated as below:
